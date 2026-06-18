@@ -1,20 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Antonio } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const antonio = Antonio({
   subsets: ["latin"],
+  variable: "--font-antonio",
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Website Clone",
-  description: "Pixel-perfect website clone",
+  title: "Portavia",
+  description:
+    "Portavia is a clean portfolio template for showcasing creative work. Perfect for designers and creatives.",
+  icons: {
+    icon: "/seo/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -25,9 +31,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${antonio.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-screen bg-[#1a1a1b] text-white">{children}</body>
     </html>
   );
 }
