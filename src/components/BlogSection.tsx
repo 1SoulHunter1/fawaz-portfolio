@@ -40,7 +40,7 @@ export function BlogSection() {
           {blogs.map((blog) => (
             <Link
               key={blog.slug}
-              href="#"
+              href={`/blogs/${blog.slug}`}
               className="group overflow-hidden rounded-2xl border border-[#333] transition-transform hover:scale-[1.02]"
             >
               <div className="relative aspect-[16/9] w-full overflow-hidden">

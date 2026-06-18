@@ -54,7 +54,7 @@ export function ProjectsSection() {
           {projects.map((project) => (
             <Link
               key={project.slug}
-              href="#"
+              href={`/projects/${project.slug}`}
               className="group relative block aspect-[3/2] w-full overflow-hidden rounded-[20px]"
             >
               <Image
