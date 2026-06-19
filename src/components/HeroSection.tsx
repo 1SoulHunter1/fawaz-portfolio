@@ -23,7 +23,7 @@ export function HeroSection() {
 
       <div className="relative mx-auto flex max-w-[1200px] flex-col items-center px-6">
         {/* Top area: DUNCAN ROBERT + centered photo */}
-        <div className="relative mt-4 w-full">
+        <div className="relative mt-8 w-full">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : undefined}
@@ -50,8 +50,8 @@ export function HeroSection() {
           </motion.div>
         </div>
 
-        {/* DIGITAL ... DESIGNER heading row */}
-        <div className="relative -mt-32 flex w-full items-center justify-between overflow-hidden">
+        {/* DIGITAL ... DESIGNER heading row — overlaps photo significantly */}
+        <div className="relative -mt-[304px] flex w-full items-center justify-between overflow-hidden">
           <motion.h1
             initial={{ opacity: 0, y: 60 }}
             animate={inView ? { opacity: 1, y: 0 } : undefined}
@@ -71,20 +71,27 @@ export function HeroSection() {
           </motion.h1>
         </div>
 
-        {/* Bottom row: Hi + wave on left, subtitle on right */}
+        {/* Subtitle — right-aligned, overlapping lower photo area */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : undefined}
-          transition={{ duration: 0.8, ease, delay: 0.6 }}
-          className="mt-4 flex w-full items-start justify-between"
+          transition={{ duration: 0.8, ease, delay: 0.55 }}
+          className="mt-4 flex w-full justify-end"
         >
-          <div className="flex items-center gap-2">
-            <span className="text-[40px] font-normal text-[#303030]">Hi</span>
-            <span className="text-3xl">👋</span>
-          </div>
           <p className="max-w-[348px] text-right text-lg font-light leading-[27px] text-white">
             I&apos;m a US-based digital designer and Framer developer
           </p>
+        </motion.div>
+
+        {/* Hi + wave — left-aligned, near bottom of photo */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : undefined}
+          transition={{ duration: 0.8, ease, delay: 0.7 }}
+          className="mt-16 flex w-full items-center gap-2"
+        >
+          <span className="text-[40px] font-normal text-[#303030]">Hi</span>
+          <span className="text-3xl">👋</span>
         </motion.div>
       </div>
     </section>

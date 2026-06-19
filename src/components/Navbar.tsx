@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [collapsed, setCollapsed] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const scrollTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastScrollY = useRef(0);
 
@@ -20,14 +20,10 @@ export function Navbar() {
 
   const handleScroll = useCallback(() => {
     const y = window.scrollY;
-    if (y > 50 && Math.abs(y - lastScrollY.current) > 5) {
-      setCollapsed(true);
+    if (Math.abs(y - lastScrollY.current) > 5) {
+      setExpanded(false);
       if (scrollTimer.current) clearTimeout(scrollTimer.current);
-      scrollTimer.current = setTimeout(() => setCollapsed(false), 600);
-    }
-    if (y <= 50) {
-      setCollapsed(false);
-      if (scrollTimer.current) clearTimeout(scrollTimer.current);
+      scrollTimer.current = setTimeout(() => setExpanded(true), 600);
     }
     lastScrollY.current = y;
   }, []);
@@ -43,12 +39,9 @@ export function Navbar() {
   return (
     <div className="fixed top-5 left-1/2 z-50 -translate-x-1/2">
       <nav
-        className={cn(
-          "flex items-center gap-2 rounded-full bg-[rgba(15,15,15,0.9)] backdrop-blur-[5px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
-          collapsed ? "px-1" : "px-1"
-        )}
+        className="flex items-center rounded-full bg-[rgba(15,15,15,0.9)] px-1 backdrop-blur-[5px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
       >
-        {/* Avatar */}
+        {/* Avatar + Available badge */}
         <div className="flex shrink-0 items-center gap-2 px-2.5 py-2">
           <Image
             src="/images/avatar.jpg"
@@ -59,7 +52,7 @@ export function Navbar() {
           />
           <Link
             href="#contact"
-            className="flex items-center gap-2 px-3 py-1.5 text-sm font-normal text-white transition-colors hover:text-[#d0ff71]"
+            className="flex items-center gap-2 px-2 py-1.5 text-sm font-normal text-white transition-colors hover:text-[#d0ff71]"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#d0ff71] opacity-75" />
@@ -69,13 +62,13 @@ export function Navbar() {
           </Link>
         </div>
 
-        {/* Desktop nav links — collapse/expand based on scroll */}
+        {/* Desktop nav links — hidden by default, expand on scroll-stop */}
         <div
           className={cn(
-            "hidden items-center gap-8 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:flex",
-            collapsed
-              ? "max-w-0 opacity-0 pr-0"
-              : "max-w-[500px] opacity-100 pr-4"
+            "hidden items-center gap-6 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:flex",
+            expanded
+              ? "max-w-[400px] opacity-100 pr-3"
+              : "max-w-0 opacity-0 pr-0"
           )}
         >
           {links.map((link) => (
