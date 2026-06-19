@@ -83,15 +83,16 @@ export function HeroSection() {
           </p>
         </motion.div>
 
-        {/* Hi + wave — left-aligned, near bottom of photo */}
+        {/* Hi circle — lime green circle with wave icon, matching original */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 0.8, ease, delay: 0.7 }}
-          className="mt-16 flex w-full items-center gap-2"
+          className="mt-16 flex w-full"
         >
-          <span className="text-[40px] font-normal text-[#303030]">Hi</span>
-          <span className="text-3xl">👋</span>
+          <div className="flex h-[120px] w-[120px] items-center justify-center rounded-full bg-[#d0ff71]">
+            <span className="text-4xl">👋</span>
+          </div>
         </motion.div>
       </div>
     </section>
