@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { BlogCard } from "@/components/BlogCard";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { StaggerReveal } from "@/components/animations/StaggerReveal";
 import { blogs } from "@/data/blogs";
 
 export const metadata: Metadata = {
@@ -20,35 +22,36 @@ export default function BlogsPage() {
       <main>
         <section className="w-full bg-[#1a1a1b] pt-36 pb-16 md:pt-44">
           <div className="mx-auto max-w-[1200px] px-6">
-            <h1 className="font-heading text-[44px] font-bold leading-[1.05] tracking-[-1.5px] text-white uppercase lg:text-[120px] lg:leading-[132px] lg:tracking-[-3.6px]">
-              Design Insights &amp; Ideas
-            </h1>
-            <p className="mt-6 max-w-[640px] text-lg font-light leading-[27px] text-white">
-              From design trends to creative processes, these articles offer
-              insights to help you elevate your craft, solve challenges, and
-              spark new ideas for your projects.
-            </p>
+            <ScrollReveal>
+              <h1 className="font-heading text-[44px] font-bold leading-[1.05] tracking-[-1.5px] text-white uppercase lg:text-[120px] lg:leading-[132px] lg:tracking-[-3.6px]">
+                Design Insights &amp; Ideas
+              </h1>
+              <p className="mt-6 max-w-[640px] text-lg font-light leading-[27px] text-white">
+                From design trends to creative processes, these articles offer
+                insights to help you elevate your craft, solve challenges, and
+                spark new ideas for your projects.
+              </p>
+            </ScrollReveal>
           </div>
         </section>
 
         {pinned && (
           <section className="w-full bg-[#1a1a1b] pb-16">
             <div className="mx-auto max-w-[1200px] px-6">
-              <h2 className="font-heading mb-6 inline-block rounded-full bg-[#d0ff71] px-5 py-1.5 text-[20px] font-normal text-black uppercase md:text-[26px]">
-                Most Viewed
-              </h2>
-              <BlogCard blog={pinned} variant="pinned" />
+              <ScrollReveal>
+                <BlogCard blog={pinned} variant="pinned" />
+              </ScrollReveal>
             </div>
           </section>
         )}
 
         <section className="w-full bg-[#1a1a1b] pb-24">
           <div className="mx-auto max-w-[1200px] px-6">
-            <div className="grid gap-6 md:grid-cols-2">
+            <StaggerReveal className="grid gap-6 md:grid-cols-2" staggerDelay={0.1}>
               {rest.map((blog) => (
                 <BlogCard key={blog.slug} blog={blog} />
               ))}
-            </div>
+            </StaggerReveal>
           </div>
         </section>
       </main>

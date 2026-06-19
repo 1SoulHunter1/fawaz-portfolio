@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { ArrowRightIcon } from "@/components/icons";
 
 const projects = [
@@ -41,53 +42,65 @@ export function ProjectsSection() {
   return (
     <section className="w-full bg-[#1a1a1b] py-20">
       <div className="mx-auto max-w-[1200px] px-6">
-        <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
-          FEATURED PROJECTS
-        </h2>
-        <p className="mt-4 max-w-[700px] text-base font-light leading-6 text-white">
-          These selected projects reflect my passion for blending strategy with
-          creativity — solving real problems through thoughtful design and
-          impactful storytelling.
-        </p>
+        <ScrollReveal>
+          <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
+            FEATURED PROJECTS
+          </h2>
+          <p className="mt-4 max-w-[700px] text-base font-light leading-6 text-white">
+            These selected projects reflect my passion for blending strategy with
+            creativity — solving real problems through thoughtful design and
+            impactful storytelling.
+          </p>
+        </ScrollReveal>
 
-        <div className="mt-12 flex flex-col gap-8">
-          {projects.map((project) => (
-            <Link
+        {/* Sticky stacking: each card pins at top: 80px, later cards paint over earlier ones via DOM order */}
+        <div className="mt-12">
+          {projects.map((project, i) => (
+            <div
               key={project.slug}
-              href={`/projects/${project.slug}`}
-              className="group relative block aspect-[3/2] w-full overflow-hidden rounded-[20px]"
+              className="sticky top-[80px] z-[1]"
+              style={{ paddingBottom: i < projects.length - 1 ? "120px" : "0" }}
             >
-              <Image
-                src={project.image}
-                alt="Featured Project Cover Image"
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-black/40 transition-colors group-hover:bg-black/50" />
-              <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 p-8 text-center">
-                <span className="text-sm font-light text-[#b5b5b5]">
-                  {project.category}
-                </span>
-                <h3 className="font-heading max-w-[756px] text-[32px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
-                  {project.title}
-                </h3>
-                <p className="max-w-[600px] text-sm font-light leading-[21px] text-white/80">
-                  {project.description}
-                </p>
-              </div>
-            </Link>
+              <Link
+                href={`/projects/${project.slug}`}
+                className="group relative block aspect-[3/2] w-full overflow-hidden rounded-[20px]"
+                data-cursor="arrow"
+              >
+                <Image
+                  src={project.image}
+                  alt="Featured Project Cover Image"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/40 transition-colors group-hover:bg-black/50" />
+                <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 p-8 text-center">
+                  <span className="text-sm font-light text-[#b5b5b5]">
+                    {project.category}
+                  </span>
+                  <h2 className="font-heading max-w-[756px] text-[32px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
+                    {project.title}
+                  </h2>
+                  <p className="max-w-[600px] text-sm font-light leading-[21px] text-white/80">
+                    {project.description}
+                  </p>
+                </div>
+              </Link>
+            </div>
           ))}
         </div>
 
+        <ScrollReveal delay={0.2}>
         <div className="mt-10 flex justify-center">
           <Link
             href="/projects"
-            className="font-heading inline-flex items-center gap-3 rounded-full border border-[#d0ff71] px-8 py-3 text-[18px] font-normal text-[#d0ff71] uppercase transition-colors hover:bg-[#d0ff71] hover:text-black"
+            className="font-heading inline-flex items-center gap-3 text-[22px] font-normal text-[#d0ff71] uppercase transition-opacity hover:opacity-80 md:text-[26px]"
+            data-cursor="blend"
           >
             BROWSE ALL PROJECTS
-            <ArrowRightIcon className="h-5 w-5" />
+            <ArrowRightIcon className="h-6 w-6" />
           </Link>
         </div>
+        </ScrollReveal>
       </div>
     </section>
   );

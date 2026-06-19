@@ -1,28 +1,55 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
+  const scrollTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lastScrollY = useRef(0);
 
   const links = [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
     { label: "Projects", href: "/projects" },
     { label: "Blogs", href: "/blogs" },
-    { label: "Contact", href: "#contact" },
   ];
 
+  const handleScroll = useCallback(() => {
+    const y = window.scrollY;
+    if (y > 50 && Math.abs(y - lastScrollY.current) > 5) {
+      setCollapsed(true);
+      if (scrollTimer.current) clearTimeout(scrollTimer.current);
+      scrollTimer.current = setTimeout(() => setCollapsed(false), 600);
+    }
+    if (y <= 50) {
+      setCollapsed(false);
+      if (scrollTimer.current) clearTimeout(scrollTimer.current);
+    }
+    lastScrollY.current = y;
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (scrollTimer.current) clearTimeout(scrollTimer.current);
+    };
+  }, [handleScroll]);
+
   return (
-    <div className="fixed top-5 left-1/2 -translate-x-1/2 z-10">
+    <div className="fixed top-5 left-1/2 z-50 -translate-x-1/2">
       <nav
-        className="group flex items-center gap-2 rounded-full bg-[rgba(15,15,15,0.9)] backdrop-blur-[5px] transition-all duration-300"
+        className={cn(
+          "flex items-center gap-2 rounded-full bg-[rgba(15,15,15,0.9)] backdrop-blur-[5px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          collapsed ? "px-1" : "px-1"
+        )}
       >
-        {/* Compact view: avatar + badge */}
-        <div className="flex items-center gap-2 px-2.5 py-2">
+        {/* Avatar */}
+        <div className="flex shrink-0 items-center gap-2 px-2.5 py-2">
           <Image
             src="/images/avatar.jpg"
             alt="Portfolio Creator Avatar"
@@ -30,7 +57,6 @@ export function Navbar() {
             height={40}
             className="rounded-full object-cover"
           />
-
           <Link
             href="#contact"
             className="flex items-center gap-2 px-3 py-1.5 text-sm font-normal text-white transition-colors hover:text-[#d0ff71]"
@@ -43,17 +69,30 @@ export function Navbar() {
           </Link>
         </div>
 
-        {/* Expanded nav links - visible on hover (desktop) */}
-        <div className="hidden max-w-0 items-center gap-8 overflow-hidden opacity-0 transition-all duration-300 group-hover:max-w-[500px] group-hover:opacity-100 group-hover:pr-4 lg:flex">
+        {/* Desktop nav links — collapse/expand based on scroll */}
+        <div
+          className={cn(
+            "hidden items-center gap-8 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:flex",
+            collapsed
+              ? "max-w-0 opacity-0 pr-0"
+              : "max-w-[500px] opacity-100 pr-4"
+          )}
+        >
           {links.map((link) => (
             <Link
               key={link.label}
               href={link.href}
-              className="whitespace-nowrap text-sm text-white transition-colors hover:text-[#d0ff71]"
+              className="whitespace-nowrap text-sm text-white transition-colors duration-200 hover:text-[#d0ff71]"
             >
               {link.label}
             </Link>
           ))}
+          <Link
+            href="#contact"
+            className="whitespace-nowrap rounded-full bg-white px-4 py-1.5 text-sm font-normal text-black transition-opacity hover:opacity-90"
+          >
+            Contact
+          </Link>
         </div>
 
         {/* Mobile hamburger */}
@@ -96,6 +135,13 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
+          <Link
+            href="#contact"
+            onClick={() => setMenuOpen(false)}
+            className="text-sm text-white transition-colors hover:text-[#d0ff71]"
+          >
+            Contact
+          </Link>
         </div>
       )}
     </div>

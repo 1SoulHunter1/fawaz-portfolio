@@ -4,6 +4,8 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ServicesSection } from "@/components/ServicesSection";
 import { ContactSection } from "@/components/ContactSection";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { StaggerReveal } from "@/components/animations/StaggerReveal";
 import { cn } from "@/lib/utils";
 import {
   XIcon,
@@ -147,14 +149,14 @@ function ProcessCardItem({ card }: { card: ProcessCard }) {
         <div
           className={cn(
             "relative overflow-hidden rounded-[20px]",
-            card.wide ? "aspect-[4/3] w-full md:w-1/2" : "mt-auto aspect-[4/3] w-full"
+            card.wide ? "aspect-[36/38] w-full md:w-[360px] md:shrink-0" : "mt-auto aspect-[36/38] w-full max-w-[360px]"
           )}
         >
           <Image
             src={card.image}
             alt={card.title}
             fill
-            sizes="(max-width: 768px) 100vw, 480px"
+            sizes="360px"
             className="object-cover"
           />
         </div>
@@ -175,9 +177,9 @@ export default function AboutPage() {
               <h1 className="font-heading text-[56px] font-bold leading-[1.05] tracking-[-2px] text-white uppercase lg:text-[120px] lg:leading-[120px] lg:tracking-[-3.6px]">
                 About me
               </h1>
-              <h2 className="font-heading mt-6 text-[26px] font-normal text-[#d0ff71] uppercase md:text-[32px]">
+              <h3 className="font-heading mt-6 text-[26px] font-normal text-white uppercase md:text-[32px]">
                 Duncan Robert
-              </h2>
+              </h3>
               <p className="mt-6 max-w-[520px] text-lg font-light leading-[27px] text-white">
                 I&apos;m a digital designer and Framer developer passionate about
                 crafting meaningful, user-centered experiences.
@@ -203,16 +205,24 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="relative mx-auto aspect-[3/4] w-full max-w-[420px] overflow-hidden rounded-[20px]">
-              <Image
-                src="/images/cms/qrxY8NagVO40NBrdhFEGgFR3PYY.jpg"
-                alt="Portrait of Duncan Robert"
-                fill
-                sizes="(max-width: 768px) 100vw, 420px"
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-[#d0ff71] mix-blend-color opacity-30" />
+            <div className="relative mx-auto h-[476px] w-full max-w-[340px] overflow-hidden rounded-[20px]">
+              {[
+                "/images/cms/qrxY8NagVO40NBrdhFEGgFR3PYY.jpg",
+                "/images/cms/MZuXaRoDIChJ0C6y8Fwit9E0.jpeg",
+                "/images/cms/yb0fdGmcyv8ZYyS3IOlIWNVC7RI.jpeg",
+                "/images/cms/VRQgkdWsjawSg1qpCm45HfSY1I.jpeg",
+              ].map((src, i) => (
+                <Image
+                  key={src}
+                  src={src}
+                  alt={`Portrait ${i + 1}`}
+                  fill
+                  sizes="340px"
+                  className="object-cover"
+                  style={{ zIndex: 4 - i }}
+                  priority={i === 0}
+                />
+              ))}
             </div>
           </div>
         </section>
@@ -223,21 +233,23 @@ export default function AboutPage() {
         {/* Journey timeline */}
         <section className="w-full bg-[#1a1a1b] py-20">
           <div className="mx-auto max-w-[1200px] px-6">
-            <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
-              Discover My Journey in Design
-            </h2>
-            <p className="mt-4 max-w-[700px] text-base font-light leading-6 text-white">
-              From curious creator to full-time designer, my path has been shaped
-              by a passion for crafting purposeful, user-centered digital
-              experiences—blending storytelling, structure, and design into every
-              project.
-            </p>
+            <ScrollReveal>
+              <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
+                Discover My Journey in Design
+              </h2>
+              <p className="mt-4 max-w-[700px] text-base font-light leading-6 text-white">
+                From curious creator to full-time designer, my path has been shaped
+                by a passion for crafting purposeful, user-centered digital
+                experiences—blending storytelling, structure, and design into every
+                project.
+              </p>
+            </ScrollReveal>
 
-            <div className="mt-12">
+            <StaggerReveal className="mt-12" staggerDelay={0.1}>
               {timeline.map((item) => (
                 <div
                   key={item.role}
-                  className="flex flex-col gap-2 border-t border-[#333] py-8 sm:flex-row sm:items-center sm:justify-between"
+                  className="flex flex-col gap-2 border-t border-[#333] py-5 sm:flex-row sm:items-center sm:justify-between"
                 >
                   <div className="flex flex-col gap-1">
                     <h3 className="font-heading text-[26px] font-normal text-white uppercase md:text-[32px]">
@@ -252,23 +264,25 @@ export default function AboutPage() {
                   </span>
                 </div>
               ))}
-            </div>
+            </StaggerReveal>
           </div>
         </section>
 
         {/* Tech stack */}
         <section className="w-full bg-[#1a1a1b] py-20">
           <div className="mx-auto max-w-[1200px] px-6">
-            <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
-              My Tech Stack
-            </h2>
-            <p className="mt-4 max-w-[700px] text-base font-light leading-6 text-white">
-              I build with intention. Framer for fast, interactive web design.
-              Figma for clean interfaces. Notion and X for content. Each tool
-              supports how I think, design.
-            </p>
+            <ScrollReveal>
+              <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
+                My Tech Stack
+              </h2>
+              <p className="mt-4 max-w-[700px] text-base font-light leading-6 text-white">
+                I build with intention. Framer for fast, interactive web design.
+                Figma for clean interfaces. Notion and X for content. Each tool
+                supports how I think, design.
+              </p>
+            </ScrollReveal>
 
-            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <StaggerReveal className="mt-12 grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5" staggerDelay={0.08}>
               {techStack.map((tool) => (
                 <div
                   key={tool.name}
@@ -293,27 +307,29 @@ export default function AboutPage() {
                   </p>
                 </div>
               ))}
-            </div>
+            </StaggerReveal>
           </div>
         </section>
 
         {/* Process */}
         <section className="w-full bg-[#1a1a1b] py-20">
           <div className="mx-auto max-w-[1200px] px-6">
-            <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
-              Design with Strategy and Creativity
-            </h2>
-            <p className="mt-4 max-w-[700px] text-base font-light leading-6 text-white">
-              My process blends strategy and creativity to address challenges,
-              craft solutions, and deliver designs that effectively communicate
-              your message.
-            </p>
+            <ScrollReveal>
+              <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
+                Design with Strategy and Creativity
+              </h2>
+              <p className="mt-4 max-w-[700px] text-base font-light leading-6 text-white">
+                My process blends strategy and creativity to address challenges,
+                craft solutions, and deliver designs that effectively communicate
+                your message.
+              </p>
+            </ScrollReveal>
 
-            <div className="mt-12 grid gap-5 md:grid-cols-2">
+            <StaggerReveal className="mt-12 grid gap-5 md:grid-cols-2" staggerDelay={0.1}>
               {process.map((card) => (
                 <ProcessCardItem key={card.number} card={card} />
               ))}
-            </div>
+            </StaggerReveal>
           </div>
         </section>
 

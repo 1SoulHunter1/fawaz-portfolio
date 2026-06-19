@@ -1,3 +1,5 @@
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { StaggerReveal } from "@/components/animations/StaggerReveal";
 import { CheckCircleIcon } from "@/components/icons";
 
 const services = [
@@ -47,15 +49,17 @@ export function ServicesSection() {
   return (
     <section className="w-full bg-[#1a1a1b] py-20">
       <div className="mx-auto max-w-[1200px] px-6">
-        <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
-          WHAT I CAN DO FOR YOU
-        </h2>
-        <p className="mt-4 max-w-[600px] text-base font-light leading-6 text-white">
-          As a digital designer, I am a visual storyteller, crafting experiences
-          that connect deeply and spark creativity.
-        </p>
+        <ScrollReveal>
+          <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
+            WHAT I CAN DO FOR YOU
+          </h2>
+          <p className="mt-4 max-w-[600px] text-base font-light leading-6 text-white">
+            As a digital designer, I am a visual storyteller, crafting experiences
+            that connect deeply and spark creativity.
+          </p>
+        </ScrollReveal>
 
-        <div className="mt-12 grid gap-0 md:grid-cols-2">
+        <StaggerReveal className="mt-12 flex flex-col" staggerDelay={0.1}>
           {services.map((service) => (
             <div
               key={service.number}
@@ -79,7 +83,7 @@ export function ServicesSection() {
               </ul>
             </div>
           ))}
-        </div>
+        </StaggerReveal>
       </div>
     </section>
   );

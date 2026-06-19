@@ -6,6 +6,8 @@ import { Footer } from "@/components/Footer";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ContentBlock } from "@/components/ContentBlock";
 import { CtaButton } from "@/components/CtaButton";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { StaggerReveal } from "@/components/animations/StaggerReveal";
 import { projects, getProject } from "@/data/projects";
 
 export function generateStaticParams() {
@@ -51,18 +53,25 @@ export default async function ProjectDetailPage({
         {/* Hero + metadata */}
         <section className="w-full bg-[#1a1a1b] pt-36 pb-12 md:pt-44">
           <div className="mx-auto max-w-[1000px] px-6">
-            <span className="inline-block rounded-full bg-[#d0ff71] px-4 py-1 text-sm font-light text-black">
-              {project.category}
-            </span>
-            <h1 className="font-heading mt-6 text-[48px] font-bold leading-[1.05] tracking-[-2px] text-white uppercase lg:text-[120px] lg:leading-[132px] lg:tracking-[-3.6px]">
-              {project.title}
-            </h1>
-            <p className="mt-6 max-w-[720px] text-lg font-light leading-[27px] text-white">
-              {project.description}
-            </p>
+            <ScrollReveal>
+              <div className="flex items-center gap-3">
+                <span className="inline-block rounded-full bg-[#d0ff71] px-4 py-1 text-sm font-light text-black">
+                  {project.category}
+                </span>
+                <span className="inline-block rounded-full border border-[#333] px-4 py-1 text-sm font-light text-white">
+                  New release
+                </span>
+              </div>
+              <h1 className="font-heading mt-6 text-[48px] font-bold leading-[1.05] tracking-[-2px] text-white uppercase lg:text-[120px] lg:leading-[132px] lg:tracking-[-3.6px]">
+                {project.title}
+              </h1>
+              <p className="mt-6 max-w-[720px] text-lg font-light leading-[27px] text-white">
+                {project.description}
+              </p>
+            </ScrollReveal>
 
             {meta.length > 0 && (
-              <div className="mt-12 grid grid-cols-2 gap-6 border-t border-[#333] pt-8 md:grid-cols-4">
+              <StaggerReveal className="mt-12 grid grid-cols-2 gap-6 border-t border-[#333] pt-8 md:grid-cols-4" staggerDelay={0.08}>
                 {meta.map((m) => (
                   <div key={m.label} className="flex flex-col gap-1">
                     <span className="text-lg font-light text-white">
@@ -73,7 +82,7 @@ export default async function ProjectDetailPage({
                     </span>
                   </div>
                 ))}
-              </div>
+              </StaggerReveal>
             )}
           </div>
         </section>
@@ -81,16 +90,18 @@ export default async function ProjectDetailPage({
         {/* Cover */}
         <section className="w-full bg-[#1a1a1b]">
           <div className="mx-auto max-w-[1000px] px-6">
-            <div className="relative aspect-[3/2] w-full overflow-hidden rounded-[20px]">
-              <Image
-                src={project.cover}
-                alt={project.title}
-                fill
-                sizes="(max-width: 1000px) 100vw, 1000px"
-                className="object-cover"
-                priority
-              />
-            </div>
+            <ScrollReveal>
+              <div className="relative aspect-[3/2] w-full overflow-hidden rounded-[20px]">
+                <Image
+                  src={project.cover}
+                  alt={project.title}
+                  fill
+                  sizes="(max-width: 1000px) 100vw, 1000px"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </ScrollReveal>
           </div>
         </section>
 
@@ -98,7 +109,9 @@ export default async function ProjectDetailPage({
         <section className="w-full bg-[#1a1a1b] py-16">
           <div className="mx-auto flex max-w-[1000px] flex-col gap-14 px-6">
             {project.sections.map((section) => (
-              <ContentBlock key={section.heading} section={section} colon />
+              <ScrollReveal key={section.heading}>
+                <ContentBlock section={section} colon />
+              </ScrollReveal>
             ))}
           </div>
         </section>
@@ -106,19 +119,23 @@ export default async function ProjectDetailPage({
         {/* More projects */}
         <section className="w-full bg-[#1a1a1b] pb-24">
           <div className="mx-auto max-w-[1200px] px-6">
-            <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
-              More Projects
-            </h2>
-            <div className="mt-12 grid gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+            <ScrollReveal>
+              <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
+                More Projects
+              </h2>
+            </ScrollReveal>
+            <StaggerReveal className="mt-12 grid gap-x-6 gap-y-12 md:grid-cols-2" staggerDelay={0.08}>
               {more.map((p) => (
                 <ProjectCard key={p.slug} project={p} variant="compact" />
               ))}
-            </div>
-            <div className="mt-12 flex justify-center">
-              <CtaButton href="/projects" showArrow={false}>
-                Load More
-              </CtaButton>
-            </div>
+            </StaggerReveal>
+            <ScrollReveal delay={0.2}>
+              <div className="mt-12 flex justify-center">
+                <CtaButton href="/projects" showArrow={false}>
+                  Load More
+                </CtaButton>
+              </div>
+            </ScrollReveal>
           </div>
         </section>
       </main>

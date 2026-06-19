@@ -19,25 +19,26 @@ export function BlogCard({ blog, variant = "default" }: BlogCardProps) {
     return (
       <Link
         href={href}
-        className="group grid overflow-hidden rounded-2xl border border-[#333] transition-colors hover:border-[#d0ff71] md:grid-cols-2"
+        className="group overflow-hidden rounded-2xl border border-[#333] transition-colors hover:border-[#d0ff71]"
+        data-cursor="arrow"
       >
-        <div className="relative aspect-[16/10] w-full overflow-hidden md:aspect-auto">
+        <div className="relative aspect-[16/9] w-full overflow-hidden">
           <Image
             src={blog.cover}
             alt={blog.title}
             fill
-            sizes="(max-width: 768px) 100vw, 600px"
+            sizes="(max-width: 1200px) 100vw, 1120px"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         </div>
-        <div className="flex flex-col justify-center gap-4 p-8">
+        <div className="flex flex-col gap-4 p-8">
           <div className="flex items-center gap-3">
             <span className="inline-block rounded-full bg-[#303030] px-3 py-1 text-xs text-white">
               {blog.category}
             </span>
             <span className="text-xs text-[#b5b5b5]">{blog.date}</span>
           </div>
-          <h3 className="font-heading text-[28px] font-normal leading-[36px] text-white uppercase md:text-[40px] md:leading-[48px]">
+          <h3 className="font-heading text-[24px] font-normal leading-[32px] text-white uppercase md:text-[32px] md:leading-[41.6px]">
             {blog.title}
           </h3>
           <p className="text-base font-light leading-6 text-[#b5b5b5]">
@@ -52,6 +53,7 @@ export function BlogCard({ blog, variant = "default" }: BlogCardProps) {
     <Link
       href={href}
       className="group overflow-hidden rounded-2xl border border-[#333] transition-colors hover:border-[#d0ff71]"
+      data-cursor="arrow"
     >
       <div className="relative aspect-[16/9] w-full overflow-hidden">
         <Image

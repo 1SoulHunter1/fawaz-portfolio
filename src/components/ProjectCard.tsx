@@ -17,7 +17,7 @@ export function ProjectCard({ project, variant = "featured" }: ProjectCardProps)
 
   if (variant === "compact") {
     return (
-      <Link href={href} className="group block">
+      <Link href={href} className="group block" data-cursor="arrow">
         <div className="relative aspect-[3/2] w-full overflow-hidden rounded-[20px]">
           <Image
             src={project.cover}
@@ -44,6 +44,7 @@ export function ProjectCard({ project, variant = "featured" }: ProjectCardProps)
     <Link
       href={href}
       className="group relative block aspect-[3/2] w-full overflow-hidden rounded-[20px]"
+      data-cursor="arrow"
     >
       <Image
         src={project.cover}
@@ -57,9 +58,9 @@ export function ProjectCard({ project, variant = "featured" }: ProjectCardProps)
         <span className="text-sm font-light text-[#b5b5b5]">
           {project.category}
         </span>
-        <h3 className="font-heading max-w-[756px] text-[32px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
+        <h2 className="font-heading max-w-[756px] text-[32px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
           {project.title}
-        </h3>
+        </h2>
         <p className="max-w-[600px] text-sm font-light leading-[21px] text-white/80">
           {project.description}
         </p>
