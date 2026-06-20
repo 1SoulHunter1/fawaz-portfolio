@@ -41,7 +41,7 @@ const projects = [
 export function ProjectsSection() {
   return (
     <section className="w-full bg-[#1a1a1b] py-20">
-      <div className="mx-auto max-w-[1200px] px-6">
+      <div className="mx-auto max-w-[1200px] px-6 md:px-10">
         <ScrollReveal>
           <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
             FEATURED PROJECTS

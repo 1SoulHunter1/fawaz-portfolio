@@ -18,7 +18,7 @@ export function ContactSection() {
 
   return (
     <section id="contact" className="w-full bg-[#1a1a1b] py-20">
-      <div className="mx-auto grid max-w-[1200px] gap-12 px-6 md:grid-cols-2">
+      <div className="mx-auto grid max-w-[1200px] gap-12 px-6 md:px-10 md:grid-cols-2">
         <ScrollReveal direction="left">
           <div className="flex flex-col">
             <div className="relative h-[476px] w-[340px] overflow-hidden rounded-[20px]">

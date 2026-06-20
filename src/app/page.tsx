@@ -1,7 +1,5 @@
 import { Navbar } from "@/components/Navbar";
-import { HeroSection } from "@/components/HeroSection";
-import { ServicesSection } from "@/components/ServicesSection";
-import { AboutSection } from "@/components/AboutSection";
+import { StickyScrollSection } from "@/components/StickyScrollSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { FAQSection } from "@/components/FAQSection";
@@ -14,9 +12,7 @@ export default function Home() {
     <>
       <Navbar />
       <main>
-        <HeroSection />
-        <ServicesSection />
-        <AboutSection />
+        <StickyScrollSection />
         <ProjectsSection />
         <TestimonialsSection />
         <FAQSection />

@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Antonio } from "next/font/google";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { MouseFollower } from "@/components/MouseFollower";
+import { NoiseOverlay } from "@/components/NoiseOverlay";
 import "./globals.css";
 
 const inter = Inter({
@@ -33,7 +36,11 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${antonio.variable} antialiased`}
     >
-      <body className="min-h-screen bg-[#1a1a1b] text-white">{children}</body>
+      <body className="min-h-screen bg-[#1a1a1b] text-white">
+        <NoiseOverlay />
+        <MouseFollower />
+        <SmoothScroll>{children}</SmoothScroll>
+      </body>
     </html>
   );
 }

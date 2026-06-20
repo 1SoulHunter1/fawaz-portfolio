@@ -1,440 +1,203 @@
-# Portavia — Interaction Specification
+# Interaction Inventory — Portavia Clone vs Original
 
-> Source: https://portavia.framer.website
-> Date: 2026-06-18
-> Method: Chrome DevTools MCP — real CDP hover, computed style diffing, Framer bundle analysis, accessibility snapshot inspection
-
----
-
-## 1. Custom Mouse Cursor
-
-### 1.1 Default State
-
-```
-Component:    Custom cursor (framer-SsumL, data-framer-name="Default")
-Position:     fixed, top: 0, left: 0, z-index: 13
-Size:         16 × 16px
-Background:   rgb(208, 255, 113) — lime (#d0ff71)
-Border-radius: 99px (circle)
-Opacity:      0 (hidden until mouse moves into viewport)
-Pointer-events: none
-Mix-blend-mode: normal
-Transform:    translate(0%, -50%) translateX({mouseX}px) translateY({mouseY}px)
-Offset:       x: 20px, y: 20px from cursor center (placement: "right")
-Follow spring: damping: 60, mass: 1, stiffness: 500, type: spring
-```
-
-### 1.2 Project Card Hover State
-
-```
-Component:    Cursor variant "Project Hover" (framer-v-1nhwsh0)
-Trigger:      Mouse enters any project card link
-Size:         70 × 70px (4.375× larger)
-Background:   rgb(208, 255, 113) — lime
-Border-radius: 141.429% (circle)
-Opacity:      1
-Display:      flex (center-aligned)
-Content:      SVG arrow icon (↗) rotated -45° inside
-              Arrow is 30×30px, stroke-width: 1.5, no fill
-Transition:   spring (damping: 60, stiffness: 500) — same follow spring
-```
-
-### 1.3 Color-Burn State
-
-```
-Component:    Cursor variant (framer-v-nyzhp9)
-Trigger:      Context-dependent (specific interactive elements)
-Size:         16 × 16px (same as default)
-Mix-blend-mode: color-burn
-Aspect-ratio: 1 / 1
-```
-
-### 1.4 Text Display States
-
-```
-Component:    Cursor variants (framer-v-15hp34x, framer-v-gj9knl, framer-v-eyovw6, framer-v-qcy7gm)
-Trigger:      Hovering over specific content sections
-Size:         195 × 114px (large rectangular)
-Content:      Text label stack (4 labels, each 195×114px)
-              Labels slide vertically to show relevant text
-              top offset cycles: 0px, -114px, -228px, -342px
-Behavior:     Shows contextual text like "View", "Read", etc.
-```
-
-### 1.5 Mobile/Touch
-
-```
-Behavior:     Cursor hidden on touch devices
-              Not rendered on Phone variant (xYhHFGQwf)
-```
+> **Date:** 2026-06-20
+> **Original:** https://portavia.framer.website
+> **Clone branch:** `portavia-refinement`
 
 ---
 
-## 2. Navbar Interactions
-
-### 2.1 Nav Link Text-Swap Hover
-
-```
-Component:    Link Wrap (preserve-3d container, 24px height)
-Trigger:      Mouse hover on nav link
-
-Structure:
-  Link Wrap (preserve-3d, overflow: visible, height: 24px)
-  ├── Div (text "Home") — visible face
-  │   └── <p> "Home" (Inter, 16px, 300)
-  └── Div (text "Home") — hidden face, rotateX(-90°)
-      └── <p> "Home" (Inter, 16px, 300)
-
-Default transform: matrix3d(1,0,0,0, 0,1,0,0, 0,0,1,-0.000833333, 0,0,0,1)
-                    (perspective(1200px), no rotation)
-
-Hover transform:   matrix3d(1,0,0,0, 0,0,-1,0.000833333, 0,1,0,0, 0,0,0,1)
-                    (rotateX(-90°) — top face rolls away, bottom face rolls into view)
-
-Second div default: matrix3d(1,0,0,0, 0,0,1,0, 0,-1,0,0, 0,0,0,1)
-                     (rotateX(-90°) — pre-positioned below)
-
-Variant name:    yH45AUhEe-hover
-Transition:      Framer layout animation (spring-based)
-Duration:        ~200-300ms visual
-```
-
-### 2.2 Nav Expand on Hover/Proximity
-
-```
-Component:    Navbar pill container
-Trigger:      Mouse approaches nav area / scroll direction change
-States:       "Only Avatar" (gnP_w_JBw) — collapsed, avatar only
-              "Desktop / Available" (VSa0MwIgM) — expanded with links
-              "Desktop / Available Glow" (Tpqe5DLAN) — expanded with glow ring
-              "Phone / Available" (mbXCIroYE) — mobile expanded
-              "Phone / Available Glow" (vg7MQIr8m) — mobile with glow
-
-Transition:   spring (bounce: 0.2, delay: 0, duration: 0.4)
-Width:        ~56px (collapsed) → ~508px (expanded, desktop)
-              ~56px (collapsed) → ~278px (expanded, mobile)
-```
-
-### 2.3 Nav Scroll Hide
-
-```
-Component:    Scroll Hide Wrap
-Trigger:      Scroll direction change
-Behavior:     Nav hides (translateY up) on scroll down, shows on scroll up
-Transition:   tween, duration: 0.7s, ease: cubic-bezier(0.12, 0.23, 0.5, 1)
-```
-
-### 2.4 Active Page Link
-
-```
-Component:    Current page nav link
-Behavior:     Link text color changes to #d0ff71 (lime) on the active route
-Technology:   data-framer-page-link-current attribute
-```
+## Severity Legend
+- **Critical** — Interaction is broken or missing entirely
+- **Major** — Interaction exists but behavior differs noticeably
+- **Minor** — Subtle interaction difference
 
 ---
 
-## 3. Project Card Interactions
+## 1. Navigation Interactions
 
-### 3.1 Featured Project Card Hover
+### 1.1 Navbar Expand / Collapse
 
-```
-Component:    Project Cover (a tag, border-radius: 20px, overflow: hidden)
-Trigger:      Mouse hover
+| Interaction | Original | Clone | Severity |
+|-------------|----------|-------|----------|
+| Scroll down → collapse | Nav shrinks to avatar + "Available for work" pill | `useNavbarState` hook triggers collapse | Match |
+| Scroll to top → expand | Nav expands with links + Contact button | AnimatePresence re-shows links | Match |
+| Layout animation | Smooth width transition | `LayoutGroup` with `duration: 0.7` | Match |
+| Blur on enter/exit | Items blur in/out | `filter: blur(4px)` transitions | Match |
 
-Image:        Object-fit: cover, fills container
-              No CSS scale transform detected — animation is JS-driven
-              Expected: subtle scale-up (~1.05×) via Framer layout animation
+### 1.2 Nav Link Hover (3D Flip)
 
-Overlay Gradient:
-  Default:    opacity: 0.6
-              background: linear-gradient(rgba(12,12,13,0.45) 0%, rgba(12,12,13,0.8) 100%)
-  Hover:      opacity likely deepens (Framer variant animation)
+| Interaction | Original | Clone | Severity |
+|-------------|----------|-------|----------|
+| Hover: text flips | White text rotates up, lime text appears from below | `rotateX: -90` with perspective 1200 | Match |
+| Leave: text returns | Lime text rotates away, white returns | `rotateX: 0` | Match |
+| Cursor change | Framer cursor variant | `data-cursor="arrow"` on parent | Match |
 
-Cursor:       Changes to "Project Hover" variant (70×70px lime circle + arrow)
+### 1.3 Contact Button Hover
 
-Container:    1120 × 746px, border-radius: 20px
-```
+| Interaction | Original | Clone | Severity |
+|-------------|----------|-------|----------|
+| Hover: circle fills | Lime circle expands from bottom-left | `motion.div` circle: 20px→180px | Match |
+| Text stays readable | Text above circle via z-index | `relative z-10` on text | Match |
 
-### 3.2 More Projects Card Hover (Smaller Cards)
+### 1.4 Mobile Hamburger
 
-```
-Component:    Project Item cards (540×511px or 540×490px)
-Trigger:      Mouse hover
-Behavior:     Similar cursor change to project hover variant
-              Image container has overflow: hidden for clip on zoom
-              Cover image: border-radius: 20px
-```
-
----
-
-## 4. CTA Button Interactions
-
-### 4.1 Pill Button Hover (BROWSE ALL PROJECTS, etc.)
-
-```
-Component:    Desktop pill link (framer-InsWF)
-Structure:    <a> border-radius: 99px, overflow: hidden, padding: 6px 40px 8px
-Trigger:      Mouse hover
-
-Default state:
-  - Border: 1px solid with lime color (via CSS var)
-  - Text: white (Antonio, 26px, 400)
-  - Color BG: 15×15px lime circle, position: absolute, bottom: -15px, left: -19px
-  - Arrow icon alongside text
-
-Hover state:
-  - Color BG expands: inset: -126px -27px -58px -26px (fills entire button)
-  - Visual effect: lime circle grows from bottom-left corner to fill button
-  - Text: inverts to black (z-index: 1, above Color BG)
-  
-Transition:   Framer layout animation (spring-based, automatic)
-
-Button Circle:
-  - 24×24px, bg: black, border-radius: 999px
-  - Contains arrow icon
-  - Likely inverts to lime bg on hover
-```
-
-### 4.2 "Hi" Circle Hover
-
-```
-Component:    framer-gBieo (hero + contact section)
-Trigger:      Mouse hover
-
-Default:      Inner circle 20×20px, positioned at bottom: -20px, left: -20px
-Hover:        Circle expands to 180×180px, repositioned to bottom: -75px, left: -31px
-Effect:       Lime circle reveals/expands behind the "Hi" text
-Transition:   Framer layout animation
-```
-
-### 4.3 Submit Button Hover
-
-```
-Component:    framer-eGUKg (contact form submit)
-Trigger:      Mouse hover
-
-Default:      Color BG: 15×19px, position: absolute, bottom: -15px, left: -19px
-              Arrow icon: 20×20px
-Hover:        Color BG expands to 182×81px
-              Same circle-fill-button effect as other CTAs
-```
+| Interaction | Original | Clone | Severity |
+|-------------|----------|-------|----------|
+| Tap: menu opens | Dropdown with links | AnimatePresence + MobileMenu component | Match |
+| Lines animate | Top/bottom cross, middle fades | `rotate-45` / `-rotate-45` / `opacity-0` | Match |
+| Close on link click | Menu closes | `onClick={onClose}` | Match |
 
 ---
 
-## 5. Social Icon Interactions
+## 2. Custom Cursor Interactions
 
-### 5.1 About Section Social Icons
+### 2.1 Default Cursor
 
-```
-Component:    Icon Wrap links (X, Instagram, Behance, Dribbble)
-Size:         30 × 30px each
-Icon:         SVG, fill: rgb(48, 48, 48) — dark gray
-Background:   transparent (no circle container)
-Hover:        SVG fill color likely changes (Framer variant)
-              Expected: color transitions to lime or white
-```
+| Interaction | Original | Clone | Severity |
+|-------------|----------|-------|----------|
+| Native cursor hidden | `cursor: none` globally | `html.cursor-hidden` CSS class | Match |
+| Custom dot follows mouse | 16px lime circle with lerp | `requestAnimationFrame` + lerp 0.12 | Match |
+| Smooth tracking | Position interpolated | Lerp-based smoothing | Match |
+| Touch devices | No custom cursor | `isTouch()` check returns null | Match |
+| Window leave | Cursor fades | `mouseleave → opacity: 0` | Match |
 
-### 5.2 Footer Social Icons
+### 2.2 Arrow Variant
 
-```
-Component:    Icon Wrap links in footer
-Size:         24 × 24px each
-Icon:         SVG, fill: rgb(48, 48, 48) — dark gray (on lime footer bg)
-Background:   transparent
-Hover:        SVG fill color change expected
-```
+| Interaction | Original | Clone | Severity |
+|-------------|----------|-------|----------|
+| Trigger | Hover navbar, CTA links, project cards | `data-cursor="arrow"` attribute | Match |
+| Appearance | 70px expanded circle with arrow icon | `EXPANDED_SIZE = 70`, arrow SVG | Match |
+| Arrow icon | Diagonal arrow | `-rotate-45` arrow path | Match |
+| Transition | Smooth size change | `transition-[width,height,...] duration-300` | Match |
 
----
+### 2.3 Blend Variant
 
-## 6. Service Accordion Interactions
+| Interaction | Original | Clone | Severity |
+|-------------|----------|-------|----------|
+| Trigger | Hover certain elements | `data-cursor="blend"` attribute | Match |
+| Appearance | 16px dot with color-burn blend | `mix-blend-mode: color-burn` | Match |
 
-```
-Component:    Service category items
-Trigger:      Click on category header
+### 2.4 Image Variant
 
-Default (Closed):
-  - Shows category number + title + toggle icon
-  - Sub-items hidden (height: 0, opacity: 0)
-
-Active (Open):
-  - Sub-items revealed with height animation
-  - Toggle icon rotates or changes (+/−)
-  - Only one category open at a time
-  - Clicking another category closes the current one
-
-Variants:     Desktop / Closed (YE04bftPF) ↔ Desktop / Open (Y4JoKRHSg)
-              Tablet & Phone / Closed (GpeyRJ5cb) ↔ Tablet & Phone / Open (mzEwP5j3w)
-Transition:   Framer layout animation (spring-based)
-```
+| Interaction | Original | Clone | Severity |
+|-------------|----------|-------|----------|
+| Trigger | Hover service accordion items | `data-cursor="image"` + `data-cursor-image` | Match |
+| Appearance | 200px rounded rect showing photo | `IMAGE_SIZE = 200`, `borderRadius: 20px` | Match |
+| Image source | Per-service unique image | `data-cursor-image={service.image}` | Match |
+| Transition | Smooth size + image fade | CSS transitions on width/height + opacity | Match |
 
 ---
 
-## 7. FAQ Accordion Interactions
+## 3. Accordion Interactions
 
-```
-Component:    FAQ question rows (6 items)
-Trigger:      Click on question row
+### 3.1 Service Accordion (Homepage)
 
-Default:
-  - Number (Antonio, 26px) + Question text (Antonio, 26px) + Chevron icon
-  - Answer hidden
+| Interaction | Original | Clone | Severity |
+|-------------|----------|-------|----------|
+| Click: expand | Shows bullet list of sub-services | `grid-rows-[0fr] → [1fr]` animation | Match |
+| Click again: collapse | Hides content | `grid-rows-[1fr] → [0fr]` | Match |
+| Multiple open | Multiple items can be open | Independent `useState` per item | Match |
+| Chevron rotation | Rotates 180° when open | `rotate-180` class toggle | Match |
+| Hover cursor | Image cursor variant | `data-cursor="image"` on button | Match |
+| Click target | Full-width button | `w-full` button element | Match |
 
-Active:
-  - Answer paragraph revealed (Inter, 18px, 300, muted)
-  - Chevron rotates 180°
-  - Only one FAQ open at a time
+### 3.2 FAQ Accordion (Homepage)
 
-Hover:        Subtle background highlight expected (hover:bg-white/5)
-Transition:   Height animation + opacity fade for answer text
-```
+| Interaction | Original | Clone | Severity |
+|-------------|----------|-------|----------|
+| Click: expand | Shows answer text | `grid-rows-[0fr] → [1fr]` + opacity | Match |
+| Exclusive open | Only one open at a time | `openIndex` single state | Match |
+| Chevron | ChevronDown rotates on open | `rotate-180` class toggle | Match |
+| Row hover highlight | Background lightens on hover | Not implemented | **Minor** |
 
----
+### 3.3 Service Accordion (About Page)
 
-## 8. Blog Card Interactions
-
-### 8.1 Blog Card Hover
-
-```
-Component:    Blog post cards (links to /blogs/[slug])
-Trigger:      Mouse hover
-
-Structure:
-  - Cover image (border-radius: 20px, overflow: hidden on parent)
-  - Meta Wrap (overflow: hidden)
-    - Category Badge (border-radius: 99px)
-    - Date
-  - Title (Antonio, 32px)
-  - Description (Inter, 14px)
-
-Hover effects:
-  - Image: expected zoom/scale within overflow:hidden container
-  - Border: expected lime border or glow on card container
-  - Cursor: changes variant (likely text cursor or default)
-```
-
-### 8.2 "Most Viewed" Badge
-
-```
-Component:    Blog Badge on featured post (blogs page)
-Style:        H4, Antonio 26px, lime background pill
-Behavior:     Static badge, no hover interaction
-```
+| Interaction | Original | Clone | Severity |
+|-------------|----------|-------|----------|
+| Layout | Static list with all items visible | Services always expanded (no accordion) | **Major** — About page services are always expanded, not accordion |
 
 ---
 
-## 9. Contact Form Interactions
+## 4. Form Interactions
 
-### 9.1 Input Focus
+### 4.1 Contact Form
 
-```
-Component:    Text inputs, textarea, select
-Default:      border-bottom: 1px solid #333333
-Focus:        border-bottom-color transitions to #d0ff71 (lime)
-Transition:   CSS transition on border-color
-```
-
-### 9.2 Select Dropdown
-
-```
-Component:    "Service Needed?" select
-Options:      Branding, Web design, Web Design, UI / UX
-Behavior:     Native select dropdown (Framer default)
-```
+| Interaction | Original | Clone | Severity |
+|-------------|----------|-------|----------|
+| Input fields | Name, Email, Service select, Message textarea | All 4 fields present | Match |
+| Focus border | Border changes to lime on focus | `focus:border-[#d0ff71]` | Match |
+| Select options | Branding, Web Design, UI/UX | Same 3 options | Match |
+| Submit button | Full-width with hover fill | Circle-fill animation on hover | Match |
+| Form submission | Framer form handler | `handleSubmit` (no-op) | **Major** — No backend |
 
 ---
 
-## 10. Footer Interactions
+## 5. Link / Button Interactions
 
-### 10.1 Footer Links
+### 5.1 CTA Links ("Browse All", "My Story", etc.)
 
-```
-Component:    Email (mailto:), Phone (tel:), Social icons
-Email/Phone:  Text links with hover color change
-Social:       SVG icon links (24×24px), dark fill on lime bg
-Divider:      1120×1px, bg: rgb(48, 48, 48)
-```
+| Interaction | Original | Clone | Severity |
+|-------------|----------|-------|----------|
+| Hover: opacity change | Link dims slightly | `hover:opacity-80` | Match |
+| Arrow icon | Right arrow next to text | `ArrowRightIcon` component | Match |
+| Cursor variant | Custom cursor on hover | `data-cursor="blend"` | Match |
+| Circle-fill animation | Original may have subtle fill | Not implemented on CTA links | **Major** |
 
----
+### 5.2 Project Card Links
 
-## 11. Responsive Interaction Changes
+| Interaction | Original | Clone | Severity |
+|-------------|----------|-------|----------|
+| Click: navigate | Goes to project detail | `Link href={/projects/${slug}}` | Match |
+| Hover: image zoom | Image scales up | `hover:scale-105` on Image | Match |
+| Hover: overlay darkens | Black overlay deepens | `hover:bg-black/50` | Match |
+| Cursor | Arrow variant | `data-cursor="arrow"` | Match |
 
-### 11.1 Mobile Nav (<810px)
+### 5.3 Blog Card Links
 
-```
-Desktop:      Pill nav with inline links, text-swap hover
-Mobile:       Collapsed pill, hamburger menu
-              Hamburger: 2 bars that rotate to X on toggle
-              Top bar: rotate(0) → rotate(45°)
-              Bottom bar: rotate(0) → rotate(-45°)
-              Menu: full-screen overlay with nav links
-```
+| Interaction | Original | Clone | Severity |
+|-------------|----------|-------|----------|
+| Click: navigate | Goes to blog detail | `Link href={/blogs/${slug}}` | Match |
+| Hover: scale up | Card scales slightly | `hover:scale-[1.02]` | Match |
+| Hover: image zoom | Image within scales | `hover:scale-105` on Image | Match |
+| Cursor | Arrow variant | `data-cursor="arrow"` | Match |
+| Border glow | Subtle border animation | Not specifically implemented | **Minor** |
 
-### 11.2 Mobile Touch
+### 5.4 Social Icon Links
 
-```
-Custom cursor: Hidden (not rendered for Phone variant)
-Hover effects: Disabled (touch-only interactions)
-Accordion:    Uses Tablet & Phone / Closed ↔ Open variants
-Project cards: Full-width, single column, tap to navigate
-```
-
----
-
-## Color Token Map (from Framer bundle CSS variables)
-
-| Token ID | Value | Usage |
-|----------|-------|-------|
-| `54672876-03f0-4dca-8fdb-32c421a5c4d1` | `rgb(106, 113, 223)` or `rgb(94, 103, 230)` | Star icons, checkmarks, cursor color-burn state |
-| `861b2ae9-dee3-4143-a255-6faa9a39d943` | `rgb(255, 255, 255)` | White (hamburger bars, text) |
-| `a9f688eb-778b-4a71-929e-ebf8a014b4cf` | `rgb(48, 48, 48)` | Dark gray (social icons, footer text) |
-| `4baed98b-3751-4e60-b570-600a506f091e` | `rgb(39, 217, 116)` | Green dot — "Available for work" indicator |
-| `621c2752-e263-492f-8440-f4105a55d3f1` | `rgb(218, 218, 218)` | Light gray text |
-| `39a5a1be-d79a-43ee-a7a4-d32ef142beed` | `rgb(255, 255, 255)` | White (hamburger default color) |
-| `e1eaf7ec-6a2b-469c-8ec1-579f75fde613` | `rgb(0, 0, 0)` | Black |
-| `528a4e50-1a33-4ebe-a3b3-4f0f1508d312` | `rgb(255, 255, 255)` | White |
-| `4795dafb-4261-43d3-aa0c-b3831681376e` | `rgb(255, 255, 255)` | White (body background fallback) |
+| Interaction | Original | Clone | Severity |
+|-------------|----------|-------|----------|
+| Click: external link | Opens in new tab | `target="_blank"` + `rel="noopener noreferrer"` | Match |
+| Hover (about page) | Background changes to lime, icon to black | `hover:bg-[#d0ff71] hover:text-black` | Match |
+| Hover (footer) | Subtle opacity change | `hover:opacity-80` | Match |
 
 ---
 
-## Cursor Variant Summary
+## 6. Scroll Interactions
 
-| Variant | CSS Class | Size | Shape | Content | Trigger |
-|---------|-----------|------|-------|---------|---------|
-| Default | `framer-v-1j656b0` | 16×16px | Circle | None (solid lime) | Normal browsing |
-| Project Hover | `framer-v-1nhwsh0` | 70×70px | Circle | Arrow icon (↗, -45°) | Project card hover |
-| Color Burn | `framer-v-nyzhp9` | 16×16px | Circle | None | Specific elements |
-| Text Label 1 | `framer-v-15hp34x` | 195×114px | Rectangle | Text label | Content hover |
-| Text Label 2 | `framer-v-gj9knl` | 195×114px | Rectangle | Text label | Content hover |
-| Text Label 3 | `framer-v-eyovw6` | 195×114px | Rectangle | Text label | Content hover |
-| Text Label 4 | `framer-v-qcy7gm` | 195×114px | Rectangle | Text label | Content hover |
+### 6.1 Smooth Scroll
+
+| Interaction | Original | Clone | Severity |
+|-------------|----------|-------|----------|
+| Scroll behavior | Lenis smooth scroll (`html.lenis` class) | `SmoothScroll.tsx` wrapper (Lenis installed) | **Major** — May not be fully active |
+| Momentum | Smooth deceleration | Depends on Lenis config | Unknown |
+
+### 6.2 Scroll-to-Contact
+
+| Interaction | Original | Clone | Severity |
+|-------------|----------|-------|----------|
+| Contact link | Scrolls to `#contact` section | `href="#contact"` on Contact link | Match |
+| Behavior | Smooth scroll to anchor | Browser default (or Lenis) | Match |
 
 ---
 
-## Implementation Priority for Clone
+## 7. Missing Interactions Summary
 
-### Must Have (exact match required)
-1. Custom cursor — default (16px lime circle) + project hover (70px with arrow)
-2. Nav link text-swap 3D rotation
-3. CTA button circle-fill hover effect
-4. Hero 3D card-flip entrance animation
-5. Hero heading slide-in animations (left from +150px, right from -150px)
-6. Page transitions (opacity fade, 200ms tween)
-7. Service accordion toggle
-8. FAQ accordion with chevron rotation
-
-### Should Have (high fidelity)
-9. Nav expand/collapse with spring animation
-10. Nav scroll hide with tween
-11. Counter animations on scroll
-12. Green dot glow pulse
-13. "Hi" circle expand on hover
-14. Project card image zoom on hover
-15. Noise background overlay (GIF texture, mix-blend: color-dodge, opacity: 0.12)
-
-### Nice to Have (polish)
-16. Cursor color-burn variant
-17. Cursor text-label variants
-18. Blog card border glow on hover
-19. Smooth scrolling (Lenis)
-20. Social icon hover color transitions
+| Interaction | Location | Severity | Description |
+|-------------|----------|----------|-------------|
+| Page transitions | Global | **Major** | No opacity fade between routes |
+| CTA circle-fill hover | All CTA links | **Major** | Only on Contact/Submit buttons, not on "Browse All", "My Story", "Load More" |
+| Form submission | Contact form | **Major** | No backend/handler — form is a no-op |
+| Lenis smooth scroll | Global | **Major** | Installed but potentially not fully active |
+| FAQ row hover | Homepage FAQ | **Minor** | No background highlight on row hover |
+| Blog card border glow | Blog cards | **Minor** | Using scale instead of border effect |
+| About page service accordion | About `/about` | **Major** | Services are always-open lists, not interactive accordion |

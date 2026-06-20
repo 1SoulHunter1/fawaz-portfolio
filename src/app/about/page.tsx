@@ -2,16 +2,17 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ServicesSection } from "@/components/ServicesSection";
 import { ContactSection } from "@/components/ContactSection";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { StaggerReveal } from "@/components/animations/StaggerReveal";
+import { AboutStickyScroll } from "@/components/AboutStickyScroll";
 import { cn } from "@/lib/utils";
 import {
   XIcon,
   InstagramIcon,
   BehanceIcon,
   DribbbleIcon,
+  CheckCircleIcon,
 } from "@/components/icons";
 
 export const metadata: Metadata = {
@@ -25,6 +26,49 @@ const socials = [
   { icon: InstagramIcon, href: "https://www.instagram.com/", label: "Instagram" },
   { icon: BehanceIcon, href: "https://www.behance.net/", label: "Behance" },
   { icon: DribbbleIcon, href: "https://dribbble.com/", label: "Dribbble" },
+];
+
+const services = [
+  {
+    number: "1",
+    title: "UI/UX DESIGN",
+    items: [
+      "Wireframing and prototyping",
+      "User Interface design for web and mobile apps",
+      "Usability testing and user feedback analysis",
+      "Interaction design and micro-animations",
+    ],
+  },
+  {
+    number: "2",
+    title: "GRAPHIC DESIGN",
+    items: [
+      "Logo and brand identity design",
+      "Social media graphics and ad creatives",
+      "Infographics and data visualization",
+      "Custom illustrations and icons",
+    ],
+  },
+  {
+    number: "3",
+    title: "WEB DESIGN",
+    items: [
+      "Responsive website design",
+      "Landing page design and optimization",
+      "Webflow development and customization",
+      "Website maintenance and updates",
+    ],
+  },
+  {
+    number: "4",
+    title: "BRANDING",
+    items: [
+      "Brand strategy and identity development",
+      "Visual style guide creation",
+      "Typography and color scheme selection",
+      "Brand storytelling and messaging",
+    ],
+  },
 ];
 
 const timeline = [
@@ -170,9 +214,9 @@ export default function AboutPage() {
     <>
       <Navbar />
       <main>
-        {/* Hero */}
-        <section className="w-full bg-[#1a1a1b] pt-36 pb-16 md:pt-44">
-          <div className="mx-auto grid max-w-[1200px] items-center gap-12 px-6 md:grid-cols-2">
+        <AboutStickyScroll>
+          {/* Hero */}
+          <section className="w-full bg-[#1a1a1b] pt-36 pb-16 md:pt-44">
             <div className="flex flex-col">
               <h1 className="font-heading text-[56px] font-bold leading-[1.05] tracking-[-2px] text-white uppercase lg:text-[120px] lg:leading-[120px] lg:tracking-[-3.6px]">
                 About me
@@ -203,36 +247,59 @@ export default function AboutPage() {
                   </a>
                 ))}
               </div>
-            </div>
 
-            <div className="relative mx-auto h-[476px] w-full max-w-[340px] overflow-hidden rounded-[20px]">
-              {[
-                "/images/cms/qrxY8NagVO40NBrdhFEGgFR3PYY.jpg",
-                "/images/cms/MZuXaRoDIChJ0C6y8Fwit9E0.jpeg",
-                "/images/cms/yb0fdGmcyv8ZYyS3IOlIWNVC7RI.jpeg",
-                "/images/cms/VRQgkdWsjawSg1qpCm45HfSY1I.jpeg",
-              ].map((src, i) => (
+              {/* Mobile only: static image */}
+              <div className="relative mx-auto mt-10 h-[476px] w-full max-w-[340px] overflow-hidden rounded-[20px] lg:hidden">
                 <Image
-                  key={src}
-                  src={src}
-                  alt={`Portrait ${i + 1}`}
+                  src="/images/cms/qrxY8NagVO40NBrdhFEGgFR3PYY.jpg"
+                  alt="Portrait"
                   fill
                   sizes="340px"
                   className="object-cover"
-                  style={{ zIndex: 4 - i }}
-                  priority={i === 0}
+                  priority
                 />
-              ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Services (shared) */}
-        <ServicesSection />
+          {/* Services */}
+          <section className="w-full bg-[#1a1a1b] py-20">
+            <ScrollReveal>
+              <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
+                WHAT I CAN DO FOR YOU
+              </h2>
+              <p className="mt-4 max-w-[500px] text-lg font-light leading-[27px] text-white">
+                As a digital designer, I am a visual storyteller, crafting
+                experiences that connect deeply and spark creativity.
+              </p>
+            </ScrollReveal>
 
-        {/* Journey timeline */}
-        <section className="w-full bg-[#1a1a1b] py-20">
-          <div className="mx-auto max-w-[1200px] px-6">
+            <StaggerReveal className="mt-10" staggerDelay={0.1}>
+              {services.map((service) => (
+                <div key={service.number} className="border-t border-[#333] py-5">
+                  <h3 className="font-heading text-[24px] font-normal leading-[1.3] text-white uppercase lg:text-[32px] lg:leading-[41.6px]">
+                    {service.number}. {service.title}
+                  </h3>
+                  <ul className="mt-3 flex flex-col gap-2">
+                    {service.items.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-3 text-lg font-light text-white"
+                      >
+                        <span className="mt-0.5 w-5 shrink-0 text-white">
+                          <CheckCircleIcon />
+                        </span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </StaggerReveal>
+          </section>
+
+          {/* Journey timeline */}
+          <section className="w-full bg-[#1a1a1b] py-20">
             <ScrollReveal>
               <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
                 Discover My Journey in Design
@@ -265,12 +332,10 @@ export default function AboutPage() {
                 </div>
               ))}
             </StaggerReveal>
-          </div>
-        </section>
+          </section>
 
-        {/* Tech stack */}
-        <section className="w-full bg-[#1a1a1b] py-20">
-          <div className="mx-auto max-w-[1200px] px-6">
+          {/* Tech stack */}
+          <section className="w-full bg-[#1a1a1b] py-20">
             <ScrollReveal>
               <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
                 My Tech Stack
@@ -308,12 +373,12 @@ export default function AboutPage() {
                 </div>
               ))}
             </StaggerReveal>
-          </div>
-        </section>
+          </section>
+        </AboutStickyScroll>
 
         {/* Process */}
         <section className="w-full bg-[#1a1a1b] py-20">
-          <div className="mx-auto max-w-[1200px] px-6">
+          <div className="mx-auto max-w-[1200px] px-6 md:px-10">
             <ScrollReveal>
               <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
                 Design with Strategy and Creativity

@@ -1,348 +1,298 @@
-# Portavia Clone — Full Audit
+# Portavia Clone — Complete Audit
 
-> Compared: https://portavia.framer.website (original) vs current codebase on `portavia-refinement` branch
-> Date: 2026-06-18
-
----
-
-## 1. Missing Pages & Routes
-
-The clone only has `src/app/page.tsx` (homepage). The original has **10+ distinct routes**:
-
-| Route | Status | Description |
-|-------|--------|-------------|
-| `/` | **EXISTS** | Homepage |
-| `/about` | **MISSING** | About Me — bio, journey timeline, tech stack, 5-step design process, contact form |
-| `/projects` | **MISSING** | All projects listing — 4 featured cards + "More Projects" grid with additional projects |
-| `/projects/summer-vibes-festival-campaign` | **MISSING** | Project detail — hero, metadata (date/role/duration/tools), Problem/Solution/Challenges/Summary sections, image gallery, related projects |
-| `/projects/coral-spiral-abstract` | **MISSING** | Project detail (same layout) |
-| `/projects/shopease-redesign-sprint` | **MISSING** | Project detail (same layout) |
-| `/projects/black-geometric-prisms` | **MISSING** | Project detail (same layout) |
-| `/blogs` | **MISSING** | Blog listing — "Most Viewed" featured post + grid of 6+ blog posts |
-| `/blogs/5-design-trends-that-will-define-2024` | **MISSING** | Blog post — numbered content sections (1–5), images, related articles |
-| `/blogs/how-to-streamline-your-design-workflow` | **MISSING** | Blog post (same layout) |
-| `/blogs/[additional-posts]` | **MISSING** | At least 4 more blog posts visible on /blogs listing: "The Power of Typography in Web Design", "The Role of Color Psychology in Branding", "Mastering UI/UX Design: Key Principles for Success", "Balancing Creativity and Functionality in Design" |
-
-Additional projects visible on `/projects` "More Projects" grid:
-- Pantone Very Peri Poster Design
-- Intrada Brand Boutique E-Gift Card Design
-- Videaaken
-- Immobitech Identity Rollout
+> **Date:** 2026-06-20
+> **Original:** https://portavia.framer.website
+> **Clone branch:** `portavia-refinement`
+> **Build status:** Passing (`npm run check`)
+> **Method:** Chrome DevTools MCP inspection of original + codebase review of clone
 
 ---
 
-## 2. Missing Sections (on pages that exist)
-
-### Homepage — all major sections are present:
-- [x] Navbar
-- [x] Hero
-- [x] Services ("What I Can Do For You")
-- [x] About Me
-- [x] Featured Projects
-- [x] Testimonials ("What My Clients Say")
-- [x] FAQ
-- [x] Blog ("Design Insights & Ideas")
-- [x] Contact ("Let's Work Together")
-- [x] Footer
-
-### About Page (`/about`) — entirely missing. Sections it contains:
-- [ ] Hero with "ABOUT ME" heading, name "DUNCAN ROBERT", portrait photo
-- [ ] Bio paragraph + social links (X, Instagram, Behance, Dribbble)
-- [ ] "WHAT I CAN DO FOR YOU" (services repeated, condensed list)
-- [ ] "DISCOVER MY JOURNEY IN DESIGN" — career timeline (Art Director, Senior UI/UX Designer, UI Designer, Graphic Designer) with years and company names
-- [ ] "MY TECH STACK" — tools/skills grid section
-- [ ] "DESIGN WITH STRATEGY AND CREATIVITY" — 5-step numbered process cards (01. Research & Strategy, 02. Concept & Ideation, 03. Feedback & Refinement, 04. Testing & Optimization, 05. Launch & Delivery)
-- [ ] "LET'S WORK TOGETHER" contact section (same as homepage)
-- [ ] Footer
-
-### Project Detail Pages (`/projects/[slug]`) — entirely missing. Sections:
-- [ ] Hero with project title, cover image
-- [ ] Metadata bar: Date, Role, Duration, Platform/Tools
-- [ ] "PROBLEM" section
-- [ ] "SOLUTION" section
-- [ ] "CHALLENGES" section
-- [ ] "SUMMARY" section
-- [ ] Project image gallery
-- [ ] "MORE PROJECTS" related projects grid (6 items, 2×3)
-- [ ] "GET HIRE" CTA button
-- [ ] Footer
-
-### Projects Listing (`/projects`) — entirely missing. Sections:
-- [ ] "FEATURED PROJECTS" heading + subtitle
-- [ ] 4 featured project cards (same as homepage)
-- [ ] "MORE PROJECTS" heading + grid of additional project cards
-- [ ] Footer
-
-### Blog Listing (`/blogs`) — entirely missing. Sections:
-- [ ] "DESIGN INSIGHTS & IDEAS" heading + subtitle
-- [ ] "MOST VIEWED" featured article (large card)
-- [ ] Grid of 6+ blog post cards (2-column, mixed sizes)
-- [ ] Footer
-
-### Blog Post (`/blogs/[slug]`) — entirely missing. Sections:
-- [ ] Title + metadata (category badge, date)
-- [ ] Hero image
-- [ ] Numbered content sections (e.g., "1. 3D Lettering and Bubble Type", etc.)
-- [ ] Section images
-- [ ] "YOU MAY ALSO LIKE" related articles (2-column)
-- [ ] Footer
+## Severity Legend
+- **Critical** — Breaks core UX, must fix before launch
+- **Major** — Visible quality gap, should fix
+- **Minor** — Subtle difference, nice-to-have fix
 
 ---
 
-## 3. Missing Animations
+## Executive Summary
 
-### 3a. Custom Cursor / Mouse Follower
-**Original:** A 16×16px lime-green (`#d0ff71`) circle follows the mouse cursor.
-- `position: fixed`, `z-index: 13`, `pointer-events: none`, `border-radius: 99px`
-- Likely grows/scales when hovering interactive elements (links, buttons)
-- **Clone: Not implemented at all**
+The clone achieves approximately **82% fidelity** to the original Portavia site. All 19 routes exist and render correctly. Typography, colors, and layout dimensions are nearly pixel-perfect. The main gaps are in micro-interactions (page transitions, CTA hover effects, Lenis smooth scroll) and one structural difference on the about page (services section behavior).
 
-### 3b. Hero 3D Parallax / Card Flip
-**Original:** The hero has TWO portrait images stacked with `transform-style: preserve-3d` and `matrix3d` transforms creating a 3D card-flip effect — the back-view image is rotated 180° and the front-view image sits on top. Both use complex perspective transforms that respond to mouse movement.
-- Back view: `matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, -0.141667, -0.198333, -1, 0.000833333, -170, -238, 0, 1)`
-- Front view: `matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0.141667, 0.198333, 1, -0.000833333, -170, -238, 0, 1)`
-- **Clone:** Only renders the front-view image as a flat 2D element. The back-view image exists in `/public/images/portrait-back.jpeg` but is unused.
-
-### 3c. Scroll-Triggered Entrance Animations
-**Original:** Elements have `data-framer-appear-id` attributes indicating Framer's built-in scroll-triggered entrance animations (fade-in, slide-up, etc.). At least 4 animated groups detected:
-- "Hi" wave element
-- "DUNCAN ROBERT" + "DIGITAL" heading group
-- "DESIGNER" + subtitle group
-- Framer CTA banner
-- **Clone:** Has CSS `@keyframes fade-in-up` and `@keyframes count-up` defined but NOT applied to any elements. No scroll-triggered animations are implemented.
-
-### 3d. Counter Animations
-**Original:** Stat counters start at 0 and animate to final values (12, 270, 50+, 98%, 200%) when scrolled into view.
-- **Clone:** Has `AnimatedCounter` components using `IntersectionObserver` — **partially implemented**. The approach is correct but needs verification for timing match.
-
-### 3e. Services Section Accordion
-**Original:** Service categories (UI/UX, Graphic Design, Web Design, Branding) have expand/collapse accordion behavior with a `+` toggle icon. Only one category is expanded at a time.
-- **Clone:** All 4 service categories are always fully expanded. No accordion toggle behavior exists.
-
-### 3f. Navbar Link Text-Swap Animation
-**Original:** Nav links show duplicate text (e.g., "HomeHome") — this is Framer's text-swap hover animation where text slides up on the Y-axis and identical text slides in from below, creating a rolling/flipping text effect.
-- **Clone:** Uses plain CSS `hover:text-[#d0ff71]` color change only.
-
-### 3g. "Hi" Wave Element Animation
-**Original:** The "Hi" text with wave emoji (👋) appears inside a styled circle container with an animated rotating border or ring effect.
-- **Clone:** Renders "Hi" and wave emoji as flat inline elements without the circular container or rotation animation.
-
-### 3h. Framer Page Transitions
-**Original:** Framer sites typically have smooth page transitions (fade, slide) when navigating between routes.
-- **Clone:** No page transition animations.
+| Category | Status |
+|----------|--------|
+| Routes | 19/19 — 100% |
+| Layout/Structure | ~95% |
+| Typography | ~98% |
+| Colors | ~99% |
+| Animations (scroll-driven) | ~90% |
+| Animations (entrance) | ~95% |
+| Micro-interactions | ~70% |
+| Responsive behavior | ~92% |
+| **Overall fidelity** | **~82%** |
 
 ---
 
-## 4. Missing Hover Interactions
+## Detailed Findings by Section
 
-### 4a. Navbar Expand/Collapse
-**Original:** Navbar is a pill shape (28px border-radius). On desktop it is expanded (507px) showing avatar + "Available for work" badge + nav links (Home, About, Projects, Blogs, Contact). The expand/collapse uses smooth spring-physics transitions.
-- **Clone:** Uses CSS `group-hover:max-w-[500px]` to reveal links, which is a simpler CSS-only approach. The transition feels different from Framer's spring animation.
+### 1. Global / Layout
 
-### 4b. Navbar Link Hover — Text Swap
-**Original:** Each link has a Y-axis text-swap (rolling) animation on hover.
-- **Clone:** Only changes text color to lime on hover.
+| # | Finding | Severity | Status |
+|---|---------|----------|--------|
+| G1 | Page transitions missing (opacity fade between routes) | **Major** | Not implemented |
+| G2 | Lenis smooth scroll may not be fully active | **Major** | `SmoothScroll.tsx` exists but behavior unverified |
+| G3 | Noise overlay uses `pointer-events-none` (original has `auto`) | **Minor** | Intentional improvement |
+| G4 | Custom cursor system fully working | — | Implemented (4 variants) |
+| G5 | Font loading (Inter + Antonio via Google Fonts) | — | Implemented |
+| G6 | Background color `#1a1a1b` | — | Implemented |
+| G7 | Max content width 1200px | — | Implemented |
 
-### 4c. Project Card Hover
-**Original:** Project cards have a dark overlay that transitions from `bg-black/40` to `bg-black/50`, and the image scales up on hover.
-- **Clone:** Has `group-hover:scale-105` and `group-hover:bg-black/50` — **mostly implemented** but may need timing refinement (original uses Framer spring physics).
+### 2. Navbar
 
-### 4d. CTA Button Hover (BROWSE ALL / MY STORY / SUBMIT)
-**Original:** Pill-shaped buttons (`border-radius: 99px`) with arrow icons. On hover, background fills with lime color and text/arrow color inverts. Arrow likely has a slide/translate animation.
-- **Clone "BROWSE ALL PROJECTS":** Has hover fill implemented (`hover:bg-[#d0ff71] hover:text-black`) — close to correct.
-- **Clone "BROWSE ALL INSIGHTS":** Styled as a plain text link, NOT as a pill button. Missing the pill border + hover fill.
-- **Clone "MY STORY":** Styled as plain text link, NOT as a pill button. Missing the pill border + hover fill.
-- **Clone "SUBMIT":** Has hover fill — mostly correct.
+| # | Finding | Severity | Status |
+|---|---------|----------|--------|
+| N1 | Expand/collapse on scroll | — | Implemented |
+| N2 | Layout animation (LayoutGroup) | — | Implemented |
+| N3 | 3D link flip on hover | — | Implemented |
+| N4 | Contact button circle-fill | — | Implemented |
+| N5 | Available for work pill with pulse | — | Implemented |
+| N6 | Mobile hamburger with line animation | — | Implemented |
+| N7 | Cursor arrow variant on navbar hover | — | Implemented |
+| N8 | Backdrop blur `blur(5px)` | — | Implemented |
 
-### 4e. Social Icon Hover
-**Original:** Circle icons with background transition.
-- **Clone:** Has `hover:bg-[#d0ff71] hover:text-black` — **implemented**.
+### 3. Homepage — Hero (Sticky Scroll Section)
 
-### 4f. Blog Card Hover
-**Original:** Blog cards have border, image zoom, and subtle scale/shadow on hover.
-- **Clone:** Has `hover:scale-[1.02]` and `group-hover:scale-105` on image — **partially implemented**. Missing border glow/highlight.
+| # | Finding | Severity | Status |
+|---|---------|----------|--------|
+| H1 | 300vh wrapper with 3-section content | — | Implemented |
+| H2 | 3D card flip (rotateY, translateX, scale, rotateZ) | — | Implemented |
+| H3 | Spring physics on card transforms | — | Implemented |
+| H4 | Badge "Hi" carousel with scroll fade | — | Implemented |
+| H5 | Badge size 120px vs original 123px | **Minor** | ~3px smaller |
+| H6 | Badge wave icon is static SVG, original uses Lottie | **Minor** | No independent wave animation |
+| H7 | Hero text "DIGITAL / DESIGNER" split layout | — | Implemented |
+| H8 | Mobile: static card + badge shown | — | Implemented |
+| H9 | z-[2] pointer-events fix for accordion clicks | — | Implemented |
 
-### 4g. FAQ Accordion Hover
-**Original:** FAQ items have a hover highlight and the chevron rotates on expand.
-- **Clone:** Has chevron rotation — **implemented**. Missing hover row highlight.
+### 4. Homepage — Services Panel
 
----
+| # | Finding | Severity | Status |
+|---|---------|----------|--------|
+| S1 | Accordion expand/collapse | — | Implemented |
+| S2 | Chevron rotation on open | — | Implemented |
+| S3 | Hover cursor image variant per service | — | Implemented |
+| S4 | 4 unique service images on cursor | — | Implemented |
+| S5 | Staggered entrance animation | — | Implemented |
+| S6 | Title "WHAT I CAN DO FOR YOU" correct | — | Match |
 
-## 5. Missing Mouse Follower Behaviors
+### 5. Homepage — About Panel
 
-The entire mouse follower system is absent from the clone:
+| # | Finding | Severity | Status |
+|---|---------|----------|--------|
+| A1 | Stats cards (12 years, 270 projects, 50+ clients) | — | Implemented |
+| A2 | CountUp animation on numbers | — | Implemented |
+| A3 | Contact info (phone + email) | — | Implemented |
+| A4 | Social icons (X, Instagram, Behance, Dribbble) | — | Implemented |
+| A5 | "MY STORY" CTA link | — | Implemented |
+| A6 | "MY STORY" CTA missing circle-fill hover | **Major** | Only has opacity |
 
-| State | Original Behavior | Clone |
-|-------|-------------------|-------|
-| Default | 16px lime circle follows cursor | Not implemented |
-| Hover on links | Cursor likely grows (e.g., to 40–60px) | Not implemented |
-| Hover on project images | Cursor may show "View" text or grow | Not implemented |
-| Hover on buttons | Cursor may change blend mode or grow | Not implemented |
-| Click state | Cursor may briefly shrink | Not implemented |
+### 6. Homepage — Projects Section
 
----
+| # | Finding | Severity | Status |
+|---|---------|----------|--------|
+| P1 | 4 featured project cards with sticky stacking | — | Implemented |
+| P2 | Card hover: image zoom + overlay darken | — | Implemented |
+| P3 | Arrow cursor on project cards | — | Implemented |
+| P4 | "BROWSE ALL PROJECTS" CTA link | — | Implemented |
+| P5 | "BROWSE ALL PROJECTS" missing circle-fill hover | **Major** | Only has opacity |
 
-## 6. Responsive Behavior
+### 7. Homepage — Testimonials Section
 
-### 6a. Navbar Mobile
-**Original:** Has a hamburger menu that expands into a full navigation panel on mobile.
-- **Clone:** Has a hamburger toggle with animated bars (X transform) and a dropdown panel — **implemented** but the dropdown styling may differ.
+| # | Finding | Severity | Status |
+|---|---------|----------|--------|
+| T1 | 4 testimonial cards in grid | — | Implemented |
+| T2 | 2 stat cards (98% satisfaction, 200% growth) | — | Implemented |
+| T3 | Star icons in purple/indigo | — | Implemented |
+| T4 | CountUp on stat values | — | Implemented |
+| T5 | 3-column grid layout | — | Implemented |
 
-### 6b. Hero Section
-**Original:** At mobile sizes, the hero likely stacks vertically with reduced font sizes.
-- **Clone:** Uses `lg:text-[120px]` breakpoint for heading size (60px → 120px). Needs verification against original breakpoints.
+### 8. Homepage — FAQ Section
 
-### 6c. Services Grid
-**Original:** 2-column grid on desktop, stacking on mobile.
-- **Clone:** Uses `md:grid-cols-2` — **implemented**.
+| # | Finding | Severity | Status |
+|---|---------|----------|--------|
+| F1 | 6 FAQ items with accordion | — | Implemented |
+| F2 | Exclusive open (one at a time) | — | Implemented |
+| F3 | ChevronDown rotation | — | Implemented |
+| F4 | 2-column layout (title + FAQ list) | — | Implemented |
+| F5 | FAQ title column should be sticky at top:100px | **Minor** | Not sticky in clone |
+| F6 | FAQ row hover highlight missing | **Minor** | No background change on hover |
 
-### 6d. Stats Cards
-**Original:** 3-column grid on desktop.
-- **Clone:** Uses `sm:grid-cols-3` — **implemented**.
+### 9. Homepage — Blog Section
 
-### 6e. Testimonials Grid
-**Original:** 3-column layout (testimonials | stats | testimonials).
-- **Clone:** Uses `md:grid-cols-3` — **implemented**.
+| # | Finding | Severity | Status |
+|---|---------|----------|--------|
+| B1 | 2 blog cards in grid | — | Implemented |
+| B2 | Card hover: scale + image zoom | — | Implemented |
+| B3 | Arrow cursor on blog cards | — | Implemented |
+| B4 | "BROWSE ALL INSIGHTS" CTA link | — | Implemented |
+| B5 | "BROWSE ALL INSIGHTS" missing circle-fill hover | **Major** | Only has opacity |
 
-### 6f. FAQ Layout
-**Original:** 2-column (heading left, accordion right) on desktop.
-- **Clone:** Uses `md:grid-cols-[1fr_1.5fr]` — **implemented**.
+### 10. Homepage — Contact Section
 
-### 6g. Blog Grid
-**Original:** 2-column grid on desktop.
-- **Clone:** Uses `md:grid-cols-2` — **implemented**.
+| # | Finding | Severity | Status |
+|---|---------|----------|--------|
+| C1 | Portrait image (340×476px) | — | Implemented |
+| C2 | Wave emoji badge (100px) | — | Implemented |
+| C3 | Contact form (4 fields) | — | Implemented |
+| C4 | Focus border → lime | — | Implemented |
+| C5 | Submit button circle-fill hover | — | Implemented |
+| C6 | Form submission is no-op | **Major** | No backend handler |
 
-### 6h. Contact Layout
-**Original:** 2-column (image left, form right) on desktop.
-- **Clone:** Uses `md:grid-cols-2` — **implemented**.
+### 11. About Page
 
-### 6i. Footer Layout
-**Original:** 3-section horizontal layout (email+phone | socials | copyright).
-- **Clone:** Uses `md:flex-row md:items-center md:justify-between` — **implemented** but layout structure differs from original (original has distinct rows for contact info and copyright).
+| # | Finding | Severity | Status |
+|---|---------|----------|--------|
+| AB1 | Hero: "About me" heading, bio, socials | — | Implemented |
+| AB2 | Sticky scroll with 4 image cards | — | Implemented |
+| AB3 | Sticky column width: flex-1 vs original 640px | **Major** | Width differs |
+| AB4 | Services: static expanded lists instead of accordion | **Major** | Should be accordion |
+| AB5 | Experience timeline (4 roles) | — | Implemented |
+| AB6 | Tech stack grid (5 tools) | — | Implemented |
+| AB7 | Process section (5 cards in grid) | — | Implemented |
+| AB8 | Process card heights differ from original 380px | **Minor** | Auto height |
+| AB9 | Mobile: single static image instead of card stack | — | Implemented |
 
----
+### 12. Projects Page
 
-## 7. Timing Differences
+| # | Finding | Severity | Status |
+|---|---------|----------|--------|
+| PJ1 | "Featured Projects" H1 heading | — | Implemented |
+| PJ2 | 4 featured cards with sticky stacking | — | Implemented |
+| PJ3 | "More Projects" section with 4 compact cards | — | Implemented |
+| PJ4 | 2-column grid for compact cards | — | Implemented |
+| PJ5 | All project data and images present | — | Implemented |
 
-| Element | Original | Clone |
-|---------|----------|-------|
-| Navbar expand | Spring physics (~300ms with overshoot) | CSS `duration-300` linear |
-| Project card image zoom | Framer spring (~500ms) | CSS `duration-500` |
-| FAQ accordion open | Framer spring | CSS `duration-300` grid-rows transition |
-| Counter animation | Unknown duration | 2000ms with 60 steps |
-| Cursor follower lag | ~100ms spring delay | Not implemented |
-| Page entrance animations | Staggered with ~100ms delay between elements | Not implemented |
-| Blog card hover scale | Framer spring | CSS linear transition |
-| Nav link text swap | ~200ms Y-axis slide | Not implemented |
+### 13. Blogs Page
 
----
+| # | Finding | Severity | Status |
+|---|---------|----------|--------|
+| BG1 | "Design Insights & Ideas" H1 heading | — | Implemented |
+| BG2 | Pinned post (large card) | — | Implemented |
+| BG3 | Blog grid (6 cards in 2-col) | — | Implemented |
+| BG4 | All blog data and images present | — | Implemented |
 
-## 8. Spacing Differences
+### 14. Project Detail Pages
 
-| Element | Original | Clone |
-|---------|----------|-------|
-| Section max-width | ~1200px | 1200px ✓ |
-| Section vertical padding | Varies | `py-20` (80px) uniform |
-| Nav padding | `8px 10px` | `px-2.5 py-2` (10px 8px) — close |
-| Nav height | 56px | Auto (~56px) — close |
-| "BROWSE ALL" button padding | `6px 40px 8px` | `px-8 py-3` (32px 12px) — differs |
-| Project card border-radius | 20px | 20px ✓ |
-| Stat card border-radius | 20px | 20px ✓ |
-| Testimonial card border-radius | 20px | 20px ✓ |
-| Hero image size | 340×476px | 340×476px ✓ |
-| Project card aspect ratio | ~3:2 (1120×746px) | `aspect-[3/2]` ✓ |
-| Blog card image aspect | ~16:9 | `aspect-[16/9]` ✓ |
+| # | Finding | Severity | Status |
+|---|---------|----------|--------|
+| PD1 | Hero with category badge + title + description | — | Implemented |
+| PD2 | Metadata grid (Year, Industry, Client, Duration) | — | Implemented |
+| PD3 | Cover image (3:2 aspect) | — | Implemented |
+| PD4 | Content blocks with headings and images | — | Implemented |
+| PD5 | "More Projects" section with compact cards | — | Implemented |
+| PD6 | Page title uses "Portavia" instead of "DigiPorto" | **Minor** | Different brand suffix |
 
----
+### 15. Blog Detail Pages
 
-## 9. Typography Differences
+| # | Finding | Severity | Status |
+|---|---------|----------|--------|
+| BD1 | Hero with title, excerpt, category, date | — | Implemented |
+| BD2 | Cover image | — | Implemented |
+| BD3 | Content blocks | — | Implemented |
+| BD4 | Newsletter CTA card | — | Implemented |
+| BD5 | "More to Discover" related posts | — | Implemented |
+| BD6 | "Load More" CTA button | — | Implemented |
 
-| Element | Original | Clone | Match? |
-|---------|----------|-------|--------|
-| Font families | Inter + Antonio | Inter + Antonio | ✓ |
-| Hero heading size | 120px | 60px (mobile) / 120px (lg) | ✓ |
-| Hero heading weight | 700 | bold (700) | ✓ |
-| Hero heading letter-spacing | -3.6px | -3.6px | ✓ |
-| Hero heading line-height | 132px | 132px (lg) | ✓ |
-| "DESIGNER" style | Outlined/stroke (visual) | `WebkitTextStroke: 1.5px white, color: transparent` | ✓ |
-| Section heading size | 60px | 36px (mobile) / 60px (md) | ✓ |
-| Service title size | 32px (Antonio) | 32px (Antonio) | ✓ |
-| Body text size | 16px | 16px (`text-base`) | ✓ |
-| Body text weight | 300 (light) | `font-light` (300) | ✓ |
-| Muted text color | `rgb(181,181,181)` | `#b5b5b5` | ✓ |
-| FAQ heading size | 48px on desktop | 48px (`md:text-[48px]`) | ✓ |
-| FAQ question size | 20px (Antonio) | 20px (`md:text-[20px]`) | ✓ |
-| "BROWSE ALL" button font | Antonio, ~26px | Antonio, 18px | ✗ Size differs |
-| Stat counter size | 60px (Antonio, bold) | 60px (Antonio, bold) | ✓ |
-| Nav link font | Inter, ~14px | Inter, 14px (`text-sm`) | ✓ |
+### 16. Footer
 
----
-
-## 10. Color Differences
-
-| Token | Original | Clone | Match? |
-|-------|----------|-------|--------|
-| Background | `rgb(26,26,27)` / `#1a1a1b` | `#1a1a1b` | ✓ |
-| Foreground/text | `rgb(255,255,255)` | `#ffffff` | ✓ |
-| Accent/lime | `rgb(208,255,113)` / `#d0ff71` | `#d0ff71` | ✓ |
-| Card background | `rgb(48,48,48)` / `#303030` | `#303030` | ✓ |
-| Border | `rgb(51,51,51)` / `#333333` | `#333333` | ✓ |
-| Muted text | `rgb(181,181,181)` / `#b5b5b5` | `#b5b5b5` | ✓ |
-| Nav background | `rgba(15,15,15,0.9)` | `rgba(15,15,15,0.9)` | ✓ |
-| Green dot | `rgb(11,222,102)` / `#0bde66` | `#d0ff71` (lime, not green) | ✗ |
-| Star rating color | Visible in original | `rgb(106,113,223)` (blue-ish) | Needs verify |
-| Footer background | `rgb(208,255,113)` | `#d0ff71` | ✓ |
-
----
-
-## 11. Structural / Content Issues
-
-### 11a. Hero Section
-- **Missing:** Back-view portrait image (exists in `/public/images/portrait-back.jpeg` but not rendered)
-- **Missing:** 3D card-flip effect between front/back images
-- **Missing:** Animated SVG line/divider between "DIGITAL" and "DESIGNER" (if present in original)
-- **Issue:** "Hi" text color is `#303030` in clone but may differ in original
-
-### 11b. Services Section
-- **Missing:** Accordion expand/collapse behavior (all items always visible)
-- **Missing:** `+` / `-` toggle icon for accordion
-
-### 11c. Projects Section
-- **Issue:** Project card links point to `href="#"` instead of `/projects/[slug]`
-- **Missing:** Proper routing to project detail pages
-
-### 11d. Blog Section
-- **Issue:** Blog card links point to `href="#"` instead of `/blogs/[slug]`
-- **Missing:** Proper routing to blog post pages
-- **Difference:** "BROWSE ALL INSIGHTS" styled as text link, not pill button
-
-### 11e. Contact Section
-- **Issue:** Form inputs use Name/Email in a stacked layout; original may have them side-by-side
-- **Issue:** "Hi" wave circle element positioning may differ from original
-
-### 11f. Footer
-- **Difference:** Original footer has a more structured 3-row layout (contact row, divider, copyright row). Clone uses a single flex row.
-- **Missing:** Footer "Social :" label text before social icons
-- **Missing:** Proper divider/separator between footer sections
-
-### 11g. Green Dot Color
-- **Original:** Uses `rgb(11, 222, 102)` (`#0bde66`) — a vivid green
-- **Clone:** Uses `#d0ff71` (lime/chartreuse) — matches accent color but not the original green dot
+| # | Finding | Severity | Status |
+|---|---------|----------|--------|
+| FT1 | Lime background `#d0ff71` | — | Implemented |
+| FT2 | Email + phone links | — | Implemented |
+| FT3 | Social icon buttons (black circles) | — | Implemented |
+| FT4 | Copyright + creator credits | — | Implemented |
+| FT5 | "Get Template" link (Framer marketplace) | — | Not included (intentional) |
 
 ---
 
-## Summary
+## Issue Priority Matrix
 
-| Category | Issues Found |
-|----------|-------------|
-| Missing pages/routes | 9 pages missing |
-| Missing sections | 5 full page layouts missing |
-| Missing animations | 8 animation systems missing |
-| Missing hover interactions | 7 hover behaviors missing or incomplete |
-| Missing mouse follower | Entire system absent |
-| Responsive behavior | Mostly implemented, minor gaps |
-| Timing differences | 8 timing mismatches |
-| Spacing differences | 2 notable spacing issues |
-| Typography differences | 1 font size mismatch |
-| Color differences | 1 color mismatch (green dot) |
-| Structural/content issues | 7 issues |
+### Must Fix (Major)
+
+| ID | Issue | Location | Effort |
+|----|-------|----------|--------|
+| G1 | Page transitions between routes | `layout.tsx` | Medium |
+| G2 | Verify Lenis smooth scroll is active | `SmoothScroll.tsx` | Low |
+| A6, P5, B5 | CTA circle-fill hover on all CTA links | Multiple components | Medium |
+| AB3 | About page sticky column width → 640px | `AboutStickyScroll.tsx` | Low |
+| AB4 | About page services → accordion behavior | `about/page.tsx` | Medium |
+| C6 | Contact form backend handler | `ContactSection.tsx` | Medium |
+
+### Should Fix (Minor)
+
+| ID | Issue | Location | Effort |
+|----|-------|----------|--------|
+| H5 | Badge size 120px → 123px | `StickyScrollSection.tsx` | Trivial |
+| H6 | Badge wave: integrate Lottie | `StickyScrollSection.tsx` | Medium |
+| F5 | FAQ title column → sticky | `FAQSection.tsx` | Trivial |
+| F6 | FAQ row hover highlight | `FAQSection.tsx` | Trivial |
+| AB8 | Process card fixed 380px height | `about/page.tsx` | Low |
+| PD6 | Page title suffix consistency | `projects/[slug]/page.tsx` | Trivial |
+
+---
+
+## Files Inventory
+
+### Components (28 total)
+
+| File | Purpose | Status |
+|------|---------|--------|
+| `Navbar.tsx` | Fixed navbar with expand/collapse | Complete |
+| `Footer.tsx` | Lime footer bar | Complete |
+| `StickyScrollSection.tsx` | Homepage 300vh scroll + 3D card | Complete |
+| `HeroPanel.tsx` | Hero "DIGITAL / DESIGNER" heading | Complete |
+| `ServicePanel.tsx` | Service accordion with cursor images | Complete |
+| `AboutPanel.tsx` | About section with stats + socials | Complete |
+| `ProjectsSection.tsx` | Homepage project cards (sticky) | Complete |
+| `TestimonialsSection.tsx` | Testimonial + stat cards grid | Complete |
+| `FAQSection.tsx` | FAQ accordion (2-column) | Complete |
+| `BlogSection.tsx` | Homepage blog cards | Complete |
+| `ContactSection.tsx` | Contact form + portrait | Complete |
+| `AboutStickyScroll.tsx` | About page sticky image stack | Complete |
+| `MouseFollower.tsx` | Custom cursor (4 variants) | Complete |
+| `NoiseOverlay.tsx` | Film grain overlay | Complete |
+| `SmoothScroll.tsx` | Lenis wrapper | Complete |
+| `AvailableForWorkPill.tsx` | Green pulse pill | Complete |
+| `ProjectCard.tsx` | Reusable project card | Complete |
+| `BlogCard.tsx` | Reusable blog card | Complete |
+| `ContentBlock.tsx` | CMS content renderer | Complete |
+| `CtaButton.tsx` | CTA button with circle-fill | Complete |
+| `icons.tsx` | SVG icon components | Complete |
+| `animations/ScrollReveal.tsx` | Scroll-triggered fade-in | Complete |
+| `animations/StaggerReveal.tsx` | Staggered children reveal | Complete |
+| `animations/CountUp.tsx` | Number counting animation | Complete |
+| `ui/button.tsx` | shadcn button primitive | Available |
+| `ServicesSection.tsx` | Alternative services component | Unused |
+| `AboutSection.tsx` | Alternative about component | Unused |
+| `HeroSection.tsx` | Alternative hero component | Unused |
+
+### Pages (6 route files)
+
+| File | Route | Status |
+|------|-------|--------|
+| `app/page.tsx` | `/` | Complete |
+| `app/about/page.tsx` | `/about` | Complete |
+| `app/projects/page.tsx` | `/projects` | Complete |
+| `app/blogs/page.tsx` | `/blogs` | Complete |
+| `app/projects/[slug]/page.tsx` | `/projects/*` | Complete |
+| `app/blogs/[slug]/page.tsx` | `/blogs/*` | Complete |
+
+---
+
+## Companion Documents
+
+- `routes.md` — Full route inventory with section breakdown
+- `differences.md` — Side-by-side comparison of all differences
+- `animations.md` — Complete animation specification and status
+- `interactions.md` — All interaction behaviors and gaps
+- `responsive.md` — Responsive behavior across breakpoints

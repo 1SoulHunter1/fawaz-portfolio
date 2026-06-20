@@ -21,7 +21,7 @@ export default function BlogsPage() {
       <Navbar />
       <main>
         <section className="w-full bg-[#1a1a1b] pt-36 pb-16 md:pt-44">
-          <div className="mx-auto max-w-[1200px] px-6">
+          <div className="mx-auto max-w-[1200px] px-6 md:px-10">
             <ScrollReveal>
               <h1 className="font-heading text-[44px] font-bold leading-[1.05] tracking-[-1.5px] text-white uppercase lg:text-[120px] lg:leading-[132px] lg:tracking-[-3.6px]">
                 Design Insights &amp; Ideas
@@ -37,7 +37,7 @@ export default function BlogsPage() {
 
         {pinned && (
           <section className="w-full bg-[#1a1a1b] pb-16">
-            <div className="mx-auto max-w-[1200px] px-6">
+            <div className="mx-auto max-w-[1200px] px-6 md:px-10">
               <ScrollReveal>
                 <BlogCard blog={pinned} variant="pinned" />
               </ScrollReveal>
@@ -46,7 +46,7 @@ export default function BlogsPage() {
         )}
 
         <section className="w-full bg-[#1a1a1b] pb-24">
-          <div className="mx-auto max-w-[1200px] px-6">
+          <div className="mx-auto max-w-[1200px] px-6 md:px-10">
             <StaggerReveal className="grid gap-6 md:grid-cols-2" staggerDelay={0.1}>
               {rest.map((blog) => (
                 <BlogCard key={blog.slug} blog={blog} />

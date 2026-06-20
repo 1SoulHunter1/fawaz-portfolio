@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { StaggerReveal } from "@/components/animations/StaggerReveal";
 import { ArrowRightIcon } from "@/components/icons";
 
 const blogs = [
@@ -26,22 +28,25 @@ const blogs = [
 export function BlogSection() {
   return (
     <section className="w-full bg-[#1a1a1b] py-20">
-      <div className="mx-auto max-w-[1200px] px-6">
-        <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
-          DESIGN INSIGHTS & IDEAS
-        </h2>
-        <p className="mt-4 max-w-[700px] text-base font-light leading-6 text-white">
-          From design trends to creative processes, these articles offer insights
-          to help you elevate your craft, solve challenges, and spark new ideas
-          for your projects.
-        </p>
+      <div className="mx-auto max-w-[1200px] px-6 md:px-10">
+        <ScrollReveal>
+          <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
+            DESIGN INSIGHTS & IDEAS
+          </h2>
+          <p className="mt-4 max-w-[700px] text-base font-light leading-6 text-white">
+            From design trends to creative processes, these articles offer insights
+            to help you elevate your craft, solve challenges, and spark new ideas
+            for your projects.
+          </p>
+        </ScrollReveal>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <StaggerReveal className="mt-12 grid gap-6 md:grid-cols-2" staggerDelay={0.15}>
           {blogs.map((blog) => (
             <Link
               key={blog.slug}
               href={`/blogs/${blog.slug}`}
               className="group overflow-hidden rounded-2xl border border-[#333] transition-transform hover:scale-[1.02]"
+              data-cursor="arrow"
             >
               <div className="relative aspect-[16/9] w-full overflow-hidden">
                 <Image
@@ -67,15 +72,18 @@ export function BlogSection() {
               </div>
             </Link>
           ))}
-        </div>
+        </StaggerReveal>
 
+        <ScrollReveal delay={0.2}>
         <Link
           href="/blogs"
           className="mt-10 inline-flex items-center gap-3 font-heading text-[26px] font-normal text-[#d0ff71] uppercase transition-opacity hover:opacity-80"
+          data-cursor="blend"
         >
           BROWSE ALL INSIGHTS
           <ArrowRightIcon className="h-6 w-6" />
         </Link>
+        </ScrollReveal>
       </div>
     </section>
   );

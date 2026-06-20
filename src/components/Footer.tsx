@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import {
   XIcon,
   InstagramIcon,
@@ -20,24 +21,25 @@ const socials = [
 export function Footer() {
   return (
     <footer className="w-full bg-[#d0ff71] py-6">
-      <div className="mx-auto flex max-w-[1200px] flex-col gap-6 px-6 md:flex-row md:items-center md:justify-between">
+      <ScrollReveal direction="none">
+      <div className="mx-auto flex max-w-[1200px] flex-col gap-6 px-6 md:px-10 md:flex-row md:items-center md:justify-between">
         <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-8">
           <div className="flex items-center gap-2">
-            <span className="text-sm font-medium text-black/60">Email:</span>
+            <span className="text-sm font-light text-[rgb(48,48,48)]">Email:</span>
             <a
               href="mailto:designer@example.com"
-              className="text-sm font-semibold text-black transition-opacity hover:opacity-70"
+              className="text-lg font-light text-[rgb(48,48,48)] transition-opacity hover:opacity-70"
             >
               designer@example.com
             </a>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-sm font-medium text-black/60">
+            <span className="text-sm font-light text-[rgb(48,48,48)]">
               Call Today:
             </span>
             <a
               href="tel:+1 (555) 123-4567"
-              className="text-sm font-semibold text-black transition-opacity hover:opacity-70"
+              className="text-lg font-light text-[rgb(48,48,48)] transition-opacity hover:opacity-70"
             >
               +1 (555) 123-4567
             </a>
@@ -90,6 +92,7 @@ export function Footer() {
           </div>
         </div>
       </div>
+      </ScrollReveal>
     </footer>
   );
 }

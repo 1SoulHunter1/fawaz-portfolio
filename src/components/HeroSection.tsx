@@ -21,7 +21,7 @@ export function HeroSection() {
         }}
       />
 
-      <div className="relative mx-auto flex max-w-[1200px] flex-col items-center px-6">
+      <div className="relative mx-auto flex max-w-[1200px] flex-col items-center px-6 md:px-10">
         {/* Top area: DUNCAN ROBERT + centered photo */}
         <div className="relative mt-8 w-full">
           <motion.p
