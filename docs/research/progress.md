@@ -9,9 +9,9 @@
 
 ## 1. Current Phase
 
-**Phase 7 — Projects Page Fidelity to 98%**
+**Phase 8 — Blog Page Fidelity to 98%**
 
-All projects page sections matched to original: featured card sticky stacking, lime category pills, correct overlay gap, compact card aspect ratios (27:16), grid gaps (80px row / 40px col), white description text, and section padding.
+Blog page cards rewritten: removed all borders, corrected image aspect ratios (pinned 1120/500, regular 27/16), added lime "Most Viewed" badge overlay, fixed all text colors to white with lime category accents, unified card layout to borderless flex columns with gap-5, and consolidated page from 3 sections to 1.
 
 ---
 
@@ -112,7 +112,27 @@ All projects page sections matched to original: featured card sticky stacking, l
 
 ---
 
-## 5. Estimated Completion
+## 5. Blog Page Fixes (Phase 8)
+
+| # | Fix | Status | Files |
+|---|-----|--------|-------|
+| B1 | Remove card borders (border border-[#333] rounded-2xl → borderless flex col) | ✅ | `BlogCard.tsx` |
+| B2 | Pinned image aspect ratio: fixed → 1120/500 (2.24:1) | ✅ | `BlogCard.tsx` |
+| B3 | Pinned badge: dark category pill → lime "Most Viewed" badge (bg-[#d0ff71] rounded-[20px]) | ✅ | `BlogCard.tsx` |
+| B4 | Regular card image ratio: 16/9 → 27/16 (1.688:1) | ✅ | `BlogCard.tsx` |
+| B5 | Image border radius: rounded-t-2xl → rounded-[20px] | ✅ | `BlogCard.tsx` |
+| B6 | Text colors: gray variants → all white (date, title, description) | ✅ | `BlogCard.tsx` |
+| B7 | Category text color: white → lime (#d0ff71) | ✅ | `BlogCard.tsx` |
+| B8 | Card gap: mixed margins → gap-5 (20px) flex column | ✅ | `BlogCard.tsx` |
+| B9 | Page layout: 3 sections → 1 consolidated section | ✅ | `blogs/page.tsx` |
+| B10 | Section padding: py-20 → pt-36/pb-[120px] | ✅ | `blogs/page.tsx` |
+| B11 | Grid gaps: gap-6/gap-8 → gap-x-10 gap-y-20 (40px/80px) | ✅ | `blogs/page.tsx` |
+| B12 | Description max-width: unset → max-w-[500px] | ✅ | `blogs/page.tsx` |
+| B13 | Heading-description gap: mt-6 → mt-5 (20px) | ✅ | `blogs/page.tsx` |
+
+---
+
+## 6. Estimated Completion
 
 | Scope | Percentage |
 |-------|-----------|
@@ -122,7 +142,8 @@ All projects page sections matched to original: featured card sticky stacking, l
 | **Projects page fidelity** | ~98% — sticky cards, lime pills, image ratios, grid gaps, typography all match original |
 | **Global animations** (Phase 3) | ~70% — cursor system done, scroll reveals done, page transitions missing |
 | **Micro-interactions** (Phase 4) | ~50% — accordion, cursor variants, badge done; CTA fills, Lenis remaining |
-| **Overall clone fidelity** | **~96%** |
+| **Blog page fidelity** | ~98% — borderless cards, correct image ratios, lime badges, white text, grid gaps all match original |
+| **Overall clone fidelity** | **~97%** |
 
 ---
 
@@ -130,7 +151,7 @@ All projects page sections matched to original: featured card sticky stacking, l
 
 | Area | Items | Priority |
 |------|-------|----------|
-| Blogs page fidelity | Image ratios, border-radius, text colors | Medium |
+| ~~Blogs page fidelity~~ | ~~Image ratios, border-radius, text colors~~ | ✅ Done |
 | Blogs detail pages | Layout exists but needs pixel-level refinement | Medium |
 | Projects detail pages | Layout exists but needs pixel-level refinement | Medium |
 | FAQ accordion item heights | Items are ~10px shorter than original | Low |
