@@ -20,7 +20,7 @@ export function HeroPanel() {
         {/* Left column */}
         <div className="flex flex-col justify-center lg:w-[415px]">
           <div className="relative">
-            <div className="mb-1 overflow-hidden">
+            <div className="absolute bottom-full mb-1 overflow-hidden">
               <motion.p
                 initial={{ y: "100%" }}
                 animate={inView ? { y: "0%" } : undefined}
@@ -72,12 +72,12 @@ export function HeroPanel() {
             >
               DESIGNER
             </motion.h1>
-            <div className="mt-2 overflow-hidden">
+            <div className="absolute top-full mt-2 overflow-hidden">
               <motion.p
                 initial={{ y: "100%" }}
                 animate={inView ? { y: "0%" } : undefined}
                 transition={{ duration: 0.8, ease, delay: 0.5 }}
-                className="max-w-[348px] text-base font-light leading-[24px] text-white lg:text-lg lg:leading-[27px]"
+                className="max-w-[348px] text-base font-light leading-[24px] text-white lg:text-right lg:text-lg lg:leading-[27px]"
               >
                 I&apos;m a US-based digital designer and Framer developer
               </motion.p>

@@ -171,8 +171,24 @@ badge animation, navbar cursor, accordion clicks, service hover images, about pa
 - Matches original exactly (756px wide, 78px tall) ✅
 - Build passes ✅
 
-### 1.5 Hero Heading Vertical Alignment
-| **Status** | Pending |
+### 1.5 Hero Heading Vertical Alignment ✅
+
+| Field | Value |
+|-------|-------|
+| **Status** | Complete |
+| **Timestamp** | 2026-06-21 |
+| **Resolves** | H8, #4, M4, M6 |
+
+**Root cause:** `items-center` on the flex row centered each column independently. The left column (Duncan Robert 42px + DIGITAL 132px = 174px) and right column (DESIGNER 132px + subtitle 62px = 194px) centered at different Y positions, causing the h1s to misalign by 54px.
+
+**Change:** Made "Duncan Robert" and subtitle use `absolute` positioning (`bottom-full mb-1` and `top-full mt-2`), removing them from the flex centering flow. Only the h1s (both 132px) participate in centering now. Also added `lg:text-right` to the subtitle.
+
+**Verified:**
+- DIGITAL top=271, DESIGNER top=271 — exact match with original (was 294/240) ✅
+- "Duncan Robert" top=225 (original 226, -1px) ✅
+- Subtitle top=411, textAlign=right (original 414, -3px) ✅
+- Mobile: no overlap, proper stacking ✅
+- Build passes ✅
 
 ---
 
