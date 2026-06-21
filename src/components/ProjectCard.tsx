@@ -58,7 +58,7 @@ export function ProjectCard({ project, variant = "featured" }: ProjectCardProps)
         <span className="text-sm font-light text-[#b5b5b5]">
           {project.category}
         </span>
-        <h2 className="font-heading max-w-[756px] text-[32px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
+        <h2 className="font-heading text-[32px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
           {project.title}
         </h2>
         <p className="max-w-[600px] text-sm font-light leading-[21px] text-white/80">

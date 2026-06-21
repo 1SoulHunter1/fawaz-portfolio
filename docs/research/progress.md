@@ -154,8 +154,22 @@ badge animation, navbar cursor, accordion clicks, service hover images, about pa
 - Original: Name (left=760, 270px), Email (left=1050, 270px) — same pattern ✅
 - Build passes ✅
 
-### 1.4 "Summer Vibes" Title Wrapping
-| **Status** | Pending |
+### 1.4 "Summer Vibes" Title Wrapping ✅
+
+| Field | Value |
+|-------|-------|
+| **Status** | Complete |
+| **Timestamp** | 2026-06-21 |
+| **Resolves** | H4, #19 |
+
+**Root cause:** Clone had `max-w-[756px]` on featured project card headings, but the original has `maxWidth: none`. Font rendering differences caused the text to exceed 756px and wrap.
+
+**Change:** Removed `max-w-[756px]` from `ProjectCard.tsx:61`.
+
+**Verified:**
+- "Summer Vibes Festival Campaign" now 1 line at 78px height ✅ (was 2 lines at 156px)
+- Matches original exactly (756px wide, 78px tall) ✅
+- Build passes ✅
 
 ### 1.5 Hero Heading Vertical Alignment
 | **Status** | Pending |
