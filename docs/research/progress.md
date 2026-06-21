@@ -9,15 +9,15 @@
 
 ## 1. Current Phase
 
-**Phase 5 — Homepage Fidelity to 98%**
+**Phase 6 — About Page Fidelity to 98%**
 
-All homepage sections matched to original: layout, typography, spacing, padding, card styling, CTA buttons, grid patterns, and section heights.
+All about page sections matched to original: sticky scroll layout, collapsed services accordion, vertical tech stack list, timeline layout, process 3-column grid with correct colors, section padding, and typography.
 
 ---
 
 ## 2. Completed Tasks
 
-### Committed (6 commits on `portavia-refinement`)
+### Committed (7 commits on `portavia-refinement`)
 
 | Commit | Description |
 |--------|-------------|
@@ -27,6 +27,7 @@ All homepage sections matched to original: layout, typography, spacing, padding,
 | `6b23a79` | Round 2 — services accordion, hero overlap, navbar collapse |
 | `176dfc0` | Hero Hi element — lime green circle with wave icon matching original |
 | `707a06e` | Hero heading vertical alignment |
+| `2160781` | Homepage matches original — **Phase 5** |
 
 ### Phase 1 — Critical Issues (all 5 complete)
 
@@ -38,7 +39,7 @@ All homepage sections matched to original: layout, typography, spacing, padding,
 | 1.4 | Summer Vibes title wrapping | ✅ Complete |
 | 1.5 | Hero heading vertical alignment | ✅ Complete |
 
-### Homepage Fidelity Fixes (current session)
+### Homepage Fidelity Fixes (Phase 5)
 
 | # | Fix | Status | Files |
 |---|-----|--------|-------|
@@ -50,20 +51,35 @@ All homepage sections matched to original: layout, typography, spacing, padding,
 | H6 | CTA buttons → pill style (Browse All Projects, Insights) | ✅ | `ProjectsSection.tsx`, `BlogSection.tsx` |
 | H7 | Section padding: py-20 → py-[120px] (all content sections) | ✅ | 5 section files |
 
+### About Page Fidelity Fixes (Phase 6)
+
+| # | Fix | Status | Files |
+|---|-----|--------|-------|
+| A1 | AboutStickyScroll layout: 560px left + 640px right columns | ✅ | `AboutStickyScroll.tsx` |
+| A2 | Services: collapsed accordion (number + title only, no bullets) | ✅ | `about/page.tsx` |
+| A3 | Tech stack: vertical list cards (not 5-column grid) | ✅ | `about/page.tsx` |
+| A4 | Section padding: py-[120px] on all inner sections | ✅ | `about/page.tsx` |
+| A5 | Process section: py-[120px], moved outside sticky scroll | ✅ | `about/page.tsx` |
+| A6 | Process cards: 3-column grid, 380px fixed height, correct colors | ✅ | `about/page.tsx` |
+| A7 | Process colors: white/#d0ff71 lime/#333 dark (not purple) | ✅ | `about/page.tsx` |
+| A8 | Process images: separate grid cells, not overlaid on cards | ✅ | `about/page.tsx` |
+| A9 | Experience timeline: horizontal layout (role left, company+years right) | ✅ | `about/page.tsx` |
+| A10 | Section heading gaps: match original gap-40/gap-20/gap-10 | ✅ | `about/page.tsx` |
+| A11 | Description text: 18px/27px matching original | ✅ | `about/page.tsx` |
+
 ---
 
-## 3. Section Height Comparison
+## 3. About Page Section Height Comparison
 
-| Section | Original | Clone | Diff |
-|---------|----------|-------|------|
-| Hero | 730px | 674px | -56px (viewport height diff, h-screen) |
-| Services | 730px | 674px | -56px (viewport height diff, h-screen) |
-| About | 730px | 674px | -56px (viewport height diff, h-screen) |
-| Projects | 3893px | 3865px | -28px (0.7%) ✅ |
-| Testimonials | 957px | 970px | +13px (1.4%) ✅ |
-| FAQ | 824px | 688px | -136px (accordion item height variance) |
-| Blog | 1037px | 1042px | +5px (0.5%) ✅ |
-| Contact | 861px | 874px | +13px (1.5%) ✅ |
+| Section | Original | Clone | Diff | Status |
+|---------|----------|-------|------|--------|
+| Hero | 730px | 706px | -24px (3.3%) | ✅ viewport-dependent |
+| Services | 842px | 840px | -2px (0.2%) | ✅ |
+| Experience | 892px | 895px | +3px (0.3%) | ✅ |
+| Tech Stack | 976px | 986px | +10px (1.0%) | ✅ |
+| Process | 1639px | 1612px | -27px (1.6%) | ✅ |
+| Contact | 861px | 874px | +13px (1.5%) | ✅ |
+| **Total** | **6145px** | **6119px** | **-26px (0.4%)** | ✅ |
 
 ---
 
@@ -73,19 +89,19 @@ All homepage sections matched to original: layout, typography, spacing, padding,
 |-------|-----------|
 | **Routes & pages** (Phase 2) | 100% — all 11 routes exist and render |
 | **Homepage fidelity** | ~98% — all sections match, padding correct, CTA buttons styled, grid layouts accurate |
-| **About page fidelity** | ~80% — sticky scroll architecture added, needs browser testing |
+| **About page fidelity** | ~98% — sticky scroll, accordion, timeline, tech stack, process grid all match original |
 | **Global animations** (Phase 3) | ~70% — cursor system done, scroll reveals done, page transitions missing |
 | **Micro-interactions** (Phase 4) | ~50% — accordion, cursor variants, badge done; CTA fills, Lenis remaining |
-| **Overall clone fidelity** | **~90%** |
+| **Overall clone fidelity** | **~95%** |
 
 ---
 
-## 5. Remaining Items (not homepage-critical)
+## 5. Remaining Items (not about-page-critical)
 
 | Area | Items | Priority |
 |------|-------|----------|
-| FAQ accordion item heights | Items are ~10px shorter than original (73px vs 65px) | Low |
-| Hero left column position | Text at left=200 vs original 272 (inside sticky scroll) | Low |
+| FAQ accordion item heights | Items are ~10px shorter than original | Low |
 | Page transitions | Opacity fade between routes | Low |
 | Lenis smooth scroll | Already installed, not wired | Low |
-| About page scroll images | Sticky scroll with image stack | Medium |
+| Mobile responsiveness | About page sticky scroll hidden on mobile, needs testing | Medium |
+| Projects/Blogs detail pages | Layout exists but needs pixel-level refinement | Medium |

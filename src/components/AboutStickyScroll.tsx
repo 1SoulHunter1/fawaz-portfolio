@@ -36,12 +36,12 @@ export function AboutStickyScroll({
     <div ref={wrapperRef} className="relative">
       {/* Desktop: two-column sticky layout */}
       <div className="hidden lg:block">
-        <div className="mx-auto flex max-w-[1200px] gap-0 px-6 md:px-10">
+        <div className="mx-auto flex max-w-[1200px]">
           {/* Left: content sections scroll naturally */}
           <div className="w-[560px] shrink-0">{children}</div>
 
-          {/* Right: sticky image stack */}
-          <div className="flex-1">
+          {/* Right: sticky image stack (640px with 40px padding each side) */}
+          <div className="w-[640px] shrink-0 px-10">
             <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
               <motion.div
                 className="flex flex-col"
