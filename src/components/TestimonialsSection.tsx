@@ -59,7 +59,7 @@ function TestimonialCard({
   avatar,
 }: (typeof testimonials)[0]) {
   return (
-    <div className="flex flex-col gap-4 rounded-[20px] bg-[#303030] p-6">
+    <div className="flex flex-col gap-4 rounded-[20px] bg-[#333] p-10">
       <div className="flex gap-1">
         {Array.from({ length: 5 }).map((_, i) => (
           <StarIcon key={i} className="h-4 w-4 text-[rgb(106,113,223)]" />
@@ -90,7 +90,7 @@ function StatCard({
   sublabel,
 }: (typeof statsData)[0]) {
   return (
-    <div className="flex flex-col gap-3 rounded-[20px] bg-[#d0ff71] p-6">
+    <div className="flex flex-col gap-3 rounded-[20px] bg-[#d0ff71] p-10">
       <p className="text-sm text-black">{label}</p>
       <span className="font-heading text-[60px] font-bold leading-[60px] text-black">
         <CountUp end={value} suffix={suffix} />
@@ -102,7 +102,7 @@ function StatCard({
 
 export function TestimonialsSection() {
   return (
-    <section className="w-full bg-[#1a1a1b] py-20">
+    <section className="w-full bg-[#1a1a1b] py-[120px]">
       <div className="mx-auto max-w-[1200px] px-6 md:px-10">
         <ScrollReveal>
           <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
@@ -115,22 +115,14 @@ export function TestimonialsSection() {
           </p>
         </ScrollReveal>
 
+        {/* 3×2 grid: Row1=[T1, T2, Stat98%] Row2=[Stat200%, T3, T4] */}
         <StaggerReveal className="mt-12 grid gap-5 md:grid-cols-3" staggerDelay={0.12}>
-          <div className="flex flex-col gap-5">
-            <TestimonialCard {...testimonials[0]} />
-            <TestimonialCard {...testimonials[1]} />
-          </div>
-
-          <div className="flex flex-col gap-5">
-            {statsData.map((stat) => (
-              <StatCard key={stat.sublabel} {...stat} />
-            ))}
-          </div>
-
-          <div className="flex flex-col gap-5">
-            <TestimonialCard {...testimonials[2]} />
-            <TestimonialCard {...testimonials[3]} />
-          </div>
+          <TestimonialCard {...testimonials[0]} />
+          <TestimonialCard {...testimonials[1]} />
+          <StatCard {...statsData[0]} />
+          <StatCard {...statsData[1]} />
+          <TestimonialCard {...testimonials[2]} />
+          <TestimonialCard {...testimonials[3]} />
         </StaggerReveal>
       </div>
     </section>

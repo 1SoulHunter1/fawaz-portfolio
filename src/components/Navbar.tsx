@@ -127,7 +127,7 @@ export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="fixed top-4 left-1/2 z-50 -translate-x-1/2" data-cursor="arrow">
+    <div className="fixed top-[20px] left-1/2 z-50 -translate-x-1/2" data-cursor="arrow">
       <LayoutGroup>
         <motion.nav
           layout

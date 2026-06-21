@@ -47,8 +47,8 @@ export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="w-full bg-[#1a1a1b] py-20">
-      <div className="mx-auto grid max-w-[1200px] gap-12 px-6 md:px-10 md:grid-cols-[1fr_1.5fr]">
+    <section className="w-full bg-[#1a1a1b] py-[120px]">
+      <div className="mx-auto grid max-w-[1200px] gap-12 px-6 md:px-10 md:grid-cols-[440px_1fr]">
         <div>
           <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
             FREQUENTLY ASKED QUESTIONS

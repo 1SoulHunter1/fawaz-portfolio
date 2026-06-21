@@ -27,7 +27,7 @@ const blogs = [
 
 export function BlogSection() {
   return (
-    <section className="w-full bg-[#1a1a1b] py-20">
+    <section className="w-full bg-[#1a1a1b] py-[120px]">
       <div className="mx-auto max-w-[1200px] px-6 md:px-10">
         <ScrollReveal>
           <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
@@ -77,11 +77,14 @@ export function BlogSection() {
         <ScrollReveal delay={0.2}>
         <Link
           href="/blogs"
-          className="mt-10 inline-flex items-center gap-3 font-heading text-[26px] font-normal text-[#d0ff71] uppercase transition-opacity hover:opacity-80"
+          className="group/cta relative mt-10 inline-flex h-[48px] items-center gap-3 overflow-hidden rounded-full border border-[#d0ff71] px-8 font-heading text-[26px] font-normal text-[#d0ff71] uppercase"
           data-cursor="blend"
         >
-          BROWSE ALL INSIGHTS
-          <ArrowRightIcon className="h-6 w-6" />
+          <span className="absolute inset-0 scale-0 rounded-full bg-[#d0ff71] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/cta:scale-100" />
+          <span className="relative z-10 flex items-center gap-3 transition-colors duration-300 group-hover/cta:text-black">
+            BROWSE ALL INSIGHTS
+            <ArrowRightIcon className="h-6 w-6" />
+          </span>
         </Link>
         </ScrollReveal>
       </div>

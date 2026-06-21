@@ -17,7 +17,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="w-full bg-[#1a1a1b] py-20">
+    <section id="contact" className="w-full bg-[#1a1a1b] py-[120px]">
       <div className="mx-auto grid max-w-[1200px] gap-12 px-6 md:px-10 md:grid-cols-2">
         <ScrollReveal direction="left">
           <div className="flex flex-col">
@@ -55,7 +55,7 @@ export function ContactSection() {
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
-                className="border-b border-[#333] bg-transparent py-3 text-base text-white outline-none transition-colors focus:border-[#d0ff71]"
+                className="border-b border-[#333] bg-transparent py-2 text-base text-white outline-none transition-colors focus:border-[#d0ff71]"
               />
             </div>
 
@@ -68,7 +68,7 @@ export function ContactSection() {
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })
                 }
-                className="border-b border-[#333] bg-transparent py-3 text-base text-white outline-none transition-colors focus:border-[#d0ff71]"
+                className="border-b border-[#333] bg-transparent py-2 text-base text-white outline-none transition-colors focus:border-[#d0ff71]"
               />
             </div>
           </div>
@@ -80,7 +80,7 @@ export function ContactSection() {
               onChange={(e) =>
                 setFormData({ ...formData, service: e.target.value })
               }
-              className="border-b border-[#333] bg-transparent py-3 text-base text-white outline-none transition-colors focus:border-[#d0ff71]"
+              className="border-b border-[#333] bg-transparent py-2 text-base text-white outline-none transition-colors focus:border-[#d0ff71]"
             >
               <option value="" className="bg-[#1a1a1b]">
                 Select…
@@ -107,8 +107,8 @@ export function ContactSection() {
               onChange={(e) =>
                 setFormData({ ...formData, message: e.target.value })
               }
-              rows={4}
-              className="resize-none border-b border-[#333] bg-transparent py-3 text-base text-white outline-none transition-colors focus:border-[#d0ff71]"
+              rows={5}
+              className="resize-none border-b border-[#333] bg-transparent py-2 text-base text-white outline-none transition-colors focus:border-[#d0ff71]"
             />
           </div>
 
