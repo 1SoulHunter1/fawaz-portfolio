@@ -21,7 +21,7 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer className="w-full bg-[#d0ff71]">
+    <footer className="w-full bg-[#d0ff71]" data-cursor="arrow">
       <ScrollReveal direction="none">
         <div className="mx-auto flex max-w-[1200px] flex-col gap-5 px-6 py-10 md:px-10">
           {/* Top row: Email | Phone | Social */}

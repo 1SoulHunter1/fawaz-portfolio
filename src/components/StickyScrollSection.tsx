@@ -16,16 +16,16 @@ export function StickyScrollSection() {
   });
 
   const springConfig = { stiffness: 300, damping: 35 };
-  const rawRotateY = useTransform(scrollYProgress, [0, 1], [0, 360]);
-  const rawTranslateX = useTransform(scrollYProgress, [0, 0.5, 1], [0, 340, 340]);
-  const rawScale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.9, 1]);
-  const rawRotateZ = useTransform(scrollYProgress, [0, 0.5, 1], [0, 10, 5]);
+  const rawRotateY = useTransform(scrollYProgress, [0, 0.73, 1], [0, 340, 340]);
+  const rawTranslateX = useTransform(scrollYProgress, [0, 0.36, 1], [0, 340, 340]);
+  const rawScale = useTransform(scrollYProgress, [0, 0.32, 0.73, 1], [1, 0.904, 1, 1]);
+  const rawRotateZ = useTransform(scrollYProgress, [0, 0.32, 0.73, 1], [0, 9.6, 5, 5]);
   const rotateY = useSpring(rawRotateY, springConfig);
   const translateX = useSpring(rawTranslateX, springConfig);
   const cardScale = useSpring(rawScale, springConfig);
   const rotateZ = useSpring(rawRotateZ, springConfig);
 
-  const badgeOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
+  const badgeOpacity = useTransform(scrollYProgress, [0, 0.32], [1, 0]);
 
   const [showWave, setShowWave] = useState(false);
   useEffect(() => {
@@ -40,6 +40,9 @@ export function StickyScrollSection() {
         <div className="sticky top-0 hidden h-screen items-center justify-center overflow-hidden lg:flex">
           {/* Card flip container — smaller on mobile */}
           <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
             className="pointer-events-auto relative h-[340px] w-[240px] lg:h-[476px] lg:w-[340px]"
             style={{
               perspective: 1200,
@@ -96,7 +99,7 @@ export function StickyScrollSection() {
                   ease: [0.16, 1, 0.3, 1],
                   delay: 0.8,
                 }}
-                className="absolute -bottom-4 -left-4 z-10 h-[80px] w-[80px] overflow-hidden rounded-full bg-[#d0ff71] lg:-bottom-6 lg:-left-6 lg:h-[120px] lg:w-[120px]"
+                className="absolute -bottom-4 -left-4 z-10 h-[80px] w-[80px] overflow-hidden rounded-full bg-[#d0ff71] lg:-bottom-6 lg:-left-6 lg:h-[123px] lg:w-[123px]"
                 style={{ backfaceVisibility: "visible", z: 30, opacity: badgeOpacity }}
               >
                 <motion.div
@@ -104,13 +107,13 @@ export function StickyScrollSection() {
                   animate={{ y: showWave ? "-50%" : "0%" }}
                   transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <div className="flex h-[80px] w-[80px] items-center justify-center lg:h-[120px] lg:w-[120px]">
+                  <div className="flex h-[80px] w-[80px] items-center justify-center lg:h-[123px] lg:w-[123px]">
                     <span className="text-[26px] font-semibold text-[#303030] lg:text-[40px]">
                       Hi
                     </span>
                   </div>
-                  <div className="flex h-[80px] w-[80px] items-center justify-center lg:h-[120px] lg:w-[120px]">
-                    <WaveHandIcon className="h-[40px] w-[40px] text-black lg:h-[60px] lg:w-[60px]" />
+                  <div className="flex h-[80px] w-[80px] items-center justify-center lg:h-[123px] lg:w-[123px]">
+                    <WaveHandIcon className="h-[40px] w-[40px] animate-wave text-black lg:h-[60px] lg:w-[60px]" />
                   </div>
                 </motion.div>
               </motion.div>

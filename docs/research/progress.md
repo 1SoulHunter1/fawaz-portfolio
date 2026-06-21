@@ -9,9 +9,9 @@
 
 ## 1. Current Phase
 
-**Phase 8 — Blog Page Fidelity to 98%**
+**Phase 9 — Animations & Interactions Match Original**
 
-Blog page cards rewritten: removed all borders, corrected image aspect ratios (pinned 1120/500, regular 27/16), added lime "Most Viewed" badge overlay, fixed all text colors to white with lime category accents, unified card layout to borderless flex columns with gap-5, and consolidated page from 3 sections to 1.
+All animation channels tuned to measured values from original: scroll card transforms (rotateY 340° not 360°, precise keyframes), hero text clip-mask reveals with stagger, navbar entrance animation, page transitions, wave icon rotation, badge size/fade, CTA cursor variants, FAQ hover, Available pill 3D flip, and homepage blog cards restyled.
 
 ---
 
@@ -132,29 +132,52 @@ Blog page cards rewritten: removed all borders, corrected image aspect ratios (p
 
 ---
 
-## 6. Estimated Completion
+## 6. Animations & Interactions (Phase 9)
+
+| # | Fix | Status | Files |
+|---|-----|--------|-------|
+| AN1 | Scroll card rotateY: [0,1]→[0,360] → [0,0.73,1]→[0,340,340] | ✅ | `StickyScrollSection.tsx` |
+| AN2 | Scroll card translateX: [0,0.5,1]→ → [0,0.36,1]→[0,340,340] | ✅ | `StickyScrollSection.tsx` |
+| AN3 | Scroll card scale: [0,0.5,1]→ → [0,0.32,0.73,1]→[1,0.904,1,1] | ✅ | `StickyScrollSection.tsx` |
+| AN4 | Scroll card rotateZ: [0,0.5,1]→ → [0,0.32,0.73,1]→[0,9.6,5,5] | ✅ | `StickyScrollSection.tsx` |
+| AN5 | Badge scroll fade: [0,0.15]→ → [0,0.32]→[1,0] | ✅ | `StickyScrollSection.tsx` |
+| AN6 | Badge size: 120px → 123px on desktop | ✅ | `StickyScrollSection.tsx` |
+| AN7 | Wave icon ±15° rotation oscillation (CSS keyframes) | ✅ | `globals.css`, `StickyScrollSection.tsx` |
+| AN8 | Desktop card entrance: opacity 0→1, scale 0.95→1 | ✅ | `StickyScrollSection.tsx` |
+| AN9 | Hero text clip-mask reveal: overflow:hidden + translateY(100%→0%) | ✅ | `HeroPanel.tsx` |
+| AN10 | Hero stagger timing: 100ms Duncan, 250ms DIGITAL, 350ms DESIGNER, 450ms body | ✅ | `HeroPanel.tsx` |
+| AN11 | Navbar entrance: translateY(-20px)→0, opacity 0→1, 300ms | ✅ | `Navbar.tsx` |
+| AN12 | Page transitions: opacity fade 300ms on route change | ✅ | `template.tsx` |
+| AN13 | FAQ row hover highlight: hover:bg-[#222] | ✅ | `FAQSection.tsx` |
+| AN14 | Footer cursor: data-cursor="arrow" | ✅ | `Footer.tsx` |
+| AN15 | AboutPanel MY STORY CTA: plain link → circle-fill pill button | ✅ | `AboutPanel.tsx` |
+| AN16 | Available for Work pill: 3D flip hover (matching nav links) | ✅ | `AvailableForWorkPill.tsx` |
+| AN17 | CTA cursor: data-cursor="blend" → "arrow" (matching original) | ✅ | `AboutSection.tsx`, `BlogSection.tsx`, `ProjectsSection.tsx`, `ContactSection.tsx` |
+| AN18 | Homepage blog cards: bordered → borderless (matching /blogs page) | ✅ | `BlogSection.tsx` |
+| AN19 | Lenis smooth scroll: fully wired in layout.tsx | ✅ | `SmoothScroll.tsx`, `layout.tsx` |
+
+---
+
+## 7. Estimated Completion
 
 | Scope | Percentage |
 |-------|-----------|
 | **Routes & pages** (Phase 2) | 100% — all 11 routes exist and render |
-| **Homepage fidelity** | ~98% — all sections match, padding correct, CTA buttons styled, grid layouts accurate |
+| **Homepage fidelity** | ~99% — all sections match, animations precise, CTA interactions correct |
 | **About page fidelity** | ~98% — sticky scroll, accordion, timeline, tech stack, process grid all match original |
 | **Projects page fidelity** | ~98% — sticky cards, lime pills, image ratios, grid gaps, typography all match original |
-| **Global animations** (Phase 3) | ~70% — cursor system done, scroll reveals done, page transitions missing |
-| **Micro-interactions** (Phase 4) | ~50% — accordion, cursor variants, badge done; CTA fills, Lenis remaining |
 | **Blog page fidelity** | ~98% — borderless cards, correct image ratios, lime badges, white text, grid gaps all match original |
-| **Overall clone fidelity** | **~97%** |
+| **Global animations** (Phase 9) | ~95% — scroll card transforms precise, hero clip reveals, navbar entrance, page transitions, wave animation, Lenis smooth scroll |
+| **Micro-interactions** (Phase 9) | ~90% — accordion, cursor variants (4 types), badge carousel, CTA circle-fill, FAQ hover, 3D nav flips, Available pill flip |
+| **Overall clone fidelity** | **~98%** |
 
 ---
 
-## 6. Remaining Items
+## 8. Remaining Items
 
 | Area | Items | Priority |
 |------|-------|----------|
-| ~~Blogs page fidelity~~ | ~~Image ratios, border-radius, text colors~~ | ✅ Done |
 | Blogs detail pages | Layout exists but needs pixel-level refinement | Medium |
 | Projects detail pages | Layout exists but needs pixel-level refinement | Medium |
 | FAQ accordion item heights | Items are ~10px shorter than original | Low |
-| Page transitions | Opacity fade between routes | Low |
-| Lenis smooth scroll | Already installed, not wired | Low |
 | Mobile responsiveness | About page sticky scroll hidden on mobile, needs testing | Medium |

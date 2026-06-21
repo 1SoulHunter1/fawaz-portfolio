@@ -115,7 +115,7 @@ export function ContactSection() {
           <button
             type="submit"
             className="group/cta font-heading relative mt-4 w-full overflow-hidden rounded-full border border-[#d0ff71] bg-transparent px-6 py-4 text-[26px] font-normal text-[#d0ff71] uppercase"
-            data-cursor="blend"
+            data-cursor="arrow"
           >
             <span className="absolute inset-0 scale-0 rounded-full bg-[#d0ff71] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/cta:scale-100" />
             <span className="relative z-10 transition-colors duration-300 group-hover/cta:text-black">

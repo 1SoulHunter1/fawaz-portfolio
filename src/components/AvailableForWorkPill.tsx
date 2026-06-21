@@ -1,17 +1,39 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
 
+const EASE = [0.16, 1, 0.3, 1] as const;
+
 export function AvailableForWorkPill() {
+  const [hovered, setHovered] = useState(false);
+
   return (
     <Link
       href="#contact"
+      onPointerEnter={() => setHovered(true)}
+      onPointerLeave={() => setHovered(false)}
       className="flex items-center gap-2 py-1 pr-1 pl-2"
     >
-      <span className="whitespace-nowrap text-base font-light text-[rgb(208,255,113)]">
-        Available for work
-      </span>
+      <div className="h-6 overflow-hidden">
+        <motion.div
+          animate={{ rotateX: hovered ? -90 : 0 }}
+          transition={{ duration: 0.35, ease: EASE }}
+          style={{ transformPerspective: 1200, transformOrigin: "50% 0%", transformStyle: "preserve-3d" }}
+          className="flex flex-col"
+        >
+          <span className="flex h-6 items-center whitespace-nowrap text-base leading-none font-light text-[rgb(208,255,113)]">
+            Available for work
+          </span>
+          <span
+            className="flex h-6 items-center whitespace-nowrap text-base leading-none font-light text-white"
+            style={{ transform: "rotateX(90deg)", transformOrigin: "50% 0%" }}
+          >
+            Available for work
+          </span>
+        </motion.div>
+      </div>
       <div className="relative flex h-6 w-6 items-center justify-center">
         <motion.div
           className="absolute rounded-full bg-[rgb(11,222,102)]"

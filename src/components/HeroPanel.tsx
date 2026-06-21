@@ -24,28 +24,30 @@ export function HeroPanel() {
               <motion.p
                 initial={{ y: "100%" }}
                 animate={inView ? { y: "0%" } : undefined}
-                transition={{ duration: 0.8, ease, delay: 0.3 }}
+                transition={{ duration: 0.8, ease, delay: 0.1 }}
                 className="font-heading text-[20px] font-normal leading-[26px] text-white uppercase lg:text-[32px] lg:leading-[41.6px]"
               >
                 Duncan Robert
               </motion.p>
             </div>
-            <motion.h1
-              initial={{ opacity: 0, y: 60 }}
-              animate={inView ? { opacity: 1, y: 0 } : undefined}
-              transition={{ duration: 0.9, ease, delay: 0.3 }}
-              className="font-heading text-[60px] font-bold leading-[1.1] tracking-[-2px] text-white uppercase lg:text-[120px] lg:leading-[132px] lg:tracking-[-3.6px]"
-            >
-              DIGITAL
-            </motion.h1>
+            <div className="overflow-hidden">
+              <motion.h1
+                initial={{ y: "100%" }}
+                animate={inView ? { y: "0%" } : undefined}
+                transition={{ duration: 0.8, ease, delay: 0.25 }}
+                className="font-heading text-[60px] font-bold leading-[1.1] tracking-[-2px] text-white uppercase lg:text-[120px] lg:leading-[132px] lg:tracking-[-3.6px]"
+              >
+                DIGITAL
+              </motion.h1>
+            </div>
           </div>
         </div>
 
         {/* Mobile-only static card */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.92 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={inView ? { opacity: 1, scale: 1 } : undefined}
-          transition={{ duration: 1, ease, delay: 0.4 }}
+          transition={{ duration: 0.6, ease, delay: 0.2 }}
           className="relative lg:hidden"
         >
           <Image
@@ -64,19 +66,21 @@ export function HeroPanel() {
         {/* Right column */}
         <div className="flex flex-col justify-center lg:w-[415px]">
           <div className="relative">
-            <motion.h1
-              initial={{ opacity: 0, y: 60 }}
-              animate={inView ? { opacity: 1, y: 0 } : undefined}
-              transition={{ duration: 0.9, ease, delay: 0.4 }}
-              className="font-heading text-[60px] font-bold leading-[1.1] tracking-[-2px] text-white uppercase lg:text-[120px] lg:leading-[132px] lg:tracking-[-3.6px]"
-            >
-              DESIGNER
-            </motion.h1>
+            <div className="overflow-hidden">
+              <motion.h1
+                initial={{ y: "100%" }}
+                animate={inView ? { y: "0%" } : undefined}
+                transition={{ duration: 0.8, ease, delay: 0.35 }}
+                className="font-heading text-[60px] font-bold leading-[1.1] tracking-[-2px] text-white uppercase lg:text-[120px] lg:leading-[132px] lg:tracking-[-3.6px]"
+              >
+                DESIGNER
+              </motion.h1>
+            </div>
             <div className="absolute top-full mt-2 overflow-hidden">
               <motion.p
                 initial={{ y: "100%" }}
                 animate={inView ? { y: "0%" } : undefined}
-                transition={{ duration: 0.8, ease, delay: 0.5 }}
+                transition={{ duration: 0.8, ease, delay: 0.45 }}
                 className="max-w-[348px] text-base font-light leading-[24px] text-white lg:text-right lg:text-lg lg:leading-[27px]"
               >
                 I&apos;m a US-based digital designer and Framer developer

@@ -40,36 +40,36 @@ export function BlogSection() {
           </p>
         </ScrollReveal>
 
-        <StaggerReveal className="mt-12 grid gap-6 md:grid-cols-2" staggerDelay={0.15}>
+        <StaggerReveal className="mt-12 grid gap-x-10 gap-y-20 md:grid-cols-2" staggerDelay={0.15}>
           {blogs.map((blog) => (
             <Link
               key={blog.slug}
               href={`/blogs/${blog.slug}`}
-              className="group overflow-hidden rounded-2xl border border-[#333] transition-transform hover:scale-[1.02]"
+              className="group flex flex-col gap-5"
               data-cursor="arrow"
             >
-              <div className="relative aspect-[16/9] w-full overflow-hidden">
+              <div className="relative aspect-[27/16] w-full overflow-hidden rounded-[20px]">
                 <Image
                   src={blog.image}
                   alt="Blog Cover Image"
                   fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <div className="p-5">
-                <div className="flex items-center gap-3">
-                  <span className="inline-block rounded-full bg-[#303030] px-3 py-1 text-xs text-white">
-                    {blog.category}
-                  </span>
-                  <span className="text-xs text-[#b5b5b5]">{blog.date}</span>
-                </div>
-                <h3 className="font-heading mt-3 text-[24px] font-normal leading-[32px] text-white uppercase md:text-[32px] md:leading-[41.6px]">
-                  {blog.title}
-                </h3>
-                <p className="mt-2 text-sm font-light leading-[21px] text-[#b5b5b5]">
-                  {blog.description}
-                </p>
+              <div className="flex items-center gap-2.5">
+                <span className="text-sm font-light text-[#d0ff71]">
+                  {blog.category}
+                </span>
+                <span className="text-sm font-light text-white">
+                  {blog.date}
+                </span>
               </div>
+              <h3 className="font-heading text-[24px] font-normal leading-[32px] text-white uppercase md:text-[32px] md:leading-[41.6px]">
+                {blog.title}
+              </h3>
+              <p className="text-sm font-light leading-[21px] text-white">
+                {blog.description}
+              </p>
             </Link>
           ))}
         </StaggerReveal>
@@ -78,7 +78,7 @@ export function BlogSection() {
         <Link
           href="/blogs"
           className="group/cta relative mt-10 inline-flex h-[48px] items-center gap-3 overflow-hidden rounded-full border border-[#d0ff71] px-8 font-heading text-[26px] font-normal text-[#d0ff71] uppercase"
-          data-cursor="blend"
+          data-cursor="arrow"
         >
           <span className="absolute inset-0 scale-0 rounded-full bg-[#d0ff71] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/cta:scale-100" />
           <span className="relative z-10 flex items-center gap-3 transition-colors duration-300 group-hover/cta:text-black">

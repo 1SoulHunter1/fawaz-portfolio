@@ -94,7 +94,7 @@ export function ProjectsSection() {
           <Link
             href="/projects"
             className="group/cta font-heading relative inline-flex h-[48px] items-center gap-3 overflow-hidden rounded-full border border-[#d0ff71] px-8 text-[22px] font-normal text-[#d0ff71] uppercase md:text-[26px]"
-            data-cursor="blend"
+            data-cursor="arrow"
           >
             <span className="absolute inset-0 scale-0 rounded-full bg-[#d0ff71] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/cta:scale-100" />
             <span className="relative z-10 flex items-center gap-3 transition-colors duration-300 group-hover/cta:text-black">

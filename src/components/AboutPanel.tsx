@@ -144,10 +144,14 @@ export function AboutPanel() {
           >
             <Link
               href="/about"
-              className="inline-flex items-center gap-3 font-heading text-[26px] font-normal text-[#d0ff71] uppercase transition-opacity hover:opacity-80"
+              className="group/cta relative inline-flex h-[48px] items-center gap-3 overflow-hidden rounded-full border border-[#d0ff71] px-8 font-heading text-[26px] font-normal text-[#d0ff71] uppercase"
+              data-cursor="arrow"
             >
-              MY STORY
-              <ArrowRightIcon className="h-6 w-6" />
+              <span className="absolute inset-0 scale-0 rounded-full bg-[#d0ff71] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/cta:scale-100" />
+              <span className="relative z-10 flex items-center gap-3 transition-colors duration-300 group-hover/cta:text-black">
+                MY STORY
+                <ArrowRightIcon className="h-6 w-6" />
+              </span>
             </Link>
           </motion.div>
         </div>
