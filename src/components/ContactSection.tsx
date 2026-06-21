@@ -45,30 +45,32 @@ export function ContactSection() {
             brand, your website, or your next big idea.
           </p>
           <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-          <div className="flex flex-col gap-2">
-            <label className="text-sm text-white">Name</label>
-            <input
-              type="text"
-              required
-              value={formData.name}
-              onChange={(e) =>
-                setFormData({ ...formData, name: e.target.value })
-              }
-              className="border-b border-[#333] bg-transparent py-3 text-base text-white outline-none transition-colors focus:border-[#d0ff71]"
-            />
-          </div>
+          <div className="flex flex-col gap-6 md:flex-row">
+            <div className="flex flex-1 flex-col gap-2">
+              <label className="text-sm text-white">Name</label>
+              <input
+                type="text"
+                required
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                className="border-b border-[#333] bg-transparent py-3 text-base text-white outline-none transition-colors focus:border-[#d0ff71]"
+              />
+            </div>
 
-          <div className="flex flex-col gap-2">
-            <label className="text-sm text-white">Email</label>
-            <input
-              type="email"
-              required
-              value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
-              className="border-b border-[#333] bg-transparent py-3 text-base text-white outline-none transition-colors focus:border-[#d0ff71]"
-            />
+            <div className="flex flex-1 flex-col gap-2">
+              <label className="text-sm text-white">Email</label>
+              <input
+                type="email"
+                required
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+                className="border-b border-[#333] bg-transparent py-3 text-base text-white outline-none transition-colors focus:border-[#d0ff71]"
+              />
+            </div>
           </div>
 
           <div className="flex flex-col gap-2">

@@ -139,8 +139,20 @@ badge animation, navbar cursor, accordion clicks, service hover images, about pa
 - Consistent across homepage, /about, /projects ✅
 - Build passes (`npm run check`) ✅
 
-### 1.3 Contact Form — Name/Email Side-by-Side
-| **Status** | Pending |
+### 1.3 Contact Form — Name/Email Side-by-Side ✅
+
+| Field | Value |
+|-------|-------|
+| **Status** | Complete |
+| **Timestamp** | 2026-06-21 |
+| **Resolves** | H2, #29 |
+
+**Change:** Wrapped Name and Email input groups in a `flex flex-col gap-6 md:flex-row` container with `flex-1` on each child.
+
+**Verified:**
+- Name (left=744, 256px) and Email (left=1024, 256px) side-by-side on desktop ✅
+- Original: Name (left=760, 270px), Email (left=1050, 270px) — same pattern ✅
+- Build passes ✅
 
 ### 1.4 "Summer Vibes" Title Wrapping
 | **Status** | Pending |
