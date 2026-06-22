@@ -189,34 +189,34 @@ export default function AboutPage() {
       <main>
         <AboutStickyScroll>
           {/* Hero — original has Container with px-40, no top/bottom padding on container */}
-          <section className="w-full bg-[#1a1a1b] px-6 pt-36 pb-16 md:px-10 md:pt-44">
-            <div className="flex flex-col">
-              <h1 className="font-heading text-[56px] font-bold leading-[1.05] tracking-[-2px] text-white uppercase lg:text-[120px] lg:leading-[120px] lg:tracking-[-3.6px]">
+          <section className="w-full min-h-screen bg-[#1a1a1b] px-6 pt-36 pb-16 md:px-10 lg:pt-[133px]">
+            <div className="flex max-w-[480px] flex-col">
+              <h1 className="font-heading text-[56px] font-bold leading-[1.05] tracking-[-2px] text-white uppercase lg:text-[120px] lg:leading-[132px] lg:tracking-[-3.6px]">
                 About me
               </h1>
-              <h3 className="font-heading mt-6 text-[26px] font-normal text-white uppercase md:text-[32px]">
+              <h3 className="font-heading mt-6 text-[26px] font-normal leading-[41.6px] text-white uppercase md:text-[32px]">
                 Duncan Robert
               </h3>
-              <p className="mt-6 max-w-[520px] text-lg font-light leading-[27px] text-white">
+              <p className="mt-6 text-lg font-light leading-[27px] text-white">
                 I&apos;m a digital designer and Framer developer passionate about
                 crafting meaningful, user-centered experiences.
               </p>
-              <p className="mt-4 max-w-[520px] text-lg font-light leading-[27px] text-[#b5b5b5]">
+              <p className="mt-4 text-lg font-light leading-[27px] text-white">
                 With a strong foundation in visual design and a deep understanding
                 of interactive systems, I bring ideas to life through thoughtful
                 design, smooth animations, and responsive layouts.
               </p>
-              <div className="mt-8 flex items-center gap-3">
+              <div className="mt-8 flex items-center gap-5">
                 {socials.map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-[#303030] text-[#b5b5b5] transition-colors hover:bg-[#d0ff71] hover:text-black"
+                    className="flex h-[30px] w-[30px] items-center justify-center text-white transition-colors hover:text-[#d0ff71]"
                     aria-label={social.label}
                   >
-                    <social.icon className="h-4 w-4" />
+                    <social.icon className="h-[30px] w-[30px]" />
                   </a>
                 ))}
               </div>
