@@ -224,7 +224,42 @@ Full visual comparison performed at every ~400px scroll interval across all 4 pa
 
 ---
 
-## 9. Remaining Items
+## 9. About Page Forensic Fixes (Phase 10–11)
+
+| # | Fix | Status | Commit | Files |
+|---|-----|--------|--------|-------|
+| F1 | Noise overlay `mixBlendMode: color-dodge` | ✅ | `48c1013` | `NoiseOverlay.tsx` |
+| F2 | Hero H1 line-height 132px, content 480px, icons 30px plain, second P white | ✅ | `8807335` | `about/page.tsx` |
+| F3 | Submit button fit-content ~145px, wave circle 123px with "Hi" text | ✅ | `fb1cfce` | `ContactSection.tsx` |
+
+---
+
+## 10. Screenshot Management System
+
+Configured on 2026-06-22. All screenshots organized into a structured system.
+
+| Folder | Purpose | Files |
+|--------|---------|-------|
+| `reference/current/` | Fresh screenshots from current comparison session | Captured per audit |
+| `reference/comparison/` | Side-by-side diff screenshots | Generated per audit |
+| `reference/archive/` | Historical screenshots (read-only, 283 files) | Do not use for measurements |
+
+**Naming convention for `reference/current/`:**
+- `{page}-{section}-original.png` — e.g. `about-hero-original.png`
+- `{page}-{section}-clone.png` — e.g. `about-hero-clone.png`
+
+**Naming convention for `reference/comparison/`:**
+- `{page}-{section}-diff.png` — e.g. `about-hero-diff.png`
+
+**Rules:**
+- All `reference/` subdirectories are gitignored
+- Never use archived screenshots for measurements or implementation decisions
+- Use only live websites and freshly captured screenshots
+- Old `docs/design-references/` images moved to `reference/archive/`
+
+---
+
+## 11. Remaining Items
 
 | Area | Items | Priority |
 |------|-------|----------|

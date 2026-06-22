@@ -47,3 +47,9 @@ next-env.d.ts
 
 # Local temp files
 temp/
+
+# Screenshot management
+reference/archive/
+reference/current/
+reference/comparison/
+.playwright-mcp/
