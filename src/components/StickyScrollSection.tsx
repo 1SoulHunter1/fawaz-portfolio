@@ -77,7 +77,7 @@ export function StickyScrollSection() {
               <div
                 className="absolute inset-0 overflow-hidden rounded-[20px]"
                 style={{
-                  backfaceVisibility: "visible",
+                  backfaceVisibility: "hidden",
                   transform: "rotateY(180deg)",
                 }}
               >

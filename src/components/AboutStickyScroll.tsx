@@ -42,7 +42,7 @@ export function AboutStickyScroll({
 
           {/* Right: sticky image stack (640px with 40px padding each side) */}
           <div className="w-[640px] shrink-0 px-10">
-            <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
+            <div className="sticky top-0 flex h-screen justify-center overflow-hidden pt-[calc(50vh-238px)]">
               <motion.div
                 className="flex flex-col"
                 style={{ y }}

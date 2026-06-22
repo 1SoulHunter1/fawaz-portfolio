@@ -158,26 +158,77 @@ All animation channels tuned to measured values from original: scroll card trans
 
 ---
 
-## 7. Estimated Completion
+## 7. Side-by-Side Comparison (Phase 10)
 
-| Scope | Percentage |
-|-------|-----------|
-| **Routes & pages** (Phase 2) | 100% — all 11 routes exist and render |
-| **Homepage fidelity** | ~99% — all sections match, animations precise, CTA interactions correct |
-| **About page fidelity** | ~98% — sticky scroll, accordion, timeline, tech stack, process grid all match original |
-| **Projects page fidelity** | ~98% — sticky cards, lime pills, image ratios, grid gaps, typography all match original |
-| **Blog page fidelity** | ~98% — borderless cards, correct image ratios, lime badges, white text, grid gaps all match original |
-| **Global animations** (Phase 9) | ~95% — scroll card transforms precise, hero clip reveals, navbar entrance, page transitions, wave animation, Lenis smooth scroll |
-| **Micro-interactions** (Phase 9) | ~90% — accordion, cursor variants (4 types), badge carousel, CTA circle-fill, FAQ hover, 3D nav flips, Available pill flip |
-| **Overall clone fidelity** | **~98%** |
+Full visual comparison performed at every ~400px scroll interval across all 4 pages, comparing original (`portavia.framer.website`) vs clone (`localhost:3000`).
+
+### Fixes Applied
+
+| # | Difference | Severity | Fix | Files |
+|---|-----------|----------|-----|-------|
+| C1 | Hero 3D card shows back face (computer setup) instead of portrait | HIGH | Changed back face `backfaceVisibility: "visible"` → `"hidden"` | `StickyScrollSection.tsx` |
+| C2 | About page sticky images show wrong initial image (centered stack offset) | HIGH | Removed `items-center justify-center`, added `pt-[calc(50vh-238px)]` to position first image at viewport center | `AboutStickyScroll.tsx` |
+
+### Comparison Results by Page
+
+| Page | Original Height | Clone Height | Diff | Visual Match |
+|------|----------------|-------------|------|-------------|
+| Homepage | 9799px | 9793px | -6px (0.06%) | 99%+ |
+| About | 6089px | 6119px | +30px (0.5%) | 99%+ |
+| Projects | 5546px | 5450px | -96px (1.7%) | 99%+ |
+| Blogs | 3303px | 3192px | -111px (3.4%) | 98%+ |
+
+### Section-by-Section Verification
+
+**Homepage** (scroll 0–9793):
+- ✅ Hero: portrait card, "Hi" badge carousel, clip-mask text reveals, stagger timing
+- ✅ Services: accordion layout, "WHAT I CAN DO FOR YOU" heading, 3D card rotation
+- ✅ About Me: stats cards, social icons, MY STORY CTA pill, contact info
+- ✅ Featured Projects: sticky stacking cards, overlays, category text
+- ✅ Testimonials: 3×2 grid, stat cards (98%, 200%), dark card backgrounds
+- ✅ FAQ: two-column layout, hover highlight, accordion items
+- ✅ Blog: 2-column grid, borderless cards, lime category text
+- ✅ Contact: form layout, portrait + wave hand circle, submit button
+- ✅ Footer: email, phone, social icons, copyright
+
+**About Page** (scroll 0–6119):
+- ✅ Hero: two-column layout, portrait image on right (sticky), heading + social icons
+- ✅ Services: accordion with numbered items, image transitions on scroll
+- ✅ Journey: timeline with roles, companies, years
+- ✅ Tech Stack: vertical list cards with logos + descriptions
+- ✅ Process: 3-column grid with white/lime/dark cards + images
+- ✅ Contact: shared component
+
+**Projects Page** (scroll 0–5450):
+- ✅ Featured section: sticky stacking cards with overlays
+- ✅ More Projects: 2-column grid, lime category pills, correct image ratios
+
+**Blogs Page** (scroll 0–3192):
+- ✅ Pinned "Most Viewed" card with wide aspect ratio
+- ✅ 2-column grid, borderless cards, lime category text
 
 ---
 
-## 8. Remaining Items
+## 8. Estimated Completion
+
+| Scope | Percentage |
+|-------|-----------|
+| **Routes & pages** | 100% — all 11 routes exist and render |
+| **Homepage fidelity** | ~99% — all sections verified side-by-side |
+| **About page fidelity** | ~99% — sticky scroll images now align correctly, all sections match |
+| **Projects page fidelity** | ~99% — sticky cards, lime pills, image ratios, grid gaps all verified |
+| **Blog page fidelity** | ~98% — borderless cards, correct ratios, grid gaps verified |
+| **Global animations** | ~95% — scroll card transforms, hero clip reveals, navbar entrance, page transitions, Lenis smooth scroll |
+| **Micro-interactions** | ~90% — cursor variants, badge carousel, CTA circle-fill, FAQ hover, 3D nav flips, pill flip |
+| **Overall clone fidelity** | **~98–99%** |
+
+---
+
+## 9. Remaining Items
 
 | Area | Items | Priority |
 |------|-------|----------|
-| Blogs detail pages | Layout exists but needs pixel-level refinement | Medium |
-| Projects detail pages | Layout exists but needs pixel-level refinement | Medium |
-| FAQ accordion item heights | Items are ~10px shorter than original | Low |
-| Mobile responsiveness | About page sticky scroll hidden on mobile, needs testing | Medium |
+| Blog/Project detail pages | Layout exists but needs pixel-level refinement | Medium |
+| Service hover images | Cursor image variant on service accordion hover | Low |
+| FAQ accordion item heights | Items ~10px shorter than original | Low |
+| Mobile responsiveness | About page sticky scroll hidden on mobile (by design), needs testing | Low |

@@ -7,6 +7,7 @@ export function NoiseOverlay() {
         backgroundImage: "url(/images/noise.gif)",
         backgroundSize: "250px",
         backgroundRepeat: "repeat",
+        mixBlendMode: "color-dodge",
       }}
     />
   );
