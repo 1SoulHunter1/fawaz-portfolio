@@ -29,8 +29,8 @@ export function ContactSection() {
                 className="object-cover"
               />
             </div>
-            <div className="mt-6 flex h-[100px] w-[100px] items-center justify-center rounded-full bg-[#d0ff71]">
-              <span className="text-[40px]">👋</span>
+            <div className="mt-6 flex h-[123px] w-[123px] items-center justify-center rounded-full bg-[#d0ff71]">
+              <span className="text-[40px] font-normal text-[#303030]">Hi</span>
             </div>
           </div>
         </ScrollReveal>
@@ -114,7 +114,7 @@ export function ContactSection() {
 
           <button
             type="submit"
-            className="group/cta font-heading relative mt-4 w-full overflow-hidden rounded-full border border-[#d0ff71] bg-transparent px-6 py-4 text-[26px] font-normal text-[#d0ff71] uppercase"
+            className="group/cta font-heading relative mt-4 w-fit overflow-hidden rounded-full border border-[#d0ff71] bg-transparent px-10 py-2 text-[26px] font-normal leading-[33.8px] text-[#d0ff71] uppercase"
             data-cursor="arrow"
           >
             <span className="absolute inset-0 scale-0 rounded-full bg-[#d0ff71] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/cta:scale-100" />
