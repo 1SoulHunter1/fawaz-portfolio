@@ -65,7 +65,7 @@ export function HeroPanel() {
             priority
           />
           <div className="absolute -bottom-4 -left-4 flex h-[80px] w-[80px] items-center justify-center rounded-full bg-[#d0ff71]">
-            <WaveHandIcon className="h-[40px] w-[40px] text-black" />
+            <WaveHandIcon className="h-[40px] w-[40px]" />
           </div>
         </motion.div>
 

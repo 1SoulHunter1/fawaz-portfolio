@@ -67,20 +67,29 @@
 }
 
 @keyframes wave-hand {
-  0%, 100% {
+  0% {
     transform: rotate(0deg);
   }
-  25% {
-    transform: rotate(15deg);
+  20% {
+    transform: rotate(20deg);
   }
-  75% {
+  40% {
     transform: rotate(-15deg);
+  }
+  60% {
+    transform: rotate(21deg);
+  }
+  80% {
+    transform: rotate(-16deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }
 
-.animate-wave {
-  animation: wave-hand 1s ease-in-out infinite;
-  transform-origin: 70% 80%;
+.animate-wave-rotation {
+  animation: wave-hand 1.2s ease-in-out;
+  transform-origin: center center;
 }
 
 html.lenis {

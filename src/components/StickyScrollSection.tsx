@@ -27,11 +27,30 @@ export function StickyScrollSection() {
 
   const badgeOpacity = useTransform(scrollYProgress, [0, 0.32], [1, 0]);
 
+  // Carousel state: cycle between "Hi" text and wave hand icon
+  // Original timing: ~3.2s show Hi → 0.6s transition → ~1.6s show wave → 0.6s transition → repeat (~6s cycle)
   const [showWave, setShowWave] = useState(false);
   useEffect(() => {
-    const interval = setInterval(() => setShowWave((v) => !v), 2500);
-    return () => clearInterval(interval);
+    let timeout: ReturnType<typeof setTimeout>;
+    const cycle = () => {
+      setShowWave((prev) => {
+        // If currently showing Hi, switch to wave after 3200ms; if showing wave, switch back after 1600ms
+        timeout = setTimeout(cycle, prev ? 1600 : 3200);
+        return !prev;
+      });
+    };
+    timeout = setTimeout(cycle, 3200); // initial delay before first switch
+    return () => clearTimeout(timeout);
   }, []);
+
+  // Wave animation key counter — increments each time showWave becomes true
+  // to force CSS animation restart via React key remount
+  const [waveAnimKey, setWaveAnimKey] = useState(0);
+  useEffect(() => {
+    if (showWave) {
+      setWaveAnimKey((k) => k + 1);
+    }
+  }, [showWave]);
 
   return (
     <div ref={wrapperRef} className="relative h-[300vh]">
@@ -90,7 +109,7 @@ export function StickyScrollSection() {
                 />
               </div>
 
-              {/* Hi badge — carousel with "Hi" text and wave icon */}
+              {/* Hi badge — carousel with "Hi" text and wave hand SVG */}
               <motion.div
                 initial={{ opacity: 0, scale: 0, rotate: -30 }}
                 animate={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -99,23 +118,37 @@ export function StickyScrollSection() {
                   ease: [0.16, 1, 0.3, 1],
                   delay: 0.8,
                 }}
-                className="absolute -bottom-4 -left-4 z-10 h-[80px] w-[80px] overflow-hidden rounded-full bg-[#d0ff71] lg:-bottom-6 lg:-left-6 lg:h-[123px] lg:w-[123px]"
-                style={{ backfaceVisibility: "visible", z: 30, opacity: badgeOpacity }}
+                className="absolute -bottom-4 -left-4 z-10 h-[80px] w-[80px] overflow-hidden rounded-full bg-[#d0ff71] lg:-bottom-[62px] lg:-left-[62px] lg:h-[123px] lg:w-[123px]"
+                style={{
+                  backfaceVisibility: "visible",
+                  z: 30,
+                  opacity: badgeOpacity,
+                }}
               >
-                <motion.div
-                  className="flex flex-col items-center"
-                  animate={{ y: showWave ? "-50%" : "0%" }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <div className="flex h-[80px] w-[80px] items-center justify-center lg:h-[123px] lg:w-[123px]">
-                    <span className="text-[26px] font-semibold text-[#303030] lg:text-[40px]">
-                      Hi
-                    </span>
+                {/* Inner carousel — centered 62×62 content area */}
+                <div className="flex h-full w-full items-center justify-center">
+                  <div className="h-[40px] w-[40px] overflow-hidden lg:h-[62px] lg:w-[62px]">
+                    <motion.div
+                      className="flex flex-col"
+                      animate={{ y: showWave ? "-50%" : "0%" }}
+                      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      {/* "Hi" text */}
+                      <div className="flex h-[40px] w-[40px] items-center justify-center lg:h-[62px] lg:w-[62px]">
+                        <span className="font-sans text-[26px] font-normal text-[#303030] lg:text-[40px]">
+                          Hi
+                        </span>
+                      </div>
+                      {/* Wave hand SVG — CSS keyframe rotation, key remounts to restart each wave cycle */}
+                      <div
+                        key={waveAnimKey}
+                        className={`flex h-[40px] w-[40px] items-center justify-center lg:h-[62px] lg:w-[62px] ${showWave ? "animate-wave-rotation" : ""}`}
+                      >
+                        <WaveHandIcon className="h-[40px] w-[40px] lg:h-[62px] lg:w-[62px]" />
+                      </div>
+                    </motion.div>
                   </div>
-                  <div className="flex h-[80px] w-[80px] items-center justify-center lg:h-[123px] lg:w-[123px]">
-                    <WaveHandIcon className="h-[40px] w-[40px] animate-wave text-black lg:h-[60px] lg:w-[60px]" />
-                  </div>
-                </motion.div>
+                </div>
               </motion.div>
             </motion.div>
           </motion.div>
