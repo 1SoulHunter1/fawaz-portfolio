@@ -65,10 +65,10 @@ export function BlogCard({ blog, variant = "default" }: BlogCardProps) {
         />
       </div>
       <div className="flex items-center gap-2.5">
-        <span className="text-sm font-light text-[#d0ff71]">
+        <span className="rounded-full px-[15px] py-[3px] text-sm font-light leading-[21px] text-[#d0ff71]">
           {blog.category}
         </span>
-        <span className="text-sm font-light text-white">
+        <span className="text-sm font-light leading-[21px] text-white">
           {blog.date}
         </span>
       </div>

@@ -47,43 +47,48 @@ export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="w-full bg-[#1a1a1b] py-[120px]">
-      <div className="mx-auto grid max-w-[1200px] gap-12 px-6 md:px-10 md:grid-cols-[440px_1fr]">
-        <div>
+    <section className="w-full bg-[#1a1a1b]">
+      <div className="mx-auto flex max-w-[1200px] flex-col gap-10 px-6 py-[120px] md:flex-row md:gap-[80px] md:px-10">
+        <div className="flex w-full shrink-0 flex-col gap-[40px] md:w-[440px]">
           <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
             FREQUENTLY ASKED QUESTIONS
           </h2>
-          <p className="mt-4 text-base font-light leading-6 text-white">
+          <p className="text-base font-light leading-6 text-white">
             Here are answers to some of the most common questions I receive as a
             freelance designer. If you don&apos;t see your question here, feel
             free to reach out—I&apos;m happy to help!
           </p>
         </div>
 
-        <div>
+        <div className="flex flex-1 flex-col gap-[30px]">
           {faqs.map((faq, index) => (
-            <div key={faq.number} className="border-t border-[#333] transition-colors duration-200 hover:bg-[#222]">
-              <button
-                onClick={() =>
-                  setOpenIndex(openIndex === index ? null : index)
-                }
-                className="flex w-full items-center gap-4 py-5 text-left"
-              >
-                <span className="font-heading text-[22px] font-normal text-white">
-                  {faq.number}.
-                </span>
-                <span className="font-heading flex-1 text-[16px] font-normal leading-[26px] text-white uppercase md:text-[20px] md:leading-[33.8px]">
-                  {faq.question}
-                </span>
-                <span
-                  className={cn(
-                    "shrink-0 text-[#b5b5b5] transition-transform duration-300",
-                    openIndex === index && "rotate-180"
-                  )}
+            <div key={faq.number} className="flex flex-col">
+              <div className="flex pb-[30px]">
+                <div className="flex w-[540px] items-start gap-[5px]">
+                  <h4 className="font-heading shrink-0 text-[26px] font-normal leading-[33.8px] text-white">
+                    {faq.number}.
+                  </h4>
+                  <h4 className="font-heading text-[26px] font-normal leading-[33.8px] text-white">
+                    {faq.question}
+                  </h4>
+                </div>
+                <button
+                  onClick={() =>
+                    setOpenIndex(openIndex === index ? null : index)
+                  }
+                  className="flex shrink-0 items-start"
+                  aria-label={`Toggle ${faq.question}`}
                 >
-                  <ChevronDownIcon className="h-5 w-5" />
-                </span>
-              </button>
+                  <span
+                    className={cn(
+                      "block rotate-180 text-white transition-transform duration-300",
+                      openIndex === index && "!rotate-0"
+                    )}
+                  >
+                    <ChevronDownIcon className="h-[30px] w-[30px]" />
+                  </span>
+                </button>
+              </div>
               <div
                 className={cn(
                   "grid transition-all duration-300",
@@ -98,6 +103,8 @@ export function FAQSection() {
                   </p>
                 </div>
               </div>
+              {/* Divider line */}
+              <div className="h-px bg-[#333]" />
             </div>
           ))}
         </div>
