@@ -16,11 +16,17 @@ export function HeroPanel() {
       ref={ref}
       className="relative flex h-screen w-full items-center justify-center overflow-hidden"
     >
-      <div className="flex w-full max-w-[1200px] flex-col items-center gap-6 px-6 md:px-10 lg:flex-row lg:items-center lg:justify-center lg:gap-[370px]">
-        {/* Left column */}
-        <div className="flex flex-col justify-center lg:w-[415px]">
-          <div className="relative">
-            <div className="absolute bottom-full mb-1 overflow-hidden">
+      {/* Dark/light mode toggle (decorative) — centered near bottom */}
+      <div className="absolute bottom-5 left-1/2 z-10 hidden -translate-x-1/2 lg:block">
+        <div className="h-5 w-10 rounded-full bg-[#d0ff71]">
+          <div className="h-4 w-4 translate-x-[2px] translate-y-[2px] rounded-full bg-white" />
+        </div>
+      </div>
+      <div className="flex w-full max-w-[1200px] flex-col items-center gap-6 px-6 md:px-10 lg:flex-row lg:items-center lg:justify-center lg:gap-[370px] lg:px-0">
+        {/* Left column — content right-aligned within column */}
+        <div className="flex flex-col justify-center lg:w-[415px] lg:items-end">
+          <div className="relative lg:min-w-[303px]">
+            <div className="absolute bottom-full mb-[3px] overflow-hidden">
               <motion.p
                 initial={{ y: "100%" }}
                 animate={inView ? { y: "0%" } : undefined}
@@ -65,7 +71,7 @@ export function HeroPanel() {
 
         {/* Right column */}
         <div className="flex flex-col justify-center lg:w-[415px]">
-          <div className="relative">
+          <div className="relative w-fit">
             <div className="overflow-hidden">
               <motion.h1
                 initial={{ y: "100%" }}
@@ -76,7 +82,7 @@ export function HeroPanel() {
                 DESIGNER
               </motion.h1>
             </div>
-            <div className="absolute top-full mt-2 overflow-hidden">
+            <div className="absolute top-full right-0 mt-[11px] overflow-hidden">
               <motion.p
                 initial={{ y: "100%" }}
                 animate={inView ? { y: "0%" } : undefined}
