@@ -70,17 +70,8 @@
   0% {
     transform: rotate(0deg);
   }
-  20% {
-    transform: rotate(20deg);
-  }
-  40% {
-    transform: rotate(-15deg);
-  }
-  60% {
-    transform: rotate(21deg);
-  }
-  80% {
-    transform: rotate(-16deg);
+  50% {
+    transform: rotate(-20deg);
   }
   100% {
     transform: rotate(0deg);
@@ -88,8 +79,8 @@
 }
 
 .animate-wave-rotation {
-  animation: wave-hand 1.2s ease-in-out;
-  transform-origin: center center;
+  animation: wave-hand 2s ease-in-out infinite;
+  transform-origin: 0 0;
 }
 
 html.lenis {
