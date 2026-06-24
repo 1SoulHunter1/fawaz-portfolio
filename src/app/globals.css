@@ -66,20 +66,28 @@
   }
 }
 
-@keyframes wave-hand {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(-20deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
+@keyframes wave-burst {
+  /* 3.9s total — settle, burst 1, hold, burst 2, hold */
+  0%  { transform: rotate(0deg); }
+  5%  { transform: rotate(0deg); }    /* 0.20s settle */
+  8%  { transform: rotate(20deg); }   /* burst 1 */
+  11% { transform: rotate(-12deg); }
+  14% { transform: rotate(20deg); }
+  17% { transform: rotate(-12deg); }
+  20% { transform: rotate(18deg); }
+  23% { transform: rotate(0deg); }    /* 0.90s burst 1 end */
+  44% { transform: rotate(0deg); }    /* 1.72s hold end */
+  47% { transform: rotate(20deg); }   /* burst 2 */
+  51% { transform: rotate(-12deg); }
+  55% { transform: rotate(20deg); }
+  59% { transform: rotate(-12deg); }
+  63% { transform: rotate(18deg); }
+  67% { transform: rotate(0deg); }    /* 2.61s burst 2 end */
+  100% { transform: rotate(0deg); }   /* hold still to end */
 }
 
 .animate-wave-rotation {
-  animation: wave-hand 2s ease-in-out infinite;
+  animation: wave-burst 3.9s ease-in-out forwards;
   transform-origin: 0 0;
 }
 

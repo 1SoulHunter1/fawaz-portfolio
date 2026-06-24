@@ -27,22 +27,15 @@ export function StickyScrollSection() {
 
   const badgeOpacity = useTransform(scrollYProgress, [0, 0.32], [1, 0]);
 
-  // Carousel 4-step cycle matching original Portavia timing (~6s total)
-  // step 0: Hi visible (long pause, 3400ms)
-  // step 1: Wave visible, entered from above (550ms)
-  // step 2: Hi visible (short pause, 1400ms)
-  // step 3: Wave visible, entered from below (550ms)
-  const [carouselStep, setCarouselStep] = useState(0);
+  // Badge carousel: Hi 2s → crossfade 70ms → Wave 3.9s → crossfade 70ms → repeat
+  // Even cycle = Hi visible, odd cycle = Wave visible
+  const [cycle, setCycle] = useState(0);
+  const showWave = cycle % 2 === 1;
   useEffect(() => {
-    const durations = [3400, 550, 1400, 550];
-    const timeout = setTimeout(() => {
-      setCarouselStep((prev) => (prev + 1) % 4);
-    }, durations[carouselStep]);
+    const duration = showWave ? 3900 : 2000;
+    const timeout = setTimeout(() => setCycle((c) => c + 1), duration);
     return () => clearTimeout(timeout);
-  }, [carouselStep]);
-
-  const hiY = carouselStep === 1 ? "100%" : carouselStep === 3 ? "-100%" : "0%";
-  const waveY = carouselStep === 0 ? "-100%" : carouselStep === 1 ? "0%" : carouselStep === 2 ? "100%" : "0%";
+  }, [cycle, showWave]);
 
   return (
     <div ref={wrapperRef} className="relative h-[300vh]">
@@ -117,22 +110,23 @@ export function StickyScrollSection() {
                   opacity: badgeOpacity,
                 }}
               >
-                {/* Inner carousel — absolute-positioned items with direction alternation */}
+                {/* Inner carousel — opacity crossfade between Hi and Wave */}
                 <div className="flex h-full w-full items-center justify-center">
-                  <div className="relative h-[40px] w-[40px] overflow-hidden lg:h-[62px] lg:w-[62px]">
+                  <div className="relative h-[40px] w-[40px] lg:h-[62px] lg:w-[62px]">
                     <motion.div
                       className="absolute inset-0 flex items-center justify-center"
-                      animate={{ y: hiY }}
-                      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                      animate={{ opacity: showWave ? 0 : 1 }}
+                      transition={{ duration: 0.07 }}
                     >
                       <span className="font-sans text-[26px] font-normal text-[#303030] lg:text-[40px]">
                         Hi
                       </span>
                     </motion.div>
                     <motion.div
+                      key={cycle}
                       className="absolute inset-0 flex items-center justify-center"
-                      animate={{ y: waveY }}
-                      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                      animate={{ opacity: showWave ? 1 : 0 }}
+                      transition={{ duration: 0.07 }}
                     >
                       <WaveHandIcon className="h-[40px] w-[40px] lg:h-[62px] lg:w-[62px]" />
                     </motion.div>
