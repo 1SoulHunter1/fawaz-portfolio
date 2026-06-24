@@ -59,6 +59,7 @@ function ContactButton() {
       href="#contact"
       onPointerEnter={() => setHovered(true)}
       onPointerLeave={() => setHovered(false)}
+      data-cursor="blend"
       className="relative flex h-10 items-center overflow-hidden rounded-full bg-white px-[30px] py-[3px] pb-1"
     >
       <motion.div
@@ -132,7 +133,6 @@ export function Navbar() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, ease: EASE, delay: 0.1 }}
       className="fixed top-[20px] left-1/2 z-50 -translate-x-1/2"
-      data-cursor="arrow"
     >
       <LayoutGroup>
         <motion.nav
