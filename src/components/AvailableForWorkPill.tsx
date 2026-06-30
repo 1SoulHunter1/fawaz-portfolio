@@ -23,11 +23,11 @@ export function AvailableForWorkPill() {
           style={{ transformPerspective: 1200, transformOrigin: "50% 0%", transformStyle: "preserve-3d" }}
           className="flex flex-col"
         >
-          <span className="flex h-6 items-center whitespace-nowrap text-base leading-none font-light text-[rgb(208,255,113)]">
+          <span className="flex h-6 items-center whitespace-nowrap text-base leading-none font-light text-white">
             Available for work
           </span>
           <span
-            className="flex h-6 items-center whitespace-nowrap text-base leading-none font-light text-white"
+            className="flex h-6 items-center whitespace-nowrap text-base leading-none font-light text-[#d0ff71]"
             style={{ transform: "rotateX(90deg)", transformOrigin: "50% 0%" }}
           >
             Available for work

@@ -2,17 +2,19 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform, useSpring } from "motion/react";
+import { motion, useScroll, useTransform, useMotionValueEvent } from "motion/react";
 
 const CARD_IMAGES = [
-  "/images/cms/qrxY8NagVO40NBrdhFEGgFR3PYY.jpg",
+  "/images/cms/About_1.png",
   "/images/cms/MZuXaRoDIChJ0C6y8Fwit9E0.jpeg",
   "/images/cms/yb0fdGmcyv8ZYyS3IOlIWNVC7RI.jpeg",
   "/images/cms/VRQgkdWsjawSg1qpCm45HfSY1I.jpeg",
 ];
 
+// Card geometry measured directly from portavia.framer.website/about (framer-jDuwQ):
+// 340×476, border-radius 20px, vertically centered in the pinned viewport.
+const CARD_WIDTH = 340;
 const CARD_HEIGHT = 476;
-const TOTAL_STACK_HEIGHT = CARD_IMAGES.length * CARD_HEIGHT;
 
 export function AboutStickyScroll({
   children,
@@ -25,12 +27,18 @@ export function AboutStickyScroll({
     offset: ["start start", "end end"],
   });
 
-  const rawY = useTransform(
+  // 👇 ADD THIS TO TRACK THE PERCENTAGE
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    // Converts the 0-1 decimal into a clean 0-100 percentage
+    const percentage = Math.round(latest * 100);
+    console.log(`Scroll Progress: ${percentage}% (Decimal: ${latest.toFixed(3)})`);
+  });
+
+  const stripY = useTransform(
     scrollYProgress,
-    [0, 1],
-    [0, -(TOTAL_STACK_HEIGHT - CARD_HEIGHT)],
+    [0, 0.05, 0.286, 0.310, 0.6, 0.650, 1],
+    [0, 0, -CARD_HEIGHT, -CARD_HEIGHT, -CARD_HEIGHT * 2, -CARD_HEIGHT * 2, -CARD_HEIGHT * 3],
   );
-  const y = useSpring(rawY, { stiffness: 300, damping: 40 });
 
   return (
     <div ref={wrapperRef} className="relative">
@@ -40,29 +48,28 @@ export function AboutStickyScroll({
           {/* Left: content sections scroll naturally */}
           <div className="w-[560px] shrink-0">{children}</div>
 
-          {/* Right: sticky image stack (640px with 40px padding each side) */}
+          {/* Right: single pinned image card, crossfading between photos */}
           <div className="w-[640px] shrink-0 px-10">
-            <div className="sticky top-0 flex h-screen justify-center overflow-hidden pt-[calc(50vh-238px)]">
-              <motion.div
-                className="flex flex-col"
-                style={{ y }}
+            <div className="sticky top-0 flex h-screen items-center justify-center">
+              <div
+                className="relative overflow-hidden rounded-[20px]"
+                style={{ width: CARD_WIDTH, height: CARD_HEIGHT }}
               >
-                {CARD_IMAGES.map((src, i) => (
-                  <div
-                    key={src}
-                    className="h-[476px] w-[340px] shrink-0 overflow-hidden rounded-[20px]"
-                  >
+                <motion.div style={{ y: stripY }}>
+                  {CARD_IMAGES.map((src, i) => (
                     <Image
+                      key={src}
                       src={src}
                       alt={`Portrait ${i + 1}`}
-                      width={340}
-                      height={476}
-                      className="h-full w-full object-cover"
+                      width={CARD_WIDTH}
+                      height={CARD_HEIGHT}
+                      className="block object-cover"
+                      style={{ width: CARD_WIDTH, height: CARD_HEIGHT }}
                       priority={i === 0}
                     />
-                  </div>
-                ))}
-              </motion.div>
+                  ))}
+                </motion.div>
+              </div>
             </div>
           </div>
         </div>

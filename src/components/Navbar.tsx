@@ -41,7 +41,7 @@ function NavLink({ href, label }: { href: string; label: string }) {
           {label}
         </span>
         <span
-          className="flex h-6 items-center text-base leading-none font-light text-[rgb(208,255,113)]"
+          className="flex h-6 items-center text-base leading-none font-light text-[#d0ff71]"
           style={{ transform: "rotateX(90deg)", transformOrigin: "50% 0%" }}
         >
           {label}
@@ -86,7 +86,7 @@ function ContactButton() {
         }
         transition={{ duration: 0.5, ease: EASE }}
       />
-      <span className="relative z-10 whitespace-nowrap text-base font-light text-[rgb(48,48,48)]">
+      <span className="relative z-10 whitespace-nowrap text-base font-light text-[#303030]">
         Contact
       </span>
     </Link>
@@ -100,14 +100,14 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.3, ease: EASE }}
-      className="mt-2 flex flex-col gap-4 rounded-2xl bg-[rgba(15,15,15,0.95)] p-6 backdrop-blur-[5px] lg:hidden"
+      className="mt-2 flex flex-col gap-4 rounded-2xl bg-dark-nav p-6 backdrop-blur-[5px] lg:hidden"
     >
       {NAV_LINKS.map((link) => (
         <Link
           key={link.label}
           href={link.href}
           onClick={onClose}
-          className="text-base font-light text-white transition-colors hover:text-[rgb(208,255,113)]"
+          className="text-base font-light text-white transition-colors hover:text-[#d0ff71]"
         >
           {link.label}
         </Link>
@@ -115,7 +115,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
       <Link
         href="#contact"
         onClick={onClose}
-        className="text-base font-light text-white transition-colors hover:text-[rgb(208,255,113)]"
+        className="text-base font-light text-white transition-colors hover:text-[#d0ff71]"
       >
         Contact
       </Link>
@@ -138,12 +138,12 @@ export function Navbar() {
         <motion.nav
           layout
           transition={layoutTransition}
-          className="flex items-center rounded-[28px] bg-[rgba(15,15,15,0.9)] px-[10px] py-2 backdrop-blur-[5px]"
+          className="flex items-center rounded-[28px] bg-dark-nav px-[10px] py-2 backdrop-blur-[5px]"
         >
           {/* Avatar — always visible */}
           <motion.div layout="position" className="shrink-0">
             <Image
-              src="/images/avatar.jpg"
+              src="/images/main_avatar.png"
               alt="Portfolio Creator Avatar"
               width={40}
               height={40}

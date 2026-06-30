@@ -77,11 +77,11 @@ export function BlogSection() {
         <ScrollReveal delay={0.2}>
         <Link
           href="/blogs"
-          className="group/cta relative mt-10 inline-flex h-[48px] items-center gap-3 overflow-hidden rounded-full border border-[#d0ff71] px-8 font-heading text-[26px] font-normal text-[#d0ff71] uppercase"
+          className="group/cta relative mt-10 inline-flex h-[48px] items-center gap-3 overflow-hidden rounded-full border border-accent px-8 font-heading text-[26px] font-normal text-[#d0ff71] uppercase"
           data-cursor="arrow"
         >
           <span className="absolute inset-0 scale-0 rounded-full bg-[#d0ff71] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/cta:scale-100" />
-          <span className="relative z-10 flex items-center gap-3 transition-colors duration-300 group-hover/cta:text-black">
+          <span className="relative z-10 flex items-center gap-3 transition-colors duration-300 group-hover/cta:text-[#303030]">
             BROWSE ALL INSIGHTS
             <ArrowRightIcon className="h-6 w-6" />
           </span>

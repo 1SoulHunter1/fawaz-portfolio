@@ -22,7 +22,7 @@ export function HeroSection() {
       />
 
       <div className="relative mx-auto flex max-w-[1200px] flex-col items-center px-6 md:px-10">
-        {/* Top area: DUNCAN ROBERT + centered photo */}
+        {/* Top area: SHEIK MOHAMMAD FAWAZ + centered photo */}
         <div className="relative mt-8 w-full">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -30,7 +30,7 @@ export function HeroSection() {
             transition={{ duration: 0.8, ease, delay: 0.1 }}
             className="absolute left-0 top-0 text-lg font-light tracking-[2px] text-white uppercase"
           >
-            DUNCAN ROBERT
+            SHEIK MOHAMMAD FAWAZ
           </motion.p>
 
           <motion.div
@@ -40,7 +40,7 @@ export function HeroSection() {
             className="relative mx-auto h-[476px] w-[340px]"
           >
             <Image
-              src="/images/portrait-front.jpg"
+              src="/images/portrait-front.png"
               alt="Portrait of portfolio creator – front view"
               width={340}
               height={476}
@@ -58,7 +58,7 @@ export function HeroSection() {
             transition={{ duration: 0.9, ease, delay: 0.3 }}
             className="font-heading text-[60px] font-bold leading-[1.1] tracking-[-3.6px] text-white uppercase lg:text-[120px] lg:leading-[132px]"
           >
-            DIGITAL
+            AI-DRIVEN
           </motion.h1>
           <motion.h1
             initial={{ opacity: 0, y: 60 }}
@@ -67,7 +67,7 @@ export function HeroSection() {
             className="font-heading text-[60px] font-bold leading-[1.1] tracking-[-3.6px] uppercase lg:text-[120px] lg:leading-[132px]"
             style={{ WebkitTextStroke: "1.5px white", color: "transparent" }}
           >
-            DESIGNER
+            ENGINEER
           </motion.h1>
         </div>
 
@@ -79,7 +79,7 @@ export function HeroSection() {
           className="mt-4 flex w-full justify-end"
         >
           <p className="max-w-[348px] text-right text-lg font-light leading-[27px] text-white">
-            I&apos;m a US-based digital designer and Framer developer
+            Final-year AI/ML student in India, building full-stack apps and intelligent automation.
           </p>
         </motion.div>
 

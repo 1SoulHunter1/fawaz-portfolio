@@ -3,18 +3,18 @@ node_modules/
 .pnp
 .pnp.js
 
-# Build
+# Build output
 .next/
 out/
 build/
 dist/
+*.tsbuildinfo
+next-env.d.ts
 
-# Environment
+# Environment / Secrets
 .env
 .env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env*.local
 
 # Debug
 npm-debug.log*
@@ -31,25 +31,43 @@ yarn-error.log*
 .DS_Store
 Thumbs.db
 
-# TypeScript
-*.tsbuildinfo
-next-env.d.ts
-
 # Vercel
 .vercel
 
-# Local settings (not project config)
-.claude/settings.local.json
+# AI coding assistant configs
+.amazonq/
+.augment/
+.claude/
+.codex/
+.continue/
+.cursor/
+.gemini/
+.opencode/
+.windsurf/
+.windsurfrules
+.clinerules
+.aider.conf.yml
+AGENTS.md
+CLAUDE.md
+GEMINI.md
 
-# User-specific skills (not part of the template)
-.claude/skills/customize/
-.claude/skills/release/
+# Browser automation logs from cloning/QA
+.playwright-mcp/
+
+# Clone research, originals, before/after comparison screenshots
+ai-website-cloner-template/
+assets/
+docs/
+reference/
+contact-original-bottom.png
+contact-original.png
+projects-original-midscroll.png
+page-snapshot-light.txt
+inspect-local.mjs
+inspect-original.mjs
+
+# Unused template tooling (not called by package.json build pipeline)
+scripts/
 
 # Local temp files
 temp/
-
-# Screenshot management
-reference/archive/
-reference/current/
-reference/comparison/
-.playwright-mcp/

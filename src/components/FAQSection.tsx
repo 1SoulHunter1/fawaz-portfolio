@@ -7,39 +7,39 @@ import { ChevronDownIcon } from "@/components/icons";
 const faqs = [
   {
     number: "1",
-    question: "WHAT SERVICES DO YOU OFFER?",
+    question: "WHAT DO YOU WORK ON?",
     answer:
-      "I offer a range of digital design services including UI/UX design, graphic design, web design, and branding. Whether you need a new website, a brand identity, or marketing materials, I can help bring your vision to life.",
+      "I work on AI/ML model development, intelligent automation systems, and full-stack web applications — from deepfake detection engines to multi-agent platforms and production-ready apps.",
   },
   {
     number: "2",
-    question: "HOW DOES THE DESIGN PROCESS WORK?",
+    question: "WHAT'S YOUR DEVELOPMENT PROCESS?",
     answer:
-      "My process typically involves four phases: Discovery (understanding your needs), Design (creating concepts and prototypes), Development (building the final product), and Delivery (launching and ongoing support).",
+      "I start with research and problem framing, build a working prototype fast, iterate based on testing and evaluation metrics, then focus on deployment and documentation.",
   },
   {
     number: "3",
-    question: "HOW LONG DOES A PROJECT USUALLY TAKE?",
+    question: "WHAT TECHNOLOGIES DO YOU WORK WITH?",
     answer:
-      "Project timelines vary depending on scope and complexity. A simple landing page might take 1-2 weeks, while a full brand identity could take 4-6 weeks. I'll provide a detailed timeline during our initial consultation.",
+      "Python, PyTorch, FastAPI, React, Next.js, Docker, and Groq API are my core stack, alongside tools like HuggingFace Transformers, OpenCV, and n8n for automation.",
   },
   {
     number: "4",
-    question: "WHAT DO I NEED TO PROVIDE BEFORE STARTING A PROJECT?",
+    question: "ARE YOU AVAILABLE FOR INTERNSHIPS OR FREELANCE WORK?",
     answer:
-      "To get started, I'll need a brief overview of your project goals, target audience, any existing brand guidelines, and examples of designs you admire. The more information you provide, the better I can tailor the results to your needs.",
+      "Yes — I'm actively seeking AI Engineering, Machine Learning, Generative AI, Automation, and Software Development internships, and I take on select freelance projects.",
   },
   {
     number: "5",
-    question: "DO YOU OFFER REVISIONS?",
+    question: "DO YOU WORK SOLO OR WITH A TEAM?",
     answer:
-      "Yes! I include up to 3 rounds of revisions in my standard packages. Additional revisions can be arranged if needed. My goal is to ensure you're completely satisfied with the final design.",
+      "Both — most of my hackathon projects are built with small teams, while personal projects like Veritas Neural are solo builds end-to-end.",
   },
   {
     number: "6",
-    question: "HOW DO I GET STARTED?",
+    question: "HOW DO I GET IN TOUCH?",
     answer:
-      "Simply reach out through the contact form on this page or send me an email at designer@example.com. I'll respond within 24 hours to schedule a free consultation call where we can discuss your project.",
+      "Reach out through the contact form on this page or email me directly at sheikfawaz32@gmail.com — I'll respond within 24 hours.",
   },
 ];
 
@@ -54,8 +54,8 @@ export function FAQSection() {
             FREQUENTLY ASKED QUESTIONS
           </h2>
           <p className="text-base font-light leading-6 text-white">
-            Here are answers to some of the most common questions I receive as a
-            freelance designer. If you don&apos;t see your question here, feel
+            Here are answers to some of the most common questions I receive about
+            my work and availability. If you don&apos;t see your question here, feel
             free to reach out—I&apos;m happy to help!
           </p>
         </div>
@@ -104,7 +104,7 @@ export function FAQSection() {
                 </div>
               </div>
               {/* Divider line */}
-              <div className="h-px bg-[#333]" />
+              <div className="h-px bg-border" />
             </div>
           ))}
         </div>

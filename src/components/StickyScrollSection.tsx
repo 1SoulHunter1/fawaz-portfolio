@@ -16,11 +16,28 @@ export function StickyScrollSection() {
   });
 
   const springConfig = { stiffness: 300, damping: 35 };
-  const rawRotateY = useTransform(scrollYProgress, [0, 0.73, 1], [0, 340, 340]);
-  const rawTranslateX = useTransform(scrollYProgress, [0, 0.36, 1], [0, 340, 340]);
-  const rawScale = useTransform(scrollYProgress, [0, 0.32, 0.73, 1], [1, 0.904, 1, 1]);
-  const rawRotateZ = useTransform(scrollYProgress, [0, 0.32, 0.73, 1], [0, 9.6, 5, 5]);
-  const rotateY = useSpring(rawRotateY, springConfig);
+  const rotateYSpring = { stiffness: 500, damping: 40 };
+  // Transform curves sampled directly from portavia.framer.website's card at
+  // every 0.10 of scroll progress (51-point DOM measurement; exact measured values,
+  // not rounded). All four channels share a knee at progress 0.50: rotateY accelerates
+  // (slope 300.9°→379.1°/unit), rotateZ peaks at ~9.99°, scale bottoms at ~0.900,
+  // and translateX reaches 340px and plateaus.
+  const PROGRESS = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] as const;
+  const rawRotateY = useTransform(scrollYProgress, [...PROGRESS], [
+    0, 30.045, 60.268, 90.313, 120.358, 150.451, 188.338, 226.226, 264.338, 302.226,
+    340,
+  ]);
+  const rawTranslateX = useTransform(scrollYProgress, [...PROGRESS], [
+    0, 68.101, 136.608, 204.709, 272.811, 340, 340, 340, 340, 340, 340,
+  ]);
+  const rawScale = useTransform(scrollYProgress, [...PROGRESS], [
+    1, 0.97997, 0.95982, 0.93979, 0.91976, 0.90024, 0.92018, 0.94012, 0.96018,
+    0.98012, 1,
+  ]);
+  const rawRotateZ = useTransform(scrollYProgress, [...PROGRESS], [
+    0, 2.003, 4.018, 6.021, 8.024, 9.988, 8.991, 7.994, 6.991, 5.994, 5,
+  ]);
+  const rotateY = useSpring(rawRotateY, rotateYSpring);
   const translateX = useSpring(rawTranslateX, springConfig);
   const cardScale = useSpring(rawScale, springConfig);
   const rotateZ = useSpring(rawRotateZ, springConfig);
@@ -47,7 +64,7 @@ export function StickyScrollSection() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            className="pointer-events-auto relative h-[340px] w-[240px] lg:h-[476px] lg:w-[340px]"
+            className="relative h-[340px] w-[240px] lg:h-[476px] lg:w-[340px]"
             style={{
               perspective: 1200,
             }}
@@ -68,7 +85,7 @@ export function StickyScrollSection() {
                 style={{ backfaceVisibility: "hidden" }}
               >
                 <Image
-                  src="/images/portrait-front.jpg"
+                  src="/images/portrait-front.png"
                   alt="Portrait front"
                   width={340}
                   height={476}
@@ -86,7 +103,7 @@ export function StickyScrollSection() {
                 }}
               >
                 <Image
-                  src="/images/portrait-back.jpeg"
+                  src="/images/portrait-back.png"
                   alt="Portrait back"
                   width={340}
                   height={476}
@@ -103,7 +120,7 @@ export function StickyScrollSection() {
                   ease: [0.16, 1, 0.3, 1],
                   delay: 0.8,
                 }}
-                className="absolute -bottom-4 -left-4 z-10 h-[80px] w-[80px] overflow-hidden rounded-full bg-[#d0ff71] lg:-bottom-[62px] lg:-left-[62px] lg:h-[123px] lg:w-[123px]"
+                className="bg-[#d0ff71] absolute -bottom-4 -left-4 z-10 h-[80px] w-[80px] overflow-hidden rounded-full lg:-bottom-[62px] lg:-left-[62px] lg:h-[123px] lg:w-[123px]"
                 style={{
                   backfaceVisibility: "visible",
                   z: 30,

@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ContentBlock } from "@/components/ContentBlock";
 import { CtaButton } from "@/components/CtaButton";
+import { GithubIcon, ExternalLinkIcon } from "@/components/icons";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { StaggerReveal } from "@/components/animations/StaggerReveal";
 import { projects, getProject } from "@/data/projects";
@@ -55,7 +56,7 @@ export default async function ProjectDetailPage({
           <div className="mx-auto max-w-[1000px] px-6">
             <ScrollReveal>
               <div className="flex items-center gap-3">
-                <span className="inline-block rounded-full bg-[#d0ff71] px-4 py-1 text-sm font-light text-black">
+                <span className="inline-block rounded-full bg-[#d0ff71] px-4 py-1 text-sm font-light text-[#303030]">
                   {project.category}
                 </span>
                 <span className="inline-block rounded-full border border-[#333] px-4 py-1 text-sm font-light text-white">
@@ -68,6 +69,19 @@ export default async function ProjectDetailPage({
               <p className="mt-6 max-w-[720px] text-lg font-light leading-[27px] text-white">
                 {project.description}
               </p>
+
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <CtaButton href={project.githubUrl} external showArrow={false}>
+                  <GithubIcon className="h-5 w-5" />
+                  View on GitHub
+                </CtaButton>
+                {project.liveUrl && (
+                  <CtaButton href={project.liveUrl} external showArrow={false}>
+                    <ExternalLinkIcon className="h-5 w-5" />
+                    Live Demo
+                  </CtaButton>
+                )}
+              </div>
             </ScrollReveal>
 
             {meta.length > 0 && (

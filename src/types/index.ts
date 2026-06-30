@@ -14,6 +14,10 @@ export interface Project {
   industry: string;
   client: string;
   duration: string;
+  /** Placeholder for now — swap in real repo links later. */
+  githubUrl: string;
+  /** Placeholder for now; null/empty hides the "Live Demo" button. */
+  liveUrl: string | null;
   featured: boolean;
   sections: ContentSection[];
 }

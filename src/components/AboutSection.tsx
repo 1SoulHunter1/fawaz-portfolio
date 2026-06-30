@@ -5,28 +5,24 @@ import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { StaggerReveal } from "@/components/animations/StaggerReveal";
 import { CountUp } from "@/components/animations/CountUp";
 import {
-  XIcon,
-  InstagramIcon,
-  BehanceIcon,
-  DribbbleIcon,
+  GithubIcon,
+  LinkedinIcon,
   ArrowRightIcon,
 } from "@/components/icons";
 
 const stats = [
-  { value: 12, suffix: "", label: "Years of Experience" },
-  { value: 270, suffix: "", label: "Completed Projects" },
-  { value: 50, suffix: "+", label: "Clients on Worldwide" },
+  { value: 6, suffix: "", label: "Hackathons Competed" },
+  { value: 10, suffix: "+", label: "Projects Built" },
+  { value: 2, suffix: "+", label: "Years Building AI Systems" },
 ];
 
 const socials = [
-  { icon: XIcon, href: "https://x.com/home", label: "X" },
+  { icon: GithubIcon, href: "https://github.com/1SoulHunter1", label: "GitHub" },
   {
-    icon: InstagramIcon,
-    href: "https://www.instagram.com/",
-    label: "Instagram",
+    icon: LinkedinIcon,
+    href: "https://linkedin.com/in/sheik-mohammad-fawaz-83605a291",
+    label: "LinkedIn",
   },
-  { icon: BehanceIcon, href: "https://www.behance.net/", label: "Behance" },
-  { icon: DribbbleIcon, href: "https://dribbble.com/", label: "Dribbble" },
 ];
 
 export function AboutSection() {
@@ -38,8 +34,9 @@ export function AboutSection() {
             ABOUT ME
           </h2>
           <p className="mt-4 max-w-[700px] text-base font-light leading-6 text-white">
-            Hi, I&apos;m Duncan — a digital designer and Framer developer
-            passionate about crafting meaningful and impactful digital experiences.
+            Hi, I&apos;m Fawaz &mdash; a final-year AI &amp; ML engineer passionate
+            about building multimodal AI systems, intelligent automation, and full-stack
+            applications that solve real problems.
           </p>
         </ScrollReveal>
 
@@ -49,10 +46,10 @@ export function AboutSection() {
               key={stat.label}
               className="flex flex-col gap-2 rounded-[20px] bg-[#d0ff71] p-8"
             >
-              <span className="font-heading text-[60px] font-bold leading-[60px] text-black">
+              <span className="font-heading text-[60px] font-bold leading-[60px] text-[#303030]">
                 <CountUp end={stat.value} suffix={stat.suffix} />
               </span>
-              <span className="text-sm text-black">{stat.label}</span>
+              <span className="text-sm text-[#303030]">{stat.label}</span>
             </div>
           ))}
         </StaggerReveal>
@@ -62,19 +59,19 @@ export function AboutSection() {
             <div className="flex flex-col gap-1">
               <span className="text-sm text-[#b5b5b5]">Call Today :</span>
               <a
-                href="tel:+1 (555) 123-4567"
+                href="tel:+917019644596"
                 className="text-sm text-white transition-colors hover:text-[#d0ff71]"
               >
-                +1 (555) 123-4567
+                +91 7019644596
               </a>
             </div>
             <div className="flex flex-col gap-1">
               <span className="text-sm text-[#b5b5b5]">Email :</span>
               <a
-                href="mailto:designer@example.com"
+                href="mailto:sheikfawaz32@gmail.com"
                 className="text-sm text-white transition-colors hover:text-[#d0ff71]"
               >
-                designer@example.com
+                sheikfawaz32@gmail.com
               </a>
             </div>
           </div>
@@ -88,7 +85,7 @@ export function AboutSection() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-[#303030] text-[#b5b5b5] transition-colors hover:bg-[#d0ff71] hover:text-black"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-[#303030] text-[#b5b5b5] transition-colors hover:bg-[#d0ff71] hover:text-[#303030]"
                 aria-label={social.label}
               >
                 <social.icon className="h-4 w-4" />
@@ -100,11 +97,11 @@ export function AboutSection() {
         <ScrollReveal delay={0.2}>
           <Link
             href="/about"
-            className="group/cta relative mt-10 inline-flex h-[48px] items-center gap-3 overflow-hidden rounded-full border border-[#d0ff71] px-8 font-heading text-[26px] font-normal text-[#d0ff71] uppercase"
+            className="group/cta relative mt-10 inline-flex h-[48px] items-center gap-3 overflow-hidden rounded-full border border-accent px-8 font-heading text-[26px] font-normal text-[#d0ff71] uppercase"
             data-cursor="arrow"
           >
             <span className="absolute inset-0 scale-0 rounded-full bg-[#d0ff71] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/cta:scale-100" />
-            <span className="relative z-10 flex items-center gap-3 transition-colors duration-300 group-hover/cta:text-black">
+            <span className="relative z-10 flex items-center gap-3 transition-colors duration-300 group-hover/cta:text-[#303030]">
               MY STORY
               <ArrowRightIcon className="h-6 w-6" />
             </span>

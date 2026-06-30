@@ -9,7 +9,7 @@ import { projects } from "@/data/projects";
 export const metadata: Metadata = {
   title: "Projects — Portavia",
   description:
-    "Featured design projects spanning branding, UI/UX, web design and graphic design.",
+    "Featured AI/ML and full-stack projects spanning deep learning, NLP, automation, and web applications.",
 };
 
 export default function ProjectsPage() {
@@ -27,9 +27,9 @@ export default function ProjectsPage() {
                 Featured Projects
               </h1>
               <p className="mt-5 max-w-[500px] text-lg font-light leading-[27px] text-white">
-                These selected projects reflect my passion for blending strategy
-                with creativity — solving real problems through thoughtful design
-                and impactful storytelling.
+                These selected projects reflect my passion for solving real
+                problems — from deepfake detection to intelligent automation and
+                interactive data visualization.
               </p>
             </ScrollReveal>
 

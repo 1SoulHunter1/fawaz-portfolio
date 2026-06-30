@@ -6,71 +6,61 @@ import { ContactSection } from "@/components/ContactSection";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { StaggerReveal } from "@/components/animations/StaggerReveal";
 import { AboutStickyScroll } from "@/components/AboutStickyScroll";
+import { AboutServicesAccordion } from "@/components/AboutServicesAccordion";
 import { cn } from "@/lib/utils";
 import {
-  XIcon,
-  InstagramIcon,
-  BehanceIcon,
-  DribbbleIcon,
+  GithubIcon,
+  LinkedinIcon,
 } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "About — Portavia",
   description:
-    "Duncan Robert — a US-based digital designer and Framer developer crafting meaningful, user-centered experiences.",
+    "Sheik Mohammad Fawaz — an India-based AI/ML engineer and full-stack developer building intelligent systems that solve real-world problems.",
 };
 
 const socials = [
-  { icon: XIcon, href: "https://x.com/", label: "X" },
-  { icon: InstagramIcon, href: "https://www.instagram.com/", label: "Instagram" },
-  { icon: BehanceIcon, href: "https://www.behance.net/", label: "Behance" },
-  { icon: DribbbleIcon, href: "https://dribbble.com/", label: "Dribbble" },
-];
-
-const services = [
-  { number: "1", title: "UI/UX DESIGN" },
-  { number: "2", title: "GRAPHIC DESIGN" },
-  { number: "3", title: "WEB DESIGN" },
-  { number: "4", title: "BRANDING" },
+  { icon: GithubIcon, href: "https://github.com/1SoulHunter1", label: "GitHub" },
+  { icon: LinkedinIcon, href: "https://linkedin.com/in/sheik-mohammad-fawaz-83605a291", label: "LinkedIn" },
 ];
 
 const timeline = [
-  { role: "Creative Art Director", company: "NovaWorks Agency", years: "2023 - Present" },
-  { role: "Senior UI/UX Designer", company: "BrightLabs Digital", years: "2020 - 2023" },
-  { role: "UI Designer", company: "PixelForge Interactive", years: "2018 - 2020" },
-  { role: "Graphic Designer", company: "Creative Studio 101", years: "2016 - 2018" },
+  { role: "Freelance Web Developer", company: "Self-Employed", years: "2024 – Present" },
+  { role: "Campus Ambassador", company: "Syntro Tech", years: "Jun 2026 – Present" },
+  { role: "App Development Intern", company: "CodeAlpha", years: "Sep 2025 – Oct 2025" },
+  { role: "Campus Mantri", company: "GeeksforGeeks", years: "2025 – Present" },
 ];
 
 const techStack = [
   {
-    name: "Framer",
+    name: "Python",
     logo: "/images/cms/Nf63tXddU52SRtJJgRHqk7zzD2g.png",
     description:
-      "My creative playground for building interactive and responsive websites—fast, flexible, and no code.",
+      "My primary language for AI/ML development, data pipelines, and backend logic.",
   },
   {
-    name: "Figma",
+    name: "PyTorch",
     logo: "/images/cms/RaZetiUCiiVee9pYfau5kIm0k.jpg",
     description:
-      "My go-to for UI/UX design—perfect for wireframing, prototyping, and collaborating in real time.",
+      "My go-to deep learning framework for building and training neural networks.",
   },
   {
-    name: "X",
+    name: "React / Next.js",
     logo: "/images/cms/KhZnIlAtOozB2Axd5yg9ALd7A.jpg",
     description:
-      "Where I connect, share insights, and grow within the design and Framer community.",
+      "For building fast, modern full-stack web applications and interactive UIs.",
   },
   {
-    name: "Spline",
+    name: "FastAPI",
     logo: "/images/cms/FigaBMy3WrTNL79MFKifsXxXE.jpg",
     description:
-      "My tool for bringing 3D visuals into the web—perfect for adding playful, interactive depth to projects.",
+      "My framework of choice for building high-performance backend APIs.",
   },
   {
-    name: "Lemon Squeezy",
+    name: "Docker",
     logo: "/images/cms/1jsryiRhbB5SoLHzyceqqF9tpo.jpg",
     description:
-      "My trusted solution for managing payments and licensing digital products effortlessly.",
+      "For containerizing and deploying applications consistently across environments.",
   },
 ];
 
@@ -189,23 +179,27 @@ export default function AboutPage() {
       <main>
         <AboutStickyScroll>
           {/* Hero — original has Container with px-40, no top/bottom padding on container */}
-          <section className="w-full min-h-screen bg-[#1a1a1b] px-6 pt-36 pb-16 md:px-10 lg:pt-[133px]">
+          <section className="w-full min-h-screen px-6 pt-36 pb-16 md:px-10 lg:pt-[133px]">
             <div className="flex max-w-[480px] flex-col">
               <h1 className="font-heading text-[56px] font-bold leading-[1.05] tracking-[-2px] text-white uppercase lg:text-[120px] lg:leading-[132px] lg:tracking-[-3.6px]">
                 About me
               </h1>
               <h3 className="font-heading mt-6 text-[26px] font-normal leading-[41.6px] text-white uppercase md:text-[32px]">
-                Duncan Robert
+                Sheik Mohammad Fawaz
               </h3>
               <p className="mt-6 text-lg font-light leading-[27px] text-white">
-                I&apos;m a digital designer and Framer developer passionate about
-                crafting meaningful, user-centered experiences.
+                I&apos;m a final-year B.E. student in Artificial Intelligence and
+                Machine Learning, passionate about building intelligent systems
+                that solve real-world problems.
               </p>
               <p className="mt-4 text-lg font-light leading-[27px] text-white">
-                With a strong foundation in visual design and a deep understanding
-                of interactive systems, I bring ideas to life through thoughtful
-                design, smooth animations, and responsive layouts.
+                My work spans deep learning, multi-agent automation, and 
+                full-stack development — turning ideas into working systems, from 
+                deepfake detection engines to automation platforms, using 
+                Python, PyTorch, React, and Next.js.
               </p>
+
+
               <div className="mt-8 flex items-center gap-5">
                 {socials.map((social) => (
                   <a
@@ -224,7 +218,7 @@ export default function AboutPage() {
               {/* Mobile only: static image */}
               <div className="relative mx-auto mt-10 h-[476px] w-full max-w-[340px] overflow-hidden rounded-[20px] lg:hidden">
                 <Image
-                  src="/images/cms/qrxY8NagVO40NBrdhFEGgFR3PYY.jpg"
+                  src="/images/cms/qrxY8NagVO40NBrdhFEGgFR3PYY.png"
                   alt="Portrait"
                   fill
                   sizes="340px"
@@ -236,39 +230,32 @@ export default function AboutPage() {
           </section>
 
           {/* Services — collapsed accordion (number + title only) */}
-          <section className="w-full bg-[#1a1a1b] px-6 py-[120px] md:px-10">
+          <section className="w-full px-6 py-[120px] md:px-10">
             <ScrollReveal>
               <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
-                WHAT I CAN DO FOR YOU
+                AREAS OF EXPERTISE
               </h2>
               <p className="mt-5 max-w-[500px] text-lg font-light leading-[27px] text-white">
-                As a digital designer, I am a visual storyteller, crafting
-                experiences that connect deeply and spark creativity.
+                I design and build AI &mdash; powered applications, intelligent automation systems, 
+                and scalable software from concept to deployment.
+                
               </p>
             </ScrollReveal>
 
-            <StaggerReveal className="mt-10" staggerDelay={0.1}>
-              {services.map((service) => (
-                <div key={service.number} className="border-t border-[#333] py-5">
-                  <h3 className="font-heading text-[24px] font-normal leading-[1.3] text-white uppercase lg:text-[32px] lg:leading-[41.6px]">
-                    {service.number}. {service.title}
-                  </h3>
-                </div>
-              ))}
-            </StaggerReveal>
+            <AboutServicesAccordion />
           </section>
 
           {/* Journey timeline */}
-          <section className="w-full bg-[#1a1a1b] px-6 py-[120px] md:px-10">
+          <section className="w-full px-6 py-[120px] md:px-10">
             <ScrollReveal>
               <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
-                Discover My Journey in Design
+                Discover My Journey in Tech
               </h2>
               <p className="mt-2.5 max-w-[700px] text-lg font-light leading-[27px] text-white">
-                From curious creator to full-time designer, my path has been shaped
-                by a passion for crafting purposeful, user-centered digital
-                experiences—blending storytelling, structure, and design into every
-                project.
+                From curious builder to AI/ML engineer, my path has been shaped
+                by a passion for creating intelligent systems and solving real-world
+                problems &mdash; blending research, engineering, and creativity into
+                every project.
               </p>
             </ScrollReveal>
 
@@ -295,15 +282,15 @@ export default function AboutPage() {
           </section>
 
           {/* Tech stack — vertical list of cards */}
-          <section className="w-full bg-[#1a1a1b] px-6 py-[120px] md:px-10">
+          <section className="w-full px-6 py-[120px] md:px-10">
             <ScrollReveal>
               <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
                 My Tech Stack
               </h2>
               <p className="mt-2.5 max-w-[700px] text-lg font-light leading-[27px] text-white">
-                I build with intention. Framer for fast, interactive web design.
-                Figma for clean interfaces. Notion and X for content. Each tool
-                supports how I think, design.
+                I build with intention. Python and PyTorch for AI/ML. React and
+                Next.js for modern frontends. FastAPI and Docker for production
+                deployments. Each tool supports how I think, build, and ship.
               </p>
             </ScrollReveal>
 
@@ -311,7 +298,7 @@ export default function AboutPage() {
               {techStack.map((tool) => (
                 <div
                   key={tool.name}
-                  className="flex items-center gap-4 rounded-[20px] border border-[#333] p-5"
+                  className="flex items-start gap-5 border-b-[0.8px] border-[#333] py-5"
                 >
                   <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl">
                     <Image
@@ -322,11 +309,11 @@ export default function AboutPage() {
                       className="object-cover"
                     />
                   </div>
-                  <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-6">
-                    <span className="font-heading shrink-0 text-[24px] font-normal text-white">
+                  <div className="flex flex-col">
+                    <span className="text-lg font-semibold leading-[23.4px] text-white">
                       {tool.name}
                     </span>
-                    <p className="text-sm font-light leading-[21px] text-[#b5b5b5]">
+                    <p className="text-sm font-light leading-[21px] text-white">
                       {tool.description}
                     </p>
                   </div>
@@ -337,7 +324,7 @@ export default function AboutPage() {
         </AboutStickyScroll>
 
         {/* Process — full width, outside sticky scroll */}
-        <section className="w-full bg-[#1a1a1b] py-[120px]">
+        <section className="w-full py-[120px]">
           <div className="mx-auto max-w-[1200px] px-6 md:px-10">
             <ScrollReveal>
               <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">

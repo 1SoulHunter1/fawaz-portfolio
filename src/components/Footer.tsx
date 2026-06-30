@@ -1,27 +1,21 @@
-import Image from "next/image";
-import Link from "next/link";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import {
-  XIcon,
-  InstagramIcon,
-  BehanceIcon,
-  DribbbleIcon,
+  GithubIcon,
+  LinkedinIcon,
 } from "@/components/icons";
 
 const socials = [
-  { icon: XIcon, href: "https://x.com/", label: "X" },
+  { icon: GithubIcon, href: "https://github.com/1SoulHunter1", label: "GitHub" },
   {
-    icon: InstagramIcon,
-    href: "https://www.instagram.com/",
-    label: "Instagram",
+    icon: LinkedinIcon,
+    href: "https://linkedin.com/in/sheik-mohammad-fawaz-83605a291",
+    label: "LinkedIn",
   },
-  { icon: BehanceIcon, href: "https://www.behance.net/", label: "Behance" },
-  { icon: DribbbleIcon, href: "https://dribbble.com/", label: "Dribbble" },
 ];
 
 export function Footer() {
   return (
-    <footer className="w-full bg-[#d0ff71]" data-cursor="arrow">
+    <footer className="w-full bg-[#d0ff71]" data-cursor="blend">
       <ScrollReveal direction="none">
         <div className="mx-auto flex max-w-[1200px] flex-col gap-5 px-6 py-10 md:px-10">
           {/* Top row: Email | Phone | Social */}
@@ -32,10 +26,10 @@ export function Footer() {
                 Email :
               </p>
               <a
-                href="mailto:designer@example.com"
+                href="mailto:sheikfawaz32@gmail.com"
                 className="text-lg font-semibold leading-[23.4px] text-[#303030] transition-opacity hover:opacity-70"
               >
-                designer@example.com
+                sheikfawaz32@gmail.com
               </a>
             </div>
 
@@ -43,13 +37,13 @@ export function Footer() {
             <div className="flex-1 md:flex md:justify-center">
               <div>
                 <p className="text-sm font-light leading-[21px] text-[#303030]">
-                  Call Today :
+                  Phone :
                 </p>
                 <a
-                  href="tel:+15551234567"
+                  href="tel:+917019644596"
                   className="text-lg font-semibold leading-[23.4px] text-[#303030] transition-opacity hover:opacity-70"
                 >
-                  +1 (555) 123-4567
+                  +91 7019644596
                 </a>
               </div>
             </div>
@@ -78,44 +72,7 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Divider */}
-          <div className="h-px w-full bg-[#303030]" />
 
-          {/* Bottom row: Copyright | Creator */}
-          <div className="flex min-h-[40px] flex-col gap-2 md:flex-row md:items-center">
-            <div className="flex-1">
-              <p className="text-sm font-light leading-[21px] text-[#303030]">
-                &copy; Copyright 2025. All Rights Reserved by{" "}
-                <a
-                  href="https://www.framer.com/@duncan/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-opacity hover:opacity-70"
-                >
-                  oldshen
-                </a>
-              </p>
-            </div>
-            <div className="flex flex-1 items-center gap-2.5 md:justify-end">
-              <p className="text-sm font-light leading-[21px] text-[#303030]">
-                Created by
-              </p>
-              <Image
-                src="/images/creator-logo.png"
-                alt="Creator Logo"
-                width={40}
-                height={40}
-              />
-              <a
-                href="https://x.com/ShenDuncan"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-light leading-[21px] text-[#303030] transition-opacity hover:opacity-70"
-              >
-                Duncan Shen
-              </a>
-            </div>
-          </div>
         </div>
       </ScrollReveal>
     </footer>

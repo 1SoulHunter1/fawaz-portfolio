@@ -103,7 +103,3 @@ html.lenis {
   overscroll-behavior: contain;
 }
 
-html.cursor-hidden,
-html.cursor-hidden * {
-  cursor: none !important;
-}

@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
+import { motion, useMotionValue, useSpring } from "motion/react";
 
-const LERP = 0.12;
 const DOT_SIZE = 16;
 const EXPANDED_SIZE = 70;
 const IMAGE_SIZE = 200;
@@ -31,59 +31,24 @@ function getVariant(target: EventTarget | null): {
 }
 
 export function MouseFollower() {
-  const dotRef = useRef<HTMLDivElement>(null);
-  const arrowRef = useRef<SVGSVGElement>(null);
-  const imgRef = useRef<HTMLImageElement>(null);
-  const mouse = useRef({ x: 0, y: 0 });
-  const pos = useRef({ x: 0, y: 0 });
-  const visible = useRef(false);
-  const currentVariant = useRef<CursorVariant>("default");
-  const rafId = useRef(0);
+  const [variant, setVariant] = useState<CursorVariant>("default");
+  const [imageSrc, setImageSrc] = useState<string>("");
+  const [visible, setVisible] = useState(false);
 
-  const applyVariant = useCallback(
-    (v: CursorVariant, imageSrc?: string) => {
-      const dot = dotRef.current;
-      const arrow = arrowRef.current;
-      const img = imgRef.current;
-      if (!dot) return;
-      currentVariant.current = v;
+  // Raw mouse coordinates; the spring trails slightly behind these.
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springConfig = { stiffness: 500, damping: 40, mass: 0.6 };
+  const x = useSpring(mouseX, springConfig);
+  const y = useSpring(mouseY, springConfig);
 
-      if (v === "image") {
-        dot.style.width = `${IMAGE_SIZE}px`;
-        dot.style.height = `${IMAGE_SIZE}px`;
-        dot.style.borderRadius = "20px";
-        dot.style.mixBlendMode = "normal";
-        dot.style.backgroundColor = "transparent";
-        if (arrow) arrow.style.opacity = "0";
-        if (img) {
-          img.src = imageSrc ?? "";
-          img.style.opacity = "1";
-        }
-      } else if (v === "arrow") {
-        dot.style.width = `${EXPANDED_SIZE}px`;
-        dot.style.height = `${EXPANDED_SIZE}px`;
-        dot.style.borderRadius = "9999px";
-        dot.style.mixBlendMode = "normal";
-        dot.style.backgroundColor = "#d0ff71";
-        if (arrow) arrow.style.opacity = "1";
-        if (img) img.style.opacity = "0";
-      } else if (v === "blend") {
-        dot.style.width = `${DOT_SIZE}px`;
-        dot.style.height = `${DOT_SIZE}px`;
-        dot.style.borderRadius = "9999px";
-        dot.style.mixBlendMode = "color-burn";
-        dot.style.backgroundColor = "#d0ff71";
-        if (arrow) arrow.style.opacity = "0";
-        if (img) img.style.opacity = "0";
-      } else {
-        dot.style.width = `${DOT_SIZE}px`;
-        dot.style.height = `${DOT_SIZE}px`;
-        dot.style.borderRadius = "9999px";
-        dot.style.mixBlendMode = "normal";
-        dot.style.backgroundColor = "#d0ff71";
-        if (arrow) arrow.style.opacity = "0";
-        if (img) img.style.opacity = "0";
-      }
+  const hasMoved = useRef(false);
+
+  const sync = useCallback(
+    (target: EventTarget | null) => {
+      const { variant: v, imageSrc: src } = getVariant(target);
+      setVariant(v);
+      setImageSrc(src ?? "");
     },
     [],
   );
@@ -91,91 +56,79 @@ export function MouseFollower() {
   useEffect(() => {
     if (isTouch()) return;
 
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    const lerp = reducedMotion ? 1 : LERP;
-
-    document.documentElement.classList.add("cursor-hidden");
-
     const onMove = (e: MouseEvent) => {
-      mouse.current.x = e.clientX;
-      mouse.current.y = e.clientY;
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
 
-      if (!visible.current && dotRef.current) {
-        visible.current = true;
-        pos.current.x = e.clientX;
-        pos.current.y = e.clientY;
-        dotRef.current.style.opacity = "1";
+      if (!hasMoved.current) {
+        // Jump the spring to the first known position so it doesn't fly in
+        // from the top-left corner on first reveal.
+        hasMoved.current = true;
+        x.jump(e.clientX);
+        y.jump(e.clientY);
+        setVisible(true);
       }
 
-      const { variant: v, imageSrc } = getVariant(e.target);
-      if (v !== currentVariant.current || (v === "image" && imgRef.current?.src !== imageSrc)) {
-        applyVariant(v, imageSrc);
-      }
+      sync(e.target);
     };
 
-    const onLeave = () => {
-      if (dotRef.current) dotRef.current.style.opacity = "0";
-      visible.current = false;
-    };
-
+    const onLeave = () => setVisible(false);
     const onEnter = (e: MouseEvent) => {
-      mouse.current.x = e.clientX;
-      mouse.current.y = e.clientY;
-      if (dotRef.current) {
-        pos.current.x = e.clientX;
-        pos.current.y = e.clientY;
-        dotRef.current.style.opacity = "1";
-        visible.current = true;
-      }
-    };
-
-    const tick = () => {
-      if (visible.current && dotRef.current) {
-        pos.current.x += (mouse.current.x - pos.current.x) * lerp;
-        pos.current.y += (mouse.current.y - pos.current.y) * lerp;
-        dotRef.current.style.transform = `translate(-50%, -50%) translate3d(${pos.current.x}px, ${pos.current.y}px, 0)`;
-      }
-      rafId.current = requestAnimationFrame(tick);
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+      x.jump(e.clientX);
+      y.jump(e.clientY);
+      hasMoved.current = true;
+      setVisible(true);
     };
 
     document.addEventListener("mousemove", onMove, { passive: true });
     document.addEventListener("mouseleave", onLeave);
     document.addEventListener("mouseenter", onEnter);
-    rafId.current = requestAnimationFrame(tick);
 
     return () => {
-      document.documentElement.classList.remove("cursor-hidden");
       document.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseleave", onLeave);
       document.removeEventListener("mouseenter", onEnter);
-      cancelAnimationFrame(rafId.current);
     };
-  }, [applyVariant]);
+  }, [mouseX, mouseY, x, y, sync]);
 
   if (typeof window !== "undefined" && isTouch()) return null;
 
+  const isImage = variant === "image";
+  const isArrow = variant === "arrow";
+  const isBlend = variant === "blend";
+
+  const size = isImage ? IMAGE_SIZE : isArrow ? EXPANDED_SIZE : DOT_SIZE;
+
   return (
-    <div
-      ref={dotRef}
+    <motion.div
       aria-hidden="true"
-      className="pointer-events-none fixed top-0 left-0 z-[13] flex items-center justify-center overflow-hidden bg-[#d0ff71] opacity-0 transition-[width,height,mix-blend-mode,border-radius,background-color] duration-300 ease-out"
+      className="pointer-events-none fixed top-0 left-0 z-[9999] flex items-center justify-center overflow-hidden"
       style={{
-        width: DOT_SIZE,
-        height: DOT_SIZE,
-        borderRadius: "9999px",
+        x,
+        y,
+        translateX: "-50%",
+        translateY: "-50%",
+        opacity: visible ? 1 : 0,
+        width: size,
+        height: size,
+        borderRadius: isImage ? 20 : 9999,
+        backgroundColor: isImage ? "transparent" : "#d0ff71",
+        mixBlendMode: isBlend ? "color-burn" : "normal",
+        transition:
+          "width 0.3s ease-out, height 0.3s ease-out, border-radius 0.3s ease-out, background-color 0.3s ease-out, mix-blend-mode 0.3s ease-out, opacity 0.2s ease-out",
         willChange: "transform",
       }}
     >
       <svg
-        ref={arrowRef}
-        className="-rotate-45 opacity-0 transition-opacity duration-300"
+        className="-rotate-45 transition-opacity duration-300"
+        style={{ opacity: isArrow ? 1 : 0 }}
         width={24}
         height={24}
         viewBox="0 0 24 24"
         fill="none"
-        stroke="white"
+        stroke="#303030"
         strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -184,12 +137,14 @@ export function MouseFollower() {
         <path d="M6 12h12.5m0 0l-6-6m6 6l-6 6" />
       </svg>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        ref={imgRef}
-        alt=""
-        className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300"
-        aria-hidden="true"
-      />
-    </div>
+      {isImage && imageSrc ? (
+        <img
+          src={imageSrc}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-300"
+          aria-hidden="true"
+        />
+      ) : null}
+    </motion.div>
   );
 }

@@ -9,108 +9,49 @@ import { cn } from "@/lib/utils";
 const services = [
   {
     number: "1",
-    title: "UI/UX DESIGN",
+    title: "AI & MACHINE LEARNING",
     items: [
-      "Wireframing and prototyping",
-      "User Interface design for web and mobile apps",
-      "Usability testing and user feedback analysis",
-      "Interaction design and micro-animations",
+      "Deep learning model development with PyTorch",
+      "Multimodal AI systems (vision, audio, text)",
+      "Model evaluation, cross-validation, and benchmarking",
+      "Deployment of ML pipelines with Docker + FastAPI",
     ],
   },
   {
     number: "2",
-    title: "GRAPHIC DESIGN",
+    title: "GENERATIVE AI & AUTOMATION",
     items: [
-      "Logo and brand identity design",
-      "Social media graphics and ad creatives",
-      "Infographics and data visualization",
-      "Custom illustrations and icons",
+      "Multi-agent automation systems",
+      "Prompt engineering for LLMs",
+      "Workflow automation with n8n",
+      "LLM integration (Groq API, HuggingFace Transformers)",
     ],
   },
   {
     number: "3",
-    title: "WEB DESIGN",
+    title: "FULL-STACK DEVELOPMENT",
     items: [
-      "Responsive website design",
-      "Landing page design and optimization",
-      "Webflow development and customization",
-      "Website maintenance and updates",
+      "REST API development (FastAPI, Node.js)",
+      "Frontend development with React and Next.js",
+      "Database design (PostgreSQL, Prisma ORM)",
+      "Cross-platform apps with Flutter",
     ],
   },
   {
     number: "4",
-    title: "BRANDING",
+    title: "SOFTWARE ENGINEERING",
     items: [
-      "Brand strategy and identity development",
-      "Visual style guide creation",
-      "Typography and color scheme selection",
-      "Brand storytelling and messaging",
+      "Docker containerization",
+      "Git/GitHub version control workflows",
+      "Cloud deployment on Google Cloud",
+      "Technical documentation with LaTeX/Overleaf",
     ],
   },
 ];
 
-function ServiceAccordionItem({
-  service,
-}: {
-  service: (typeof services)[number];
-}) {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <div className="border-t border-[#333]">
-      <button
-        onClick={() => setOpen(!open)}
-        className="flex w-full items-center justify-between py-5"
-      >
-        <h3 className="font-heading text-[24px] font-normal leading-[1.3] text-white uppercase md:text-[32px] md:leading-[41.6px]">
-          {service.number}. {service.title}
-        </h3>
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
-          fill="none"
-          className={cn(
-            "shrink-0 text-white transition-transform duration-300",
-            open && "rotate-180"
-          )}
-        >
-          <path
-            d="M5 12.5L10 7.5L15 12.5"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
-      <div
-        className={cn(
-          "grid transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
-          open ? "grid-rows-[1fr] pb-5" : "grid-rows-[0fr]"
-        )}
-      >
-        <div className="overflow-hidden">
-          <ul className="flex flex-col gap-3">
-            {service.items.map((item) => (
-              <li
-                key={item}
-                className="flex items-start gap-3 text-base font-light text-[#b5b5b5]"
-              >
-                <span className="mt-0.5 w-5 shrink-0 text-[rgb(106,113,223)]">
-                  <CheckCircleIcon />
-                </span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export function ServicesSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   return (
     <section className="w-full bg-[#1a1a1b] py-20">
       <div className="mx-auto max-w-[1200px] px-6 md:px-10">
@@ -119,15 +60,75 @@ export function ServicesSection() {
             WHAT I CAN DO FOR YOU
           </h2>
           <p className="mt-4 max-w-[600px] text-base font-light leading-6 text-white">
-            As a digital designer, I am a visual storyteller, crafting experiences
-            that connect deeply and spark creativity.
+            As an AI/ML engineer, I build systems that learn, automate, and scale &mdash;
+            turning research into working products.
           </p>
         </ScrollReveal>
 
         <StaggerReveal className="mt-12 flex flex-col" staggerDelay={0.1}>
-          {services.map((service) => (
-            <ServiceAccordionItem key={service.number} service={service} />
-          ))}
+          {services.map((service, i) => {
+            const open = openIndex === i;
+            return (
+              <div key={service.number} className="border-t border-[#333]">
+                <button
+                  onClick={() => setOpenIndex(open ? null : i)}
+                  className="group flex w-full items-center justify-between py-5 text-left"
+                >
+                  <h3
+                    className={cn(
+                      "font-heading text-[24px] font-normal uppercase leading-[1.3] transition-colors duration-300 md:text-[32px] md:leading-[41.6px]",
+                      open
+                        ? "text-[#d0ff71]"
+                        : "text-white group-hover:text-[#d0ff71]",
+                    )}
+                  >
+                    {service.number}. {service.title}
+                  </h3>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                    className={cn(
+                      "shrink-0 text-white transition-transform duration-300",
+                      open ? "rotate-0" : "rotate-180",
+                    )}
+                  >
+                    <path
+                      d="M6 9l6 6 6-6"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+                <div
+                  className={cn(
+                    "grid transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                    open ? "grid-rows-[1fr] pb-5" : "grid-rows-[0fr]",
+                  )}
+                >
+                  <div className="overflow-hidden">
+                    <ul className="flex flex-col gap-3">
+                      {service.items.map((item) => (
+                        <li
+                          key={item}
+                          className="flex items-start gap-3 text-base font-light text-[#b5b5b5]"
+                        >
+                          <span className="mt-0.5 w-5 shrink-0 text-[#d0ff71]">
+                            <CheckCircleIcon />
+                          </span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </StaggerReveal>
       </div>
     </section>

@@ -3,22 +3,24 @@ import type { Project } from "@/types";
 
 export const projects: Project[] = [
   {
-    "slug": "summer-vibes-festival-campaign",
-    "category": "Graphic Design",
-    "title": "Summer Vibes Festival Campaign",
-    "description": "Created promotional materials for the \"Summer Vibes Festival,\" including posters, flyers, and social media graphics.",
+    "slug": "veritas-neural",
+    "category": "AI / Deep Learning",
+    "title": "Veritas Neural",
+    "description": "A 4-modality deepfake detection engine using a 3-model ensemble achieving sub-1.5s inference latency on CPU-only hardware, with a Dockerized FastAPI backend and React frontend for fully local, privacy-preserving inference.",
     "cover": "/images/cms/w08JBQPFYIq2vr4OfcD9W6vxEug.jpeg",
-    "year": "2024",
-    "industry": "Event / Festival",
-    "client": "FestivalWorks",
-    "duration": "6 weeks",
+    "year": "2025",
+    "industry": "AI / Security",
+    "client": "Personal Project",
+    "duration": "8 weeks",
+    "githubUrl": "https://github.com/1SoulHunter1/veritas-neural",
+    "liveUrl": null,
     "featured": true,
     "sections": [
       {
         "heading": "Problem",
         "paragraphs": [
-          "Promoting summer festivals in a saturated market is a significant challenge, as audiences are constantly bombarded with event advertisements across multiple channels. Many festival campaigns struggle to capture attention or convey a unique, memorable atmosphere, resulting in low engagement and ticket sales.",
-          "The \"Summer Vibes Festival\" needed a cohesive visual campaign that would instantly evoke the energy and excitement of summer, while standing out from competing events."
+          "Deepfakes are becoming increasingly sophisticated, posing serious threats to media integrity, personal privacy, and public trust. Existing detection tools often rely on single-modality analysis and cloud-based inference, raising both accuracy and privacy concerns.",
+          "There was a need for a multi-modal detection system that could analyze image, audio, video, and text simultaneously — all running locally to preserve user privacy."
         ],
         "images": [
           "/images/cms/7i3y7S8hh5RjwFKy8VAstpXwRLM.jpeg"
@@ -27,8 +29,8 @@ export const projects: Project[] = [
       {
         "heading": "Solution",
         "paragraphs": [
-          "To address this, a vibrant and cohesive set of promotional materials was developed, including posters, flyers, and social media graphics. The campaign leveraged bold, sun-soaked color palettes, playful typography, and dynamic imagery that captured the essence of summer fun.",
-          "Consistent visual elements and messaging were used across all materials to reinforce the festival’s brand identity and create a unified, easily recognizable look. The designs were tailored for both print and digital platforms, ensuring maximum reach and adaptability."
+          "Veritas Neural implements a 3-model ensemble architecture covering 4 modalities (vision, audio, text, and video). The system achieves sub-1.5s inference latency on CPU-only hardware, making it accessible without expensive GPU infrastructure.",
+          "The backend is built with FastAPI and containerized via Docker, while the frontend uses React for an intuitive analysis dashboard. All inference runs locally, ensuring fully privacy-preserving deepfake detection."
         ],
         "images": [
           "/images/cms/lUKY3v1xTIvOuK62nRDiv3v87gc.jpeg",
@@ -38,16 +40,16 @@ export const projects: Project[] = [
       {
         "heading": "Challenge",
         "paragraphs": [
-          "The main challenge was to create visuals that would appeal to a broad, diverse audience while maintaining a distinctive festival identity. Striking the right balance between energetic visuals and clear, informative content was essential to avoid overwhelming viewers or diluting key messages.",
-          "Adapting the campaign’s look and feel for different formats—ranging from large posters to small social media posts—required careful planning to ensure visual consistency and impact at every scale."
+          "The primary challenge was achieving real-time inference across multiple modalities on CPU-only hardware. Balancing model accuracy with computational efficiency required careful architecture design, model quantization, and pipeline optimization.",
+          "Ensuring consistent detection quality across diverse media types — from subtle face-swaps to AI-generated audio — demanded extensive cross-validation and benchmarking."
         ],
         "images": []
       },
       {
         "heading": "Summary",
         "paragraphs": [
-          "The \"Summer Vibes Festival Campaign\" successfully captured the lively spirit of summer through a series of eye-catching promotional materials. By combining vibrant colors, playful design elements, and cohesive branding, the campaign generated excitement and anticipation for the event.",
-          "This project demonstrates how thoughtful, well-executed design can elevate an event’s visibility, attract a wider audience, and create a memorable festival experience from the very first impression."
+          "Veritas Neural demonstrates that robust, multi-modal deepfake detection can run entirely on local hardware without sacrificing speed or accuracy. The 3-model ensemble approach provides defense-in-depth against evolving deepfake techniques.",
+          "This project showcases end-to-end system design from model development through containerized deployment, proving that AI safety tools can be both powerful and privacy-preserving."
         ],
         "images": [
           "/images/cms/EITi5QTOPWfDXwQq1KDpx3O7xtc.jpeg",
@@ -57,21 +59,23 @@ export const projects: Project[] = [
     ]
   },
   {
-    "slug": "coral-spiral-abstract",
-    "category": "Branding",
-    "title": "Coral Spiral Abstract",
-    "description": "A visually striking 3D abstract artwork featuring a coral-colored spiral form with smooth, flowing curves and a soft pink gradient background, emphasizing modern digital aesthetics and organic geometry.",
+    "slug": "agentflow",
+    "category": "AI Automation",
+    "title": "AgentFlow",
+    "description": "A multi-agent automation workspace powered by Groq Llama 3.3 and Gemma, integrated with the Notion API, built with Next.js, Prisma ORM, and PostgreSQL with persistent conversation state.",
     "cover": "/images/cms/qbjsnnvP9w7UaA2syp36oUe8OSo.jpg",
     "year": "2025",
-    "industry": "Beauty",
-    "client": "VisualForms Studio",
-    "duration": "3 weeks",
+    "industry": "AI / Productivity",
+    "client": "Personal Project",
+    "duration": "6 weeks",
+    "githubUrl": "https://github.com/1SoulHunter1/AgentFlow-AI_Automation_Platform",
+    "liveUrl": null,
     "featured": true,
     "sections": [
       {
         "heading": "Problem",
         "paragraphs": [
-          "In the world of digital art, it can be difficult to create abstract compositions that are both visually captivating and harmonious. Many 3D artworks either lack a sense of organic flow or fail to stand out due to uninspired color choices."
+          "Knowledge workers spend significant time on repetitive tasks that could be automated — from organizing notes to generating summaries to managing project workflows. Existing automation tools often lack intelligence and context awareness."
         ],
         "images": [
           "/images/cms/GXMr7UYyjAl3Onda9G2r7zW7iD0.jpg"
@@ -80,8 +84,8 @@ export const projects: Project[] = [
       {
         "heading": "Solution",
         "paragraphs": [
-          "This project introduces a 3D abstract artwork centered on a coral-colored spiral form with smooth, flowing curves. Set against a soft pink gradient background, the design leverages organic geometry to create a sense of movement and depth.",
-          "The use of coral tones brings warmth and vibrancy, while the gentle gradient enhances the overall softness and modern appeal. This composition aims to capture attention while remaining elegant and balanced."
+          "AgentFlow provides a multi-agent workspace where specialized AI agents powered by Groq Llama 3.3 and Gemma collaborate to automate complex workflows. The platform integrates directly with the Notion API for seamless knowledge management.",
+          "Built with Next.js, Prisma ORM, and PostgreSQL, the system maintains persistent conversation state across sessions, enabling agents to build context over time and deliver increasingly relevant automation."
         ],
         "images": [
           "/images/cms/flsR6xqfDebWKrEfwDLKRuYU.jpg",
@@ -91,16 +95,16 @@ export const projects: Project[] = [
       {
         "heading": "Challenge",
         "paragraphs": [
-          "One of the main challenges is achieving a seamless blend between the spiral’s organic curves and the digital medium’s precision. The artwork must avoid appearing too mechanical or artificial, instead highlighting the natural, fluid qualities of the spiral.",
-          "Another challenge is ensuring the coral color remains vivid and harmonious with the background gradient, avoiding any visual clash or loss of contrast. Maintaining visual interest without overcrowding the composition is also essential."
+          "Coordinating multiple AI agents with different capabilities while maintaining coherent conversation state was a core challenge. The system needed to handle concurrent requests, manage token budgets across models, and ensure data consistency in PostgreSQL.",
+          "Integrating with the Notion API required careful handling of rate limits, data synchronization, and schema mapping between Notion's block structure and the application's internal data model."
         ],
         "images": []
       },
       {
         "heading": "Summary",
         "paragraphs": [
-          "\"Coral Spiral Abstract\" is a visually striking 3D artwork that fuses modern digital aesthetics with organic forms. Through the interplay of a coral-colored spiral and a soft pink gradient background, the piece delivers a sense of movement, warmth, and sophistication.",
-          "This project demonstrates how thoughtful use of color and form can create digital art that is both contemporary and emotionally engaging."
+          "AgentFlow demonstrates how multi-agent AI systems can transform productivity workflows. By combining fast LLM inference via Groq with persistent state management, the platform delivers intelligent automation that improves with use.",
+          "This project showcases full-stack AI application development — from LLM integration and prompt engineering to database design and API architecture."
         ],
         "images": [
           "/images/cms/Rj0Ez5VU0m6neoNfeFEWpHKlG4.jpg"
@@ -109,22 +113,24 @@ export const projects: Project[] = [
     ]
   },
   {
-    "slug": "shopease-redesign-sprint",
-    "category": "UI / UX Design",
-    "title": "ShopEase Redesign Sprint",
-    "description": "Redesigned the \"ShopEase\" e-commerce app to enhance user experience. Focused on simplifying navigation, optimizing the checkout process, and incorporating a sleek.",
+    "slug": "knowledge-graph-builder",
+    "category": "NLP",
+    "title": "Knowledge Graph Builder",
+    "description": "An NLP pipeline using spaCy dependency parsing and coreference resolution, with Barnes-Hut force-directed graph rendering, NER-based clustering, and multi-format ingestion via a Streamlit dashboard.",
     "cover": "/images/cms/nTU7b0ZAdWdlqCI4mQ4tGTPpDs.jpeg",
     "year": "2025",
-    "industry": "E-commerce",
-    "client": "ShopEase",
-    "duration": "3 weeks",
+    "industry": "AI / Knowledge Management",
+    "client": "Personal Project",
+    "duration": "4 weeks",
+    "githubUrl": "https://github.com/1SoulHunter1/knowledge-graph-builder",
+    "liveUrl": null,
     "featured": true,
     "sections": [
       {
         "heading": "Problem",
         "paragraphs": [
-          "The original ShopEase e-commerce app faced several usability issues that hindered user satisfaction and conversion rates. Users found the navigation confusing, the checkout process cumbersome, and the overall interface outdated compared to modern e-commerce standards.",
-          "These pain points resulted in higher bounce rates, abandoned carts, and a lack of customer loyalty, highlighting the urgent need for a comprehensive redesign."
+          "Extracting structured knowledge from unstructured text documents is a fundamental challenge in NLP. Traditional approaches often miss implicit relationships between entities and struggle with coreference resolution across long documents.",
+          "There was a need for an interactive tool that could ingest multiple document formats, extract entities and relationships, and visualize them as an explorable knowledge graph."
         ],
         "images": [
           "/images/cms/qWjMf5YLDsHPfWrxindJlbU8dZ0.jpg"
@@ -133,8 +139,8 @@ export const projects: Project[] = [
       {
         "heading": "Solution",
         "paragraphs": [
-          "The redesign sprint focused on creating a more intuitive and visually appealing user experience. Navigation was simplified with a clear, consistent menu structure and prominent search functionality, allowing users to find products quickly and easily. The checkout process was streamlined by reducing unnecessary steps, providing clear progress indicators, and integrating popular payment options for convenience.",
-          "The new interface adopted a sleek, modern aesthetic with ample white space, clean typography, and cohesive color schemes, making the app feel both fresh and trustworthy."
+          "The Knowledge Graph Builder implements a full NLP pipeline using spaCy for dependency parsing, named entity recognition, and coreference resolution. Extracted entities and relationships are rendered as an interactive force-directed graph using Barnes-Hut optimization for performance.",
+          "The Streamlit dashboard provides multi-format document ingestion (PDF, DOCX, TXT), NER-based clustering for organizing related entities, and interactive graph exploration with filtering and search capabilities."
         ],
         "images": [
           "/images/cms/AQyIdhIsQfYxzXoj7uBtxQZiY.jpeg",
@@ -144,15 +150,15 @@ export const projects: Project[] = [
       {
         "heading": "Challenge",
         "paragraphs": [
-          "One of the main challenges was balancing the need for a modern, minimalist look with the requirement to display a large amount of product information and features. Ensuring that the app remained easy to use for both new and returning customers required extensive user testing and iteration."
+          "Scaling graph rendering to handle thousands of nodes and edges required implementing Barnes-Hut force-directed layout optimization. Ensuring accurate coreference resolution across diverse document types demanded careful model tuning and evaluation."
         ],
         "images": []
       },
       {
         "heading": "Summary",
         "paragraphs": [
-          "The \"ShopEase Redesign Sprint\" transformed the e-commerce app into a user-friendly and visually engaging platform. By simplifying navigation, optimizing the checkout flow, and introducing a sleek new interface, the project significantly improved user satisfaction and reduced friction throughout the shopping journey.",
-          "This redesign demonstrates the power of thoughtful UX/UI improvements in driving business success and enhancing the overall customer experience."
+          "The Knowledge Graph Builder transforms unstructured text into structured, explorable knowledge graphs. By combining advanced NLP techniques with interactive visualization, the tool makes it easy to discover hidden relationships and patterns in large document collections.",
+          "This project demonstrates practical NLP engineering — from pipeline design and entity extraction to graph algorithms and interactive dashboards."
         ],
         "images": [
           "/images/cms/V3dM8G5w3WsDaQWdlZHWXxDIrvw.jpeg"
@@ -161,21 +167,23 @@ export const projects: Project[] = [
     ]
   },
   {
-    "slug": "black-geometric-prisms",
-    "category": "Branding",
-    "title": "Black Geometric Prisms",
-    "description": "A collection of sharp, angular black prisms floating against a gradient dark background, showcasing a modern and sophisticated approach to digital 3D geometric composition.",
+    "slug": "heart-disease-prediction",
+    "category": "Machine Learning",
+    "title": "Heart Disease Prediction",
+    "description": "Compared six ML classifiers on the UCI Cleveland Heart Disease dataset, achieving 91.80% accuracy and 96.10% ROC-AUC with KNN after feature engineering and StratifiedKFold cross-validation.",
     "cover": "/images/cms/2nWXrWvPxxMHSpsOkNYf8KjzP7Q.jpeg",
-    "year": "2025",
-    "industry": "Tech",
-    "client": "Studio Prism",
-    "duration": "4 weeks",
+    "year": "2024",
+    "industry": "Healthcare / AI",
+    "client": "Academic Project",
+    "duration": "3 weeks",
+    "githubUrl": "",
+    "liveUrl": null,
     "featured": true,
     "sections": [
       {
         "heading": "Problem",
         "paragraphs": [
-          "In the realm of digital 3D art, it is often challenging to create compositions that convey both modern sophistication and visual intrigue without overwhelming the viewer. Many geometric designs either lack depth and subtlety or become too visually complex, losing their elegance."
+          "Heart disease remains one of the leading causes of death globally. Early prediction using patient clinical data can significantly improve outcomes, but selecting the right ML approach and properly evaluating model performance is critical for reliable predictions."
         ],
         "images": [
           "/images/cms/DLbVxsYll4feLhrOA8Pq4MPaVhs.jpeg"
@@ -184,8 +192,8 @@ export const projects: Project[] = [
       {
         "heading": "Solution",
         "paragraphs": [
-          "This project proposes a collection of sharp, angular black prisms, artfully arranged to float against a gradient dark background. By leveraging the interplay of light, shadow, and reflective surfaces, the composition achieves a sense of depth and refinement.",
-          "The use of monochromatic black tones ensures a minimalist yet powerful aesthetic, while the geometric forms provide structure and visual interest. This approach allows for versatility, making the visuals suitable for a wide range of modern digital applications."
+          "This project systematically compared six machine learning classifiers — Logistic Regression, Decision Tree, Random Forest, SVM, KNN, and Naive Bayes — on the UCI Cleveland Heart Disease dataset. Feature engineering techniques were applied to optimize model inputs.",
+          "StratifiedKFold cross-validation ensured robust evaluation across class distributions. The KNN classifier achieved the best performance with 91.80% accuracy and 96.10% ROC-AUC, demonstrating strong predictive capability."
         ],
         "images": [
           "/images/cms/7vdKfhDeY9XcYH1lKpvTLMT0gb8.jpeg",
@@ -195,15 +203,15 @@ export const projects: Project[] = [
       {
         "heading": "Challenge",
         "paragraphs": [
-          "One of the main challenges is achieving a harmonious balance between complexity and simplicity. The prisms must be arranged in a way that feels dynamic and engaging, yet not chaotic or cluttered."
+          "The main challenge was ensuring fair model comparison through consistent preprocessing, hyperparameter tuning, and cross-validation strategies. Handling class imbalance and selecting meaningful evaluation metrics beyond accuracy required careful statistical analysis."
         ],
         "images": []
       },
       {
         "heading": "Summary",
         "paragraphs": [
-          "\"Black Geometric Prisms\" is a digital 3D art project that explores the fusion of minimalism and sophistication through the use of angular black prisms set against a gradient dark background.",
-          "By focusing on clean geometric forms and nuanced lighting, the project delivers a modern visual language that is both elegant and versatile."
+          "This project provides a rigorous comparison of classical ML classifiers for heart disease prediction, establishing KNN as the top performer on the UCI Cleveland dataset. The systematic evaluation methodology ensures reproducible and trustworthy results.",
+          "The work demonstrates strong foundations in ML experimentation — from data preprocessing and feature engineering to model selection and statistical evaluation."
         ],
         "images": [
           "/images/cms/iS2DgXxnjtQqDJ5KVOdKGQLXgD8.jpeg",
@@ -222,6 +230,8 @@ export const projects: Project[] = [
     "industry": "Creative Agency",
     "client": "ColorTrend Agency",
     "duration": "2 weeks",
+    "githubUrl": "https://github.com/1SoulHunter1",
+    "liveUrl": "https://example.com",
     "featured": false,
     "sections": [
       {
@@ -276,6 +286,8 @@ export const projects: Project[] = [
     "industry": "Retail",
     "client": "Intenza Boutique",
     "duration": "5 weeks",
+    "githubUrl": "https://github.com/1SoulHunter1",
+    "liveUrl": "https://example.com",
     "featured": false,
     "sections": [
       {
@@ -329,6 +341,8 @@ export const projects: Project[] = [
     "industry": "Real Estate",
     "client": "VistaHaven",
     "duration": "2 weeks",
+    "githubUrl": "https://github.com/1SoulHunter1",
+    "liveUrl": "https://example.com",
     "featured": false,
     "sections": [
       {
@@ -380,6 +394,8 @@ export const projects: Project[] = [
     "industry": "Tech",
     "client": "InnovateTech",
     "duration": "5 weeks",
+    "githubUrl": "https://github.com/1SoulHunter1",
+    "liveUrl": "https://example.com",
     "featured": false,
     "sections": [
       {
