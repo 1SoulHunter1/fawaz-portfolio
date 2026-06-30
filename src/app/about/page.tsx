@@ -84,7 +84,7 @@ const techStack = [
     name: "PostgreSQL / Prisma",
     logo: "/images/cms/RaZetiUCiiVee9pYfau5kIm0k.jpg",
     description:
-      "Relational database with type-safe ORM for persistent state in AgentFlow and automation pipelines.",
+      "Relational database with type-safe ORM for persistent state in the ATS Pipeline and automation projects.",
   },
   {
     name: "n8n / Groq API",

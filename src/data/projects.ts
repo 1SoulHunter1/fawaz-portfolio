@@ -59,23 +59,23 @@ export const projects: Project[] = [
     ]
   },
   {
-    "slug": "agentflow",
+    "slug": "linkedin-resume-ats-pipeline",
     "category": "AI Automation",
-    "title": "AgentFlow",
-    "description": "A multi-agent automation workspace powered by Groq Llama 3.3 and Gemma, integrated with the Notion API, built with Next.js, Prisma ORM, and PostgreSQL with persistent conversation state.",
+    "title": "LinkedIn Resume ATS Pipeline",
+    "description": "A multi-agent automation pipeline using n8n, Groq, and Supabase that classifies LinkedIn job posts, extracts requirements, and generates ATS-optimized resumes and cover letters in real time.",
     "cover": "/images/cms/qbjsnnvP9w7UaA2syp36oUe8OSo.jpg",
     "year": "2025",
-    "industry": "AI / Productivity",
+    "industry": "AI / Recruitment",
     "client": "Personal Project",
-    "duration": "6 weeks",
-    "githubUrl": "https://github.com/1SoulHunter1/AgentFlow-AI_Automation_Platform",
+    "duration": "3 weeks",
+    "githubUrl": "https://github.com/1SoulHunter1/Linkedin-Resume-ATS-Pipeline",
     "liveUrl": null,
     "featured": true,
     "sections": [
       {
         "heading": "Problem",
         "paragraphs": [
-          "Knowledge workers spend significant time on repetitive tasks that could be automated — from organizing notes to generating summaries to managing project workflows. Existing automation tools often lack intelligence and context awareness."
+          "Applying to jobs on LinkedIn is tedious and inefficient. Each application demands a tailored resume and cover letter that matches the job description's keywords — what ATS systems actually scan for. Doing this manually for dozens of postings is unsustainable."
         ],
         "images": [
           "/images/cms/GXMr7UYyjAl3Onda9G2r7zW7iD0.jpg"
@@ -84,8 +84,8 @@ export const projects: Project[] = [
       {
         "heading": "Solution",
         "paragraphs": [
-          "AgentFlow provides a multi-agent workspace where specialized AI agents powered by Groq Llama 3.3 and Gemma collaborate to automate complex workflows. The platform integrates directly with the Notion API for seamless knowledge management.",
-          "Built with Next.js, Prisma ORM, and PostgreSQL, the system maintains persistent conversation state across sessions, enabling agents to build context over time and deliver increasingly relevant automation."
+          "The pipeline chains three specialized LLM agents via n8n: a classifier that scores incoming LinkedIn job posts by relevance, an extractor that pulls key requirements and ATS keywords, and a generator that produces tailored resumes and cover letters optimized for each posting.",
+          "Supabase stores job data, agent decisions, and generated documents persistently, while Groq's ultra-fast inference keeps the full pipeline under 10 seconds per application."
         ],
         "images": [
           "/images/cms/flsR6xqfDebWKrEfwDLKRuYU.jpg",
@@ -95,16 +95,16 @@ export const projects: Project[] = [
       {
         "heading": "Challenge",
         "paragraphs": [
-          "Coordinating multiple AI agents with different capabilities while maintaining coherent conversation state was a core challenge. The system needed to handle concurrent requests, manage token budgets across models, and ensure data consistency in PostgreSQL.",
-          "Integrating with the Notion API required careful handling of rate limits, data synchronization, and schema mapping between Notion's block structure and the application's internal data model."
+          "Ensuring generated resumes pass real ATS systems required iterative prompt engineering and validation against actual ATS parsers. The classifier also needed careful calibration to avoid false positives flooding the pipeline with irrelevant roles.",
+          "Rate limiting across the Groq API and LinkedIn data ingestion required a queueing strategy with exponential backoff, plus caching previously seen job posts in Supabase to eliminate redundant LLM calls."
         ],
         "images": []
       },
       {
         "heading": "Summary",
         "paragraphs": [
-          "AgentFlow demonstrates how multi-agent AI systems can transform productivity workflows. By combining fast LLM inference via Groq with persistent state management, the platform delivers intelligent automation that improves with use.",
-          "This project showcases full-stack AI application development — from LLM integration and prompt engineering to database design and API architecture."
+          "The LinkedIn Resume ATS Pipeline demonstrates how multi-agent automation can turn a manual, hours-long process into a fully autonomous workflow. By combining fast LLM inference via Groq with persistent state in Supabase, the system processes job postings end-to-end without human intervention.",
+          "This project showcases practical AI automation — from workflow orchestration with n8n to prompt engineering for structured document generation."
         ],
         "images": [
           "/images/cms/Rj0Ez5VU0m6neoNfeFEWpHKlG4.jpg"

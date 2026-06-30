@@ -17,12 +17,12 @@ const projects = [
       "A 4-modality deepfake detection engine using a 3-model ensemble achieving sub-1.5s inference latency on CPU-only hardware, with a Dockerized FastAPI backend and React frontend for fully local, privacy-preserving inference.",
   },
   {
-    slug: "agentflow",
+    slug: "linkedin-resume-ats-pipeline",
     image: "/images/project-coral-spiral.jpg",
     category: "AI Automation",
-    title: "AGENTFLOW",
+    title: "LINKEDIN RESUME ATS PIPELINE",
     description:
-      "A multi-agent automation workspace powered by Groq Llama 3.3 and Gemma, integrated with the Notion API, built with Next.js, Prisma ORM, and PostgreSQL with persistent conversation state.",
+      "A multi-agent automation pipeline using n8n, Groq, and Supabase that classifies LinkedIn job posts, extracts requirements, and generates ATS-optimized resumes and cover letters in real time.",
   },
   {
     slug: "knowledge-graph-builder",
