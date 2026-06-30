@@ -6,6 +6,8 @@ import { motion } from "motion/react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { WaveHandIcon } from "@/components/icons";
 
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "";
+
 export function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
@@ -13,6 +15,7 @@ export function ContactSection() {
     service: "",
     message: "",
   });
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   const [cycle, setCycle] = useState(0);
   const showWave = cycle % 2 === 1;
@@ -22,8 +25,30 @@ export function ContactSection() {
     return () => clearTimeout(timeout);
   }, [cycle, showWave]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setStatus("sending");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Portfolio Contact: ${formData.service || "General"}`,
+          from_name: formData.name,
+          ...formData,
+        }),
+      });
+      if (res.ok) {
+        setStatus("sent");
+        setFormData({ name: "", email: "", service: "", message: "" });
+        setTimeout(() => setStatus("idle"), 4000);
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -171,13 +196,25 @@ export function ContactSection() {
                 />
               </div>
 
+              {status === "sent" && (
+                <p className="text-sm font-light text-[#d0ff71]">
+                  Message sent! I&apos;ll get back to you soon.
+                </p>
+              )}
+              {status === "error" && (
+                <p className="text-sm font-light text-red-400">
+                  Something went wrong — please try again or email me directly.
+                </p>
+              )}
+
               <button
                 type="submit"
-                className="group/cta font-heading relative mt-4 w-fit overflow-hidden rounded-full border border-[#d0ff71] bg-transparent px-10 py-2 text-[26px] font-normal leading-[33.8px] text-[#d0ff71] uppercase"
+                disabled={status === "sending"}
+                className="group/cta font-heading relative mt-4 w-fit overflow-hidden rounded-full border border-[#d0ff71] bg-transparent px-10 py-2 text-[26px] font-normal leading-[33.8px] text-[#d0ff71] uppercase disabled:opacity-50"
               >
                 <span className="absolute inset-0 scale-0 rounded-full bg-[#d0ff71] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/cta:scale-100" />
                 <span className="relative z-10 transition-colors duration-300 group-hover/cta:text-[#303030]">
-                  SUBMIT
+                  {status === "sending" ? "SENDING…" : "SUBMIT"}
                 </span>
               </button>
             </form>
