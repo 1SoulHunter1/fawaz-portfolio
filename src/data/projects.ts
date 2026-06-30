@@ -113,24 +113,24 @@ export const projects: Project[] = [
     ]
   },
   {
-    "slug": "knowledge-graph-builder",
-    "category": "NLP",
-    "title": "Knowledge Graph Builder",
-    "description": "An NLP pipeline using spaCy dependency parsing and coreference resolution, with Barnes-Hut force-directed graph rendering, NER-based clustering, and multi-format ingestion via a Streamlit dashboard.",
+    "slug": "agentflow",
+    "category": "AI / Productivity",
+    "title": "AgentFlow",
+    "description": "An AI-powered automation workspace that connects chat models, research agents, and integrations into a unified dashboard — a personal LangDock + Notion + Zapier built with Next.js 15, Prisma, PostgreSQL, and Groq.",
     "cover": "/images/cms/nTU7b0ZAdWdlqCI4mQ4tGTPpDs.jpeg",
     "year": "2025",
-    "industry": "AI / Knowledge Management",
+    "industry": "AI / Productivity",
     "client": "Personal Project",
-    "duration": "4 weeks",
-    "githubUrl": "https://github.com/1SoulHunter1/knowledge-graph-builder",
+    "duration": "6 weeks",
+    "githubUrl": "https://github.com/1SoulHunter1/AgentFlow-AI_Automation_Platform",
     "liveUrl": null,
     "featured": true,
     "sections": [
       {
         "heading": "Problem",
         "paragraphs": [
-          "Extracting structured knowledge from unstructured text documents is a fundamental challenge in NLP. Traditional approaches often miss implicit relationships between entities and struggle with coreference resolution across long documents.",
-          "There was a need for an interactive tool that could ingest multiple document formats, extract entities and relationships, and visualize them as an explorable knowledge graph."
+          "Developers, analysts, and creators juggle multiple tools for AI chat, web research, document summarization, and knowledge management. Switching between standalone LLM interfaces, search tools, and Notion means fragmented workflows and lost context.",
+          "There was a need for a single workspace where AI agents could collaborate — research, summarize, and push results directly into productivity tools without manual copy-pasting."
         ],
         "images": [
           "/images/cms/qWjMf5YLDsHPfWrxindJlbU8dZ0.jpg"
@@ -139,8 +139,8 @@ export const projects: Project[] = [
       {
         "heading": "Solution",
         "paragraphs": [
-          "The Knowledge Graph Builder implements a full NLP pipeline using spaCy for dependency parsing, named entity recognition, and coreference resolution. Extracted entities and relationships are rendered as an interactive force-directed graph using Barnes-Hut optimization for performance.",
-          "The Streamlit dashboard provides multi-format document ingestion (PDF, DOCX, TXT), NER-based clustering for organizing related entities, and interactive graph exploration with filtering and search capabilities."
+          "AgentFlow provides a real-time streaming chat interface powered by Groq AI (Llama 3.3 / Gemma), with three specialized agents: a Web Search Agent (Tavily API), a Summarizer Agent, and a Deep Research Agent that performs multi-layer contextual analysis.",
+          "The platform integrates directly with the Notion API for seamless database sync, supports file uploads (.pdf, .docx, .csv, .txt) with automatic extraction and summarization, and persists conversations via Prisma ORM and PostgreSQL."
         ],
         "images": [
           "/images/cms/AQyIdhIsQfYxzXoj7uBtxQZiY.jpeg",
@@ -150,15 +150,16 @@ export const projects: Project[] = [
       {
         "heading": "Challenge",
         "paragraphs": [
-          "Scaling graph rendering to handle thousands of nodes and edges required implementing Barnes-Hut force-directed layout optimization. Ensuring accurate coreference resolution across diverse document types demanded careful model tuning and evaluation."
+          "Orchestrating multiple AI agents with different capabilities while maintaining coherent conversation state required careful API route design and token budget management across Groq models. The real-time streaming chat needed reliable markdown rendering and conversation persistence.",
+          "Integrating with the Notion API demanded handling rate limits, schema mapping between Notion’s block structure and the app’s internal data model, and ensuring bidirectional sync without data loss."
         ],
         "images": []
       },
       {
         "heading": "Summary",
         "paragraphs": [
-          "The Knowledge Graph Builder transforms unstructured text into structured, explorable knowledge graphs. By combining advanced NLP techniques with interactive visualization, the tool makes it easy to discover hidden relationships and patterns in large document collections.",
-          "This project demonstrates practical NLP engineering — from pipeline design and entity extraction to graph algorithms and interactive dashboards."
+          "AgentFlow demonstrates how multi-agent AI systems can unify productivity workflows in a single dashboard. By combining fast LLM inference via Groq, web search via Tavily, document processing, and Notion integration, the platform delivers an intelligent workspace that scales with the user.",
+          "Tech stack: Next.js 15, TypeScript, TailwindCSS, shadcn/ui, Groq AI, Tavily Search, Notion API, Prisma ORM, PostgreSQL, deployed on Vercel."
         ],
         "images": [
           "/images/cms/V3dM8G5w3WsDaQWdlZHWXxDIrvw.jpeg"
@@ -167,23 +168,23 @@ export const projects: Project[] = [
     ]
   },
   {
-    "slug": "heart-disease-prediction",
-    "category": "Machine Learning",
-    "title": "Heart Disease Prediction",
-    "description": "Compared six ML classifiers on the UCI Cleveland Heart Disease dataset, achieving 91.80% accuracy and 96.10% ROC-AUC with KNN after feature engineering and StratifiedKFold cross-validation.",
+    "slug": "fittrack-fitness-tracker",
+    "category": "Mobile App",
+    "title": "FitTrack — Fitness Tracker App",
+    "description": "A Flutter fitness tracking app with Material 3 UI, animated charts, dual database support (SQLite offline + Firebase cloud), and Provider state management — built during a CodeAlpha internship.",
     "cover": "/images/cms/2nWXrWvPxxMHSpsOkNYf8KjzP7Q.jpeg",
-    "year": "2024",
-    "industry": "Healthcare / AI",
-    "client": "Academic Project",
-    "duration": "3 weeks",
-    "githubUrl": "https://github.com/1SoulHunter1/heart-disease-prediction",
+    "year": "2025",
+    "industry": "Health / Fitness",
+    "client": "CodeAlpha Internship",
+    "duration": "4 weeks",
+    "githubUrl": "https://github.com/1SoulHunter1/CodeAlpha_Fitness_Tracker_App",
     "liveUrl": null,
     "featured": true,
     "sections": [
       {
         "heading": "Problem",
         "paragraphs": [
-          "Heart disease remains one of the leading causes of death globally. Early prediction using patient clinical data can significantly improve outcomes, but selecting the right ML approach and properly evaluating model performance is critical for reliable predictions."
+          "Most fitness tracking apps are either bloated with features most users never touch, or locked into a single data storage model — forcing users to choose between offline-only access and cloud backup. There was a need for a clean, focused fitness tracker that lets users switch between local and cloud storage seamlessly."
         ],
         "images": [
           "/images/cms/DLbVxsYll4feLhrOA8Pq4MPaVhs.jpeg"
@@ -192,8 +193,8 @@ export const projects: Project[] = [
       {
         "heading": "Solution",
         "paragraphs": [
-          "This project systematically compared six machine learning classifiers — Logistic Regression, Decision Tree, Random Forest, SVM, KNN, and Naive Bayes — on the UCI Cleveland Heart Disease dataset. Feature engineering techniques were applied to optimize model inputs.",
-          "StratifiedKFold cross-validation ensured robust evaluation across class distributions. The KNN classifier achieved the best performance with 91.80% accuracy and 96.10% ROC-AUC, demonstrating strong predictive capability."
+          "FitTrack is a Flutter app with a polished Material 3 UI featuring a modern dashboard with daily steps, weekly calorie tracking, and progress goals — all visualized through animated charts using fl_chart.",
+          "The app uses a clean architecture with an abstract DatabaseService interface, allowing users to switch between SQLite (offline) and Cloud Firestore (cloud backup) without changing any application logic. Provider handles state management, optimized for 120Hz displays."
         ],
         "images": [
           "/images/cms/7vdKfhDeY9XcYH1lKpvTLMT0gb8.jpeg",
@@ -203,237 +204,20 @@ export const projects: Project[] = [
       {
         "heading": "Challenge",
         "paragraphs": [
-          "The main challenge was ensuring fair model comparison through consistent preprocessing, hyperparameter tuning, and cross-validation strategies. Handling class imbalance and selecting meaningful evaluation metrics beyond accuracy required careful statistical analysis."
+          "Designing the dual database abstraction was the core architectural challenge — the service layer needed to be truly interchangeable so swapping from SQLite to Firestore required changing a single line, not rewriting data access logic. Ensuring consistent data models and query patterns across both backends required careful interface design.",
+          "Achieving smooth 120Hz animations on the dashboard charts while maintaining responsive UI during database operations required optimized Provider patterns and efficient widget rebuilds."
         ],
         "images": []
       },
       {
         "heading": "Summary",
         "paragraphs": [
-          "This project provides a rigorous comparison of classical ML classifiers for heart disease prediction, establishing KNN as the top performer on the UCI Cleveland dataset. The systematic evaluation methodology ensures reproducible and trustworthy results.",
-          "The work demonstrates strong foundations in ML experimentation — from data preprocessing and feature engineering to model selection and statistical evaluation."
+          "FitTrack delivers a focused, well-architected fitness tracker that prioritizes clean code and user experience over feature bloat. The dual database architecture demonstrates clean separation of concerns, and the Material 3 UI with animated charts provides a polished, modern feel.",
+          "Tech stack: Flutter 3.x, Dart, Provider, SQFlite, Cloud Firestore, fl_chart, Google Fonts (Poppins), Shared Preferences. Supports Android and iOS."
         ],
         "images": [
           "/images/cms/iS2DgXxnjtQqDJ5KVOdKGQLXgD8.jpeg",
           "/images/cms/8sl9Ujll2IskiALuyKBBhJlknJ4.jpeg"
-        ]
-      }
-    ]
-  },
-  {
-    "slug": "pantone-very-peri-poster-design",
-    "category": "Graphic Design",
-    "title": "Pantone Very Peri Poster Design",
-    "description": "A minimalist poster design inspired by Pantone’s Color of the Year 2022, Very Peri, combining clean typography, a soft periwinkle background, and a delicate blue branch illustration for a fresh, contemporary look.",
-    "cover": "/images/cms/RFcUbpIGFydbU9WBSTc9HJRQI.jpeg",
-    "year": "2024",
-    "industry": "Creative Agency",
-    "client": "ColorTrend Agency",
-    "duration": "2 weeks",
-    "githubUrl": "https://github.com/1SoulHunter1",
-    "liveUrl": "https://example.com",
-    "featured": false,
-    "sections": [
-      {
-        "heading": "Problem",
-        "paragraphs": [
-          "Many poster designs that incorporate trending colors tend to become visually overwhelming or fail to capture the unique character of the chosen shade. Designers often struggle to balance color, illustration, and typography in a way that feels modern, fresh, and true to the spirit of Pantone’s Color of the Year.",
-          "There is a need for a poster that highlights Very Peri’s vibrancy while maintaining a minimalist and contemporary aesthetic."
-        ],
-        "images": [
-          "/images/cms/U0I500EmGOZ2lvygkGIvmr13JU.jpeg"
-        ]
-      },
-      {
-        "heading": "Solution",
-        "paragraphs": [
-          "This project proposes a minimalist poster design that uses Pantone’s Very Peri as the primary background color. Clean, modern typography is paired with a subtle blue branch illustration, creating a harmonious focal point.",
-          "The overall composition is kept simple to let the color and illustration breathe, ensuring that the freshness and optimism of Very Peri are front and center. This approach delivers a poster that is both visually striking and elegantly understated."
-        ],
-        "images": [
-          "/images/cms/mBc2xUjTRVxlcztYHtgXYF11o.jpeg",
-          "/images/cms/HNVCqnaFAfiDAhkxkg4SjB5c3w.jpeg"
-        ]
-      },
-      {
-        "heading": "Challenge",
-        "paragraphs": [
-          "The main challenge lies in achieving the right balance between minimalism and visual interest. It is crucial to ensure that the poster does not appear too plain or empty, while still avoiding clutter.",
-          "The typography must complement the illustration without overpowering it, and the chosen blue tones must harmonize with Very Peri to create a cohesive look. Additionally, the design needs to remain effective and appealing across various print and digital formats."
-        ],
-        "images": []
-      },
-      {
-        "heading": "Summary",
-        "paragraphs": [
-          "The \"Pantone Very Peri Poster Design\" project is a contemporary exploration of color, form, and simplicity. By combining a soft periwinkle background, clean typography, and a delicate blue branch illustration, the poster celebrates Pantone’s Color of the Year 2022 in a fresh and minimalist way.",
-          "This design exemplifies how thoughtful restraint and attention to detail can create a modern visual statement that is both memorable and versatile."
-        ],
-        "images": [
-          "/images/cms/rgGNXJHIju2RXfdZpTAWjj3h7yI.jpeg",
-          "/images/cms/cHLxOxAZNT9hNaHliAM0QcUBhI.jpeg"
-        ]
-      }
-    ]
-  },
-  {
-    "slug": "intenza-brand-boutique-e-gift-card-design",
-    "category": "Graphic Design",
-    "title": "Intenza Brand Boutique E-Gift Card Design",
-    "description": "Created a modern and elegant e-gift card for Intenza Brand Boutique. Emphasized minimalism and premium aesthetics with a sleek black holder and a dynamic, fitness-inspired card image to reflect the brand’s active lifestyle identity.",
-    "cover": "/images/cms/346Dg9EFyDG62n4PMiwIhATISNU.jpeg",
-    "year": "2023",
-    "industry": "Retail",
-    "client": "Intenza Boutique",
-    "duration": "5 weeks",
-    "githubUrl": "https://github.com/1SoulHunter1",
-    "liveUrl": "https://example.com",
-    "featured": false,
-    "sections": [
-      {
-        "heading": "Problem",
-        "paragraphs": [
-          "In the competitive fitness and lifestyle market, brands often struggle to create e-gift cards that not only look premium but also resonate with their target audience’s aspirations.",
-          "Many digital gift cards lack a distinctive identity, appearing generic or uninspired, which can undermine the perception of quality and brand value. Intenza Brand Boutique needed an e-gift card that would convey both elegance and the dynamic, active spirit of their brand."
-        ],
-        "images": [
-          "/images/cms/twYs5TpNDOSj1RSC9CjNSfxL0.jpeg"
-        ]
-      },
-      {
-        "heading": "Solution",
-        "paragraphs": [
-          "The project focused on designing a modern and elegant e-gift card featuring a sleek black card holder to evoke a sense of luxury and exclusivity. The card itself incorporates dynamic, fitness-inspired imagery and minimalist design elements, reflecting the active lifestyle that defines the Intenza brand.",
-          "The use of clean lines, refined typography, and a restrained color palette ensures that the card feels both contemporary and premium, making it an appealing gift choice for fitness enthusiasts."
-        ],
-        "images": [
-          "/images/cms/54Q8QeVa217GvhmozfGEUFSFE1c.jpeg",
-          "/images/cms/4RfvkBDYKCCeocDBYTEq5FMdYDY.jpeg"
-        ]
-      },
-      {
-        "heading": "Challenge",
-        "paragraphs": [
-          "One of the primary challenges was achieving a balance between minimalism and brand storytelling. The design needed to remain uncluttered and sophisticated while still communicating the energy and movement associated with an active lifestyle. Integrating fitness-inspired visuals without overwhelming the card’s elegant aesthetic required careful composition and attention to detail.",
-          "Additionally, the e-gift card had to be versatile enough to look impressive across various digital platforms and screen sizes."
-        ],
-        "images": []
-      },
-      {
-        "heading": "Summary",
-        "paragraphs": [
-          "The \"Intenza Brand Boutique E-Gift Card Design\" project successfully delivers a digital gift card that embodies both modern minimalism and the premium, active spirit of the brand. By combining a sleek black holder with a dynamic, fitness-inspired card image, the design stands out as both elegant and energetic.",
-          "This project demonstrates how thoughtful design can elevate a simple product into a powerful brand statement, enhancing the gifting experience for both giver and recipient."
-        ],
-        "images": [
-          "/images/cms/z3w3mzmmWHurhiPeiQFkXc5XPgU.jpeg"
-        ]
-      }
-    ]
-  },
-  {
-    "slug": "vistahaven-stunning-real-estate-template",
-    "category": "Web Design",
-    "title": "VistaHaven",
-    "description": "VistaHaven is a sleek and modern real estate template designed to showcase luxury properties with elegance and sophistication.",
-    "cover": "/images/cms/RzBOpbFyAywEXNkFbMTKVhq44.jpg",
-    "year": "2025",
-    "industry": "Real Estate",
-    "client": "VistaHaven",
-    "duration": "2 weeks",
-    "githubUrl": "https://github.com/1SoulHunter1",
-    "liveUrl": "https://example.com",
-    "featured": false,
-    "sections": [
-      {
-        "heading": "Problem",
-        "paragraphs": [
-          "Luxury real estate agencies often struggle to find digital templates that truly reflect the elegance and exclusivity of their properties. Many existing templates are either too generic, cluttered, or lack the visual sophistication needed to appeal to high-end clientele. This results in missed opportunities to impress potential buyers and differentiate premium listings in a competitive market."
-        ],
-        "images": [
-          "/images/cms/8l6y9Yi92OO5zND01Y1LUFafaY.jpg"
-        ]
-      },
-      {
-        "heading": "Solution",
-        "paragraphs": [
-          "VistaHaven was designed as a sleek and modern real estate template, purpose-built to elevate the presentation of luxury properties. The template features a clean layout, large high-resolution image galleries, and refined typography to create an immediate sense of sophistication.",
-          "Interactive elements, such as virtual tours and property comparison tools, are seamlessly integrated to enhance user engagement. The color palette and design accents are carefully chosen to evoke a feeling of exclusivity and trust, ensuring that every property is showcased at its absolute best."
-        ],
-        "images": [
-          "/images/cms/4Srg6lDELS0ije4ii4c3eZc2Sg.jpg",
-          "/images/cms/H28VqI3rAtGLWcHKFYkjKyNnUo8.jpg"
-        ]
-      },
-      {
-        "heading": "Challenge",
-        "paragraphs": [
-          "The main challenge was to balance visual richness with usability. It was essential to create a template that looked luxurious without sacrificing loading speed or ease of navigation.",
-          "Ensuring that the design remained responsive and visually compelling across all devices required meticulous attention to detail. Additionally, integrating advanced features like virtual tours and interactive maps while maintaining a minimalist aesthetic posed both design and technical hurdles."
-        ],
-        "images": []
-      },
-      {
-        "heading": "Summary",
-        "paragraphs": [
-          "VistaHaven stands out as a stunning real estate template that perfectly blends elegance with modern functionality. By focusing on high-impact visuals, intuitive navigation, and premium interactive features, the template empowers real estate professionals to present luxury properties with the sophistication they deserve. This project demonstrates how thoughtful design can transform the digital real estate experience, making a lasting impression on discerning buyers."
-        ],
-        "images": [
-          "/images/cms/ViCcevhh5VSNXEE6B9hZwgw.jpg"
-        ]
-      }
-    ]
-  },
-  {
-    "slug": "innovatetech-identity-rollout",
-    "category": "Branding",
-    "title": "InnovateTech Identity Rollout",
-    "description": "Developed a brand identity for \"InnovateTech,\" including logo design, color palette, and visual style guide. Focused on conveying innovation and reliability across all branding elements.",
-    "cover": "/images/cms/NbFTTP3LTcQw2s8139xTJnscc.jpeg",
-    "year": "2025",
-    "industry": "Tech",
-    "client": "InnovateTech",
-    "duration": "5 weeks",
-    "githubUrl": "https://github.com/1SoulHunter1",
-    "liveUrl": "https://example.com",
-    "featured": false,
-    "sections": [
-      {
-        "heading": "Problem",
-        "paragraphs": [
-          "InnovateTech, as a forward-thinking technology company, faced the challenge of establishing a cohesive and memorable brand identity that would set it apart in a highly competitive industry.",
-          "The existing branding lacked a unified visual language and failed to effectively communicate the company’s core values of innovation and reliability. This inconsistency made it difficult to build trust with clients and limited the brand’s impact across digital and print platforms."
-        ],
-        "images": [
-          "/images/cms/HoN8akxh87AazL0TT4RCR3qWK2A.jpeg"
-        ]
-      },
-      {
-        "heading": "Solution",
-        "paragraphs": [
-          "The project centered on developing a comprehensive brand identity system for InnovateTech. This included designing a modern, versatile logo that visually represents both technological advancement and stability. A distinctive color palette was crafted to evoke a sense of innovation while maintaining a professional tone.",
-          "The visual style guide detailed the use of typography, iconography, imagery, and layout principles to ensure brand consistency across all touchpoints. Each element was carefully chosen to reinforce the brand’s positioning as both cutting-edge and dependable."
-        ],
-        "images": [
-          "/images/cms/AsCs8cGe5jDWkyOH4yAxcnD72MA.jpeg",
-          "/images/cms/ueQw6lPziP3BS2aiiCDyayVsjkU.jpeg"
-        ]
-      },
-      {
-        "heading": "Challenge",
-        "paragraphs": [
-          "One of the main challenges was striking the right balance between a futuristic look and a trustworthy, approachable feel. The identity needed to appeal to both innovative startups and established enterprise clients. Ensuring that the visual elements worked harmoniously across a wide range of applications—from digital interfaces to printed collateral—required extensive testing and refinement."
-        ],
-        "images": []
-      },
-      {
-        "heading": "Summary",
-        "paragraphs": [
-          "The \"InnovateTech Identity Rollout\" successfully established a bold and cohesive brand presence that communicates both innovation and reliability. Through a modern logo, a carefully curated color palette, and a detailed visual style guide, the new identity empowers InnovateTech to stand out in the technology sector.",
-          "This project demonstrates the transformative power of strategic branding in building trust, recognition, and long-term value for a forward-looking company."
-        ],
-        "images": [
-          "/images/cms/Tcgoo4tlFcuvOvKWnUOZS2EBk.jpeg"
         ]
       }
     ]
