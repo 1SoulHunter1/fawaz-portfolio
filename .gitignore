@@ -34,6 +34,9 @@ Thumbs.db
 # Vercel
 .vercel
 
+# GitHub template configs (issue templates, CI, copilot)
+.github/
+
 # AI coding assistant configs
 .amazonq/
 .augment/
