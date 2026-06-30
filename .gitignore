@@ -34,6 +34,17 @@ Thumbs.db
 # Vercel
 .vercel
 
+# Docker (not needed for Vercel deployment)
+.dockerignore
+Dockerfile
+Dockerfile.dev
+docker-compose.yml
+
+# Template files not needed for portfolio
+.nvmrc
+CHANGELOG.md
+LICENSE
+
 # GitHub template configs (issue templates, CI, copilot)
 .github/
 
