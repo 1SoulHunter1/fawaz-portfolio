@@ -1,170 +1,99 @@
-# AI Website Cloner Template
+# Sheik Mohammad Fawaz — Portfolio
 
-<a href="https://github.com/JCodesMore/ai-website-cloner-template/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License" /></a> <a href="https://github.com/JCodesMore/ai-website-cloner-template/stargazers"><img src="https://img.shields.io/github/stars/JCodesMore/ai-website-cloner-template?style=flat" alt="Stars" /></a> <a href="https://discord.gg/hrTSX5yTpB"><img src="https://img.shields.io/discord/1400896964597383279?label=discord" alt="Discord" /></a>
+![Next.js](https://img.shields.io/badge/Next.js_16-black?logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/React_19-61DAFB?logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_v4-06B6D4?logo=tailwindcss&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?logo=framer&logoColor=white)
 
-A reusable template for reverse-engineering any website into a clean, modern Next.js codebase using AI coding agents. 
+Personal portfolio showcasing my work in **AI/ML engineering**, **multi-agent automation**, and **full-stack development**. Built with Next.js 16, React 19, Tailwind CSS v4, and Framer Motion.
 
-**Recommended: [Claude Code](https://docs.anthropic.com/en/docs/claude-code) with Opus 4.7 for best results** — but works with a variety of AI coding agents.
+## Featured Projects
 
-Point it at a URL, run `/clone-website`, and your AI agent will inspect the site, extract design tokens and assets, write component specs, and dispatch parallel builders to reconstruct every section.
-
-## Demo
-
-[![Watch the demo](docs/design-references/comparison.png)](https://youtu.be/O669pVZ_qr0)
-
-> Click the image above to watch the full demo on YouTube.
-
-## Quick Start
-
-> **Important:** Start by making your own copy with GitHub's **Use this template** button. Do not clone this template repository directly for your website project, and do not open pull requests here with your generated website.
-
-1. **Create your own repository from this template**
-
-   On the GitHub page for this project, click **Use this template**, then click **Create a new repository**.
-
-   Give your new repository a name, choose whether it should be public or private, then click **Create repository**. If GitHub shows an **Include all branches** option, you can leave it off.
-
-   This gives you your own separate project to work in, so your website changes stay in your account instead of coming back to the main template.
-
-2. **Open your new repository on your computer**
-
-   After GitHub creates your copy, open that new repository. Click **Code** and open or clone your new repository with your preferred coding tool.
-
-   If you use the terminal, the command will look like this:
-
-   ```bash
-   git clone https://github.com/YOUR-USERNAME/YOUR-NEW-REPOSITORY.git
-   cd YOUR-NEW-REPOSITORY
-   ```
-
-3. **Install dependencies**
-   ```bash
-   npm install
-   ```
-4. **Start your AI agent** — Claude Code recommended:
-   ```bash
-   claude --chrome
-   ```
-5. **Run the skill**:
-   ```
-   /clone-website <target-url1> [<target-url2> ...]
-   ```
-6. **Customize** (optional) — after the base clone is built, modify as needed
-
-> Using a different agent? Open `AGENTS.md` for project instructions — most agents pick it up automatically.
-
-## Supported Platforms
-
-| Agent                                                         | Status                     |
-| ------------------------------------------------------------- | -------------------------- |
-| [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | **Recommended** — Opus 4.8 |
-| [Codex CLI](https://github.com/openai/codex)                  | Supported                  |
-| [OpenCode](https://opencode.ai/)                              | Supported                  |
-| [GitHub Copilot](https://github.com/features/copilot)         | Supported                  |
-| [Cursor](https://cursor.com/)                                 | Supported                  |
-| [Windsurf](https://codeium.com/windsurf)                      | Supported                  |
-| [Gemini CLI](https://github.com/google-gemini/gemini-cli)     | Supported                  |
-| [Cline](https://github.com/cline/cline)                       | Supported                  |
-| [Roo Code](https://github.com/RooCodeInc/Roo-Code)            | Supported                  |
-| [Continue](https://continue.dev/)                             | Supported                  |
-| [Amazon Q](https://aws.amazon.com/q/developer/)               | Supported                  |
-| [Augment Code](https://www.augmentcode.com/)                  | Supported                  |
-| [Aider](https://aider.chat/)                                  | Supported                  |
-
-## Prerequisites
-
-- [Node.js](https://nodejs.org/) 24+
-- An AI coding agent (see [Supported Platforms](#supported-platforms))
+| Project | Description | Stack |
+|---------|-------------|-------|
+| **Veritas Neural** | 4-modality deepfake detection engine with sub-1.5s CPU inference | PyTorch, EfficientNet, FastAPI, Docker, React |
+| **LinkedIn Resume ATS Pipeline** | Autonomous workflow that scrapes jobs, tailors resumes, and delivers daily digests | n8n, Google Gemini, Apify, LaTeX-on-HTTP, Supabase |
+| **Knowledge Graph Builder** | NLP pipeline with force-directed graph rendering and NER-based clustering | spaCy, Streamlit, Barnes-Hut simulation |
+| **Heart Disease Prediction** | Compared 6 ML classifiers — 91.80% accuracy, 96.10% ROC-AUC with KNN | scikit-learn, StratifiedKFold CV |
 
 ## Tech Stack
 
-- **Next.js 16** — App Router, React 19, TypeScript strict
-- **shadcn/ui** — Radix primitives + Tailwind CSS v4
-- **Tailwind CSS v4** — oklch design tokens
-- **Lucide React** — default icons (replaced by extracted SVGs during cloning)
+| Layer | Technology |
+|-------|------------|
+| Framework | Next.js 16 (App Router, React 19, TypeScript strict) |
+| Styling | Tailwind CSS v4 with oklch design tokens |
+| UI Components | shadcn/ui (Radix primitives) |
+| Animations | Framer Motion (motion v12) — 3D peel-off card stack, scroll reveals, stagger effects |
+| Smooth Scroll | Lenis |
+| Contact Form | Web3Forms |
+| Fonts | Inter (body), Antonio (headings) |
+| Deployment | Vercel |
 
-## How It Works
+## Highlights
 
-The `/clone-website` skill runs a multi-phase pipeline:
+- **3D Peel-Off Card Stack** — Project cards rotate on the X-axis as they scroll away, with responsive breakpoints (45deg desktop, 20deg mobile)
+- **Scroll-Linked Animations** — Parallax hero, sticky scroll sections, staggered reveals powered by Framer Motion
+- **Custom Cursor** — Context-aware mouse follower with magnetic hover effects
+- **Responsive** — Mobile-first design tested across 390px, 768px, and 1280px+ viewports
+- **Contact Form** — Connected to Web3Forms for instant email delivery
 
-1. **Reconnaissance** — screenshots, design token extraction, interaction sweep (scroll, click, hover, responsive)
-2. **Foundation** — updates fonts, colors, globals, downloads all assets
-3. **Component Specs** — writes detailed spec files (`docs/research/components/`) with exact computed CSS values, states, behaviors, and content
-4. **Parallel Build** — dispatches builder agents in git worktrees, one per section/component
-5. **Assembly & QA** — merges worktrees, wires up the page, runs visual diff against the original
+## Getting Started
 
-Each builder agent receives the full component specification inline — exact `getComputedStyle()` values, interaction models, multi-state content, responsive breakpoints, and asset paths. No guessing.
+```bash
+# Install dependencies
+npm install
 
-## Use Cases
+# Start dev server
+npm run dev
 
-- **Platform migration** — rebuild a site you own from WordPress/Webflow/Squarespace into a modern Next.js codebase
-- **Lost source code** — your site is live but the repo is gone, the developer left, or the stack is legacy. Get the code back in a modern format
-- **Learning** — deconstruct how production sites achieve specific layouts, animations, and responsive behavior by working with real code
+# Production build
+npm run build
+```
 
-## Not Intended For
+### Environment Variables
 
-- **Phishing or impersonation** — this project must not be used for deceptive purposes, impersonation, or any activity that breaks the law.
-- **Passing off someone's design as your own** — logos, brand assets, and original copy belong to their owners.
-- **Violating terms of service** — some sites explicitly prohibit scraping or reproduction. Check first.
+Create a `.env.local` file:
+
+```env
+NEXT_PUBLIC_WEB3FORMS_KEY=your_access_key_here
+```
+
+Get your free access key at [web3forms.com](https://web3forms.com).
 
 ## Project Structure
 
 ```
 src/
-  app/              # Next.js routes
-  components/       # React components
-    ui/             # shadcn/ui primitives
-    icons.tsx       # Extracted SVG icons
-  lib/utils.ts      # cn() utility
-  types/            # TypeScript interfaces
-  hooks/            # Custom React hooks
+  app/                # Next.js routes (home, about, blogs, projects)
+  components/         # React components
+    ui/               # shadcn/ui primitives
+    animations/       # ScrollReveal, StaggerReveal wrappers
+    icons.tsx         # SVG icons as React components
+  data/               # Blog posts and project data
+  hooks/              # Custom React hooks
+  lib/utils.ts        # cn() utility
+  types/              # TypeScript interfaces
 public/
-  images/           # Downloaded images from target
-  videos/           # Downloaded videos from target
-  seo/              # Favicons, OG images
-docs/
-  research/         # Extraction output & component specs
-  design-references/ # Screenshots
-scripts/
-  sync-agent-rules.sh  # Regenerate agent instruction files
-  sync-skills.mjs      # Regenerate /clone-website for all platforms
-AGENTS.md           # Agent instructions (single source of truth)
-CLAUDE.md           # Claude Code config (imports AGENTS.md)
-GEMINI.md           # Gemini CLI config (imports AGENTS.md)
+  images/             # Project covers, blog images, portraits
+  seo/                # Favicon, OG images
 ```
 
 ## Commands
 
-```bash
-npm run dev    # Start dev server
-npm run build  # Production build
-npm run lint   # ESLint check
-npm run typecheck # TypeScript check
-npm run check  # Run lint + typecheck + build
-```
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start dev server |
+| `npm run build` | Production build |
+| `npm run lint` | ESLint check |
+| `npm run typecheck` | TypeScript check |
+| `npm run check` | Run lint + typecheck + build |
 
-### If using docker
+## Contact
 
-```bash
-docker compose up app --build # build and run the app
-docker compose up dev --build # run the app in dev mode on port 3001
-```
-
-## Updating for Other Platforms
-
-Two source-of-truth files power all platform support. Edit the source, then run the sync script:
-
-| What                   | Source of truth                         | Sync command                       |
-| ---------------------- | --------------------------------------- | ---------------------------------- |
-| Project instructions   | `AGENTS.md`                             | `bash scripts/sync-agent-rules.sh` |
-| `/clone-website` skill | `.claude/skills/clone-website/SKILL.md` | `node scripts/sync-skills.mjs`     |
-
-Each script regenerates the platform-specific copies automatically. Agents that read the source files natively need no regeneration.
-
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=JCodesMore/ai-website-cloner-template&type=Date)](https://star-history.com/#JCodesMore/ai-website-cloner-template&Date)
+- **Email:** sheikfawaz32@gmail.com
+- **LinkedIn:** [Sheik Mohammad Fawaz](https://linkedin.com/in/sheik-mohammad-fawaz-83605a291)
+- **GitHub:** [1SoulHunter1](https://github.com/1SoulHunter1)
 
 ## License
 
