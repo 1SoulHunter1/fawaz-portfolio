@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "motion/react";
@@ -43,7 +43,7 @@ const projects = [
 ];
 
 const CARD_TOP = 80;
-const CARD_OFFSET = 24;
+const CARD_OFFSET = 32;
 
 function ProjectCard({
   project,
@@ -60,23 +60,37 @@ function ProjectCard({
     offset: ["start 80px", "end start"],
   });
 
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
   const isLast = index === total - 1;
   const stickyTop = CARD_TOP + index * CARD_OFFSET;
 
+  const rotateX = useTransform(
+    scrollYProgress,
+    [0, 0.35, 1],
+    [0, 0, isLast ? 0 : isMobile ? -20 : -45],
+  );
+  const y = useTransform(
+    scrollYProgress,
+    [0, 0.35, 1],
+    [0, 0, isLast ? 0 : isMobile ? -15 : -30],
+  );
   const scale = useTransform(
     scrollYProgress,
-    [0, 0.4, 1],
-    [1, 1, isLast ? 1 : 0.92],
+    [0, 0.35, 1],
+    [1, 1, isLast ? 1 : isMobile ? 0.96 : 0.95],
   );
   const opacity = useTransform(
     scrollYProgress,
     [0, 0.4, 1],
-    [1, 1, isLast ? 1 : 0.5],
-  );
-  const borderRadius = useTransform(
-    scrollYProgress,
-    [0, 0.4, 1],
-    [20, 20, isLast ? 20 : 28],
+    [1, 1, isLast ? 1 : 0],
   );
 
   return (
@@ -86,11 +100,12 @@ function ProjectCard({
       style={{
         top: stickyTop,
         zIndex: index + 1,
-        paddingBottom: isLast ? 0 : 120,
+        paddingBottom: isLast ? 0 : 80,
+        perspective: 1200,
       }}
     >
       <motion.div
-        style={{ scale, opacity, borderRadius }}
+        style={{ rotateX, y, scale, opacity, backfaceVisibility: "hidden" }}
         className="will-change-transform origin-top"
       >
         <Link
