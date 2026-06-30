@@ -176,7 +176,7 @@ export const projects: Project[] = [
     "industry": "Healthcare / AI",
     "client": "Academic Project",
     "duration": "3 weeks",
-    "githubUrl": "",
+    "githubUrl": "https://github.com/1SoulHunter1/heart-disease-prediction",
     "liveUrl": null,
     "featured": true,
     "sections": [

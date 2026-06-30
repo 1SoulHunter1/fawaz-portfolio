@@ -25,10 +25,22 @@ const socials = [
 ];
 
 const timeline = [
-  { role: "Freelance Web Developer", company: "Self-Employed", years: "2024 – Present" },
   { role: "Campus Ambassador", company: "Syntro Tech", years: "Jun 2026 – Present" },
   { role: "App Development Intern", company: "CodeAlpha", years: "Sep 2025 – Oct 2025" },
-  { role: "Campus Mantri", company: "GeeksforGeeks", years: "2025 – Present" },
+  { role: "B.E in AI/ML", company: "P.A. College of Engineering", years: "2023 – Present" },
+];
+
+const certifications = [
+  {
+    title: "Signal Processing with AI using Python",
+    issuer: "IEEE Signal Processing Society (P.A.C.E.)",
+    date: "Oct 2025",
+  },
+  {
+    title: "Google Cloud Gen AI Academy 2.0",
+    issuer: "Google Cloud",
+    date: "2025",
+  },
 ];
 
 const techStack = [
@@ -42,25 +54,43 @@ const techStack = [
     name: "PyTorch",
     logo: "/images/cms/RaZetiUCiiVee9pYfau5kIm0k.jpg",
     description:
-      "My go-to deep learning framework for building and training neural networks.",
+      "Deep learning framework for building and training neural networks — used in Veritas Neural and KesarAI.",
+  },
+  {
+    name: "HuggingFace Transformers",
+    logo: "/images/cms/KhZnIlAtOozB2Axd5yg9ALd7A.jpg",
+    description:
+      "Pre-trained models and pipelines for NLP, text classification, and LLM integration.",
   },
   {
     name: "React / Next.js",
-    logo: "/images/cms/KhZnIlAtOozB2Axd5yg9ALd7A.jpg",
+    logo: "/images/cms/FigaBMy3WrTNL79MFKifsXxXE.jpg",
     description:
-      "For building fast, modern full-stack web applications and interactive UIs.",
+      "Full-stack web framework for building interactive UIs and server-rendered applications.",
   },
   {
     name: "FastAPI",
-    logo: "/images/cms/FigaBMy3WrTNL79MFKifsXxXE.jpg",
+    logo: "/images/cms/1jsryiRhbB5SoLHzyceqqF9tpo.jpg",
     description:
-      "My framework of choice for building high-performance backend APIs.",
+      "High-performance Python backend framework for ML-powered REST APIs.",
   },
   {
     name: "Docker",
-    logo: "/images/cms/1jsryiRhbB5SoLHzyceqqF9tpo.jpg",
+    logo: "/images/cms/Nf63tXddU52SRtJJgRHqk7zzD2g.png",
     description:
-      "For containerizing and deploying applications consistently across environments.",
+      "Containerization for consistent deployments across dev, staging, and production.",
+  },
+  {
+    name: "PostgreSQL / Prisma",
+    logo: "/images/cms/RaZetiUCiiVee9pYfau5kIm0k.jpg",
+    description:
+      "Relational database with type-safe ORM for persistent state in AgentFlow and automation pipelines.",
+  },
+  {
+    name: "n8n / Groq API",
+    logo: "/images/cms/KhZnIlAtOozB2Axd5yg9ALd7A.jpg",
+    description:
+      "Workflow automation engine paired with ultra-fast LLM inference for multi-agent pipelines.",
   },
 ];
 
@@ -78,9 +108,9 @@ const processGrid: ProcessGridItem[] = [
   {
     type: "card",
     number: "01.",
-    title: "Research & Strategy",
+    title: "Problem Definition & Research",
     description:
-      "In this phase, I dive deep into understanding your business, target audience, and project goals. Through research and strategic planning, I create a clear roadmap to guide the entire design process.",
+      "Every project starts with deeply understanding the problem. I research existing solutions, define success metrics, and identify the right approach — whether that's deep learning, classical ML, or rule-based automation.",
     tone: "white",
   },
   {
@@ -90,17 +120,17 @@ const processGrid: ProcessGridItem[] = [
   {
     type: "card",
     number: "02.",
-    title: "Concept & Ideation",
+    title: "Data Collection & Preprocessing",
     description:
-      "Here, I brainstorm and develop creative concepts that align with your vision. Initial sketches and ideas are refined into tangible wireframes, setting the direction for design and functionality.",
+      "Good models start with good data. I build ingestion pipelines, clean and augment datasets, engineer features, and validate data quality before any model training begins.",
     tone: "lime",
   },
   {
     type: "card",
     number: "03.",
-    title: "Feedback & Refinement",
+    title: "Model Architecture & Training",
     description:
-      "Collaboration is key. I review the design with you, gather feedback, and refine the work to align with your expectations and goals. This ensures the design reflects your vision.",
+      "I design and train models using PyTorch, scikit-learn, or HuggingFace Transformers — selecting architectures that balance accuracy, inference speed, and deployment constraints.",
     tone: "dark",
     colSpan: 2,
   },
@@ -111,17 +141,17 @@ const processGrid: ProcessGridItem[] = [
   {
     type: "card",
     number: "04.",
-    title: "Testing & Optimization",
+    title: "API / Backend Integration",
     description:
-      "I conduct thorough testing to identify and resolve any performance or usability issues. This phase ensures the design works seamlessly across devices and meets user experience standards.",
+      "Models become useful when they're accessible. I build FastAPI backends, connect to databases with Prisma/PostgreSQL, and create React frontends that make AI capabilities easy to use.",
     tone: "lime",
   },
   {
     type: "card",
     number: "05.",
-    title: "Launch & Delivery",
+    title: "Deployment & Continuous Testing",
     description:
-      "Once everything is finalized, the project is launched and delivered to you. I also provide guidance or support for ongoing maintenance to ensure long-term success.",
+      "I containerize with Docker, deploy to cloud or edge hardware, and set up monitoring to catch model drift and performance degradation in production.",
     tone: "white",
   },
   {
@@ -281,6 +311,36 @@ export default function AboutPage() {
             </StaggerReveal>
           </section>
 
+          {/* Certifications — compact badges */}
+          <section className="w-full px-6 py-[120px] md:px-10">
+            <ScrollReveal>
+              <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
+                Certifications
+              </h2>
+            </ScrollReveal>
+
+            <StaggerReveal className="mt-10 grid gap-5 md:grid-cols-2" staggerDelay={0.1}>
+              {certifications.map((cert) => (
+                <div
+                  key={cert.title}
+                  className="flex flex-col gap-2 rounded-[20px] border border-[#333] p-6"
+                >
+                  <h3 className="font-heading text-lg font-semibold leading-tight text-white">
+                    {cert.title}
+                  </h3>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-light text-[#d0ff71]">
+                      {cert.issuer}
+                    </span>
+                    <span className="text-sm font-light text-[#b5b5b5]">
+                      · {cert.date}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </StaggerReveal>
+          </section>
+
           {/* Tech stack — vertical list of cards */}
           <section className="w-full px-6 py-[120px] md:px-10">
             <ScrollReveal>
@@ -328,12 +388,12 @@ export default function AboutPage() {
           <div className="mx-auto max-w-[1200px] px-6 md:px-10">
             <ScrollReveal>
               <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
-                Design with Strategy and Creativity
+                How I Build AI Systems
               </h2>
               <p className="mt-5 max-w-[700px] text-lg font-light leading-[27px] text-white">
-                My process blends strategy and creativity to address challenges,
-                craft solutions, and deliver designs that effectively communicate
-                your message.
+                From problem definition to production deployment, my process
+                combines rigorous engineering with practical iteration to build
+                AI systems that actually work.
               </p>
             </ScrollReveal>
 

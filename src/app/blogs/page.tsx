@@ -9,7 +9,7 @@ import { blogs } from "@/data/blogs";
 export const metadata: Metadata = {
   title: "Blogs — Portavia",
   description:
-    "Design insights, tutorials and ideas on web, UI/UX and branding.",
+    "Writeups on AI systems, automation workflows, and lessons from building real-world ML projects.",
 };
 
 export default function BlogsPage() {
@@ -24,12 +24,11 @@ export default function BlogsPage() {
           <div className="mx-auto max-w-[1200px] px-6 md:px-10">
             <ScrollReveal>
               <h1 className="font-heading text-[44px] font-bold leading-[1.05] tracking-[-1.5px] text-white uppercase lg:text-[120px] lg:leading-[132px] lg:tracking-[-3.6px]">
-                Design Insights &amp; Ideas
+                AI Insights &amp; Ideas
               </h1>
               <p className="mt-5 max-w-[500px] text-lg font-light leading-[27px] text-white">
-                From design trends to creative processes, these articles offer
-                insights to help you elevate your craft, solve challenges, and
-                spark new ideas for your projects.
+                Writeups on AI systems, automation workflows, and lessons from
+                building real-world ML projects.
               </p>
             </ScrollReveal>
 

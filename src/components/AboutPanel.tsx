@@ -13,9 +13,9 @@ import {
 const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
 const stats = [
-  { value: 6, suffix: "", label: "Hackathons Competed" },
-  { value: 10, suffix: "+", label: "Projects Built" },
-  { value: 2, suffix: "+", label: "Years Building AI Systems" },
+  { value: 6, suffix: "+", label: "Hackathons" },
+  { value: 4, suffix: "", label: "Core Projects" },
+  { value: 2, suffix: "+", label: "Yrs Building AI" },
 ];
 
 const socials = [

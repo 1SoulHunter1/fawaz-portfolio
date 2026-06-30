@@ -79,7 +79,7 @@ export function HeroSection() {
           className="mt-4 flex w-full justify-end"
         >
           <p className="max-w-[348px] text-right text-lg font-light leading-[27px] text-white">
-            Final-year AI/ML student in India, building full-stack apps and intelligent automation.
+            Final-year AIML undergrad building multimodal AI systems, multi-agent automation, and full-stack apps.
           </p>
         </motion.div>
 

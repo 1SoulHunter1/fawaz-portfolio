@@ -42,6 +42,9 @@ const projects = [
   },
 ];
 
+const CARD_TOP = 80;
+const CARD_OFFSET = 24;
+
 function ProjectCard({
   project,
   index,
@@ -58,22 +61,38 @@ function ProjectCard({
   });
 
   const isLast = index === total - 1;
+  const stickyTop = CARD_TOP + index * CARD_OFFSET;
 
-  // As scroll moves the card past its pinned position, scale it down and reduce
-  // opacity — simulating it being "pushed back" by the next card.
-  const scale = useTransform(scrollYProgress, [0, 0.7, 1], [1, 1, isLast ? 1 : 0.92]);
-  const opacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 1, isLast ? 1 : 0.7]);
+  const scale = useTransform(
+    scrollYProgress,
+    [0, 0.4, 1],
+    [1, 1, isLast ? 1 : 0.92],
+  );
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.4, 1],
+    [1, 1, isLast ? 1 : 0.5],
+  );
+  const borderRadius = useTransform(
+    scrollYProgress,
+    [0, 0.4, 1],
+    [20, 20, isLast ? 20 : 28],
+  );
 
   return (
     <div
       ref={cardRef}
-      className="sticky top-[80px]"
+      className="sticky"
       style={{
+        top: stickyTop,
         zIndex: index + 1,
         paddingBottom: isLast ? 0 : 120,
       }}
     >
-      <motion.div style={{ scale, opacity }}>
+      <motion.div
+        style={{ scale, opacity, borderRadius }}
+        className="will-change-transform origin-top"
+      >
         <Link
           href={`/projects/${project.slug}`}
           className="group relative block aspect-[3/2] w-full overflow-hidden rounded-[20px]"

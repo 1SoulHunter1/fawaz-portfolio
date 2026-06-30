@@ -83,7 +83,7 @@ export function HeroPanel() {
                 transition={{ duration: 0.8, ease, delay: 0.45 }}
                 className="max-w-[348px] text-base font-light leading-[24px] text-white lg:text-right lg:text-lg lg:leading-[27px]"
               >
-                Final-year AI/ML student in India, building full-stack apps and intelligent automation.
+                Final-year AIML undergrad building multimodal AI systems, multi-agent automation, and full-stack apps.
               </motion.p>
             </div>
           </div>

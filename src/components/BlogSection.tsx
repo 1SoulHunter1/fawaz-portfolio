@@ -6,22 +6,22 @@ import { ArrowRightIcon } from "@/components/icons";
 
 const blogs = [
   {
-    slug: "5-design-trends-that-will-define-2024",
-    image: "/images/blog-design-trends.jpeg",
-    category: "Insights",
-    date: "Apr 30, 2025",
-    title: "5 DESIGN TRENDS THAT WILL DEFINE 2024",
+    slug: "building-a-4-modality-deepfake-detection-engine",
+    image: "/images/cms/xmKml0E7v2iBI4zbbj0yVccaQwg.jpeg",
+    category: "Deep Learning",
+    date: "Jun 15, 2025",
+    title: "BUILDING A 4-MODALITY DEEPFAKE DETECTION ENGINE",
     description:
-      "Explore the top design trends for 2024 that will influence web, UI/UX, and branding projects, helping you stay ahead of the curve.",
+      "How I built Veritas Neural — a deepfake detection system combining face, voice, video, and text analysis using PyTorch and EfficientNet.",
   },
   {
-    slug: "how-to-streamline-your-design-workflow",
-    image: "/images/blog-workflow.jpeg",
-    category: "Tutorials",
-    date: "Apr 27, 2025",
-    title: "HOW TO STREAMLINE YOUR DESIGN WORKFLOW",
+    slug: "multi-agent-automation-with-n8n-groq-and-supabase",
+    image: "/images/cms/1wFj19qQG6zNr7gj3iTlH0Gdlu8.jpeg",
+    category: "Automation",
+    date: "May 28, 2025",
+    title: "MULTI-AGENT AUTOMATION WITH N8N, GROQ & SUPABASE",
     description:
-      "Discover practical strategies to improve your design process, save time, and deliver quality work more efficiently.",
+      "Building intelligent automation pipelines that chain LLM agents with real-time data processing and persistent storage.",
   },
 ];
 
@@ -31,12 +31,11 @@ export function BlogSection() {
       <div className="mx-auto max-w-[1200px] px-6 md:px-10">
         <ScrollReveal>
           <h2 className="font-heading text-[36px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
-            DESIGN INSIGHTS & IDEAS
+            AI INSIGHTS & IDEAS
           </h2>
           <p className="mt-4 max-w-[700px] text-base font-light leading-6 text-white">
-            From design trends to creative processes, these articles offer insights
-            to help you elevate your craft, solve challenges, and spark new ideas
-            for your projects.
+            Writeups on AI systems, automation workflows, and lessons from
+            building real-world ML projects.
           </p>
         </ScrollReveal>
 
