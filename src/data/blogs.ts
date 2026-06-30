@@ -62,47 +62,47 @@ export const blogs: BlogPost[] = [
     ]
   },
   {
-    "slug": "multi-agent-automation-with-n8n-groq-and-supabase",
+    "slug": "autonomous-linkedin-ats-pipeline-with-n8n-gemini-and-supabase",
     "category": "Automation",
     "date": "May 28, 2025",
-    "title": "Multi-Agent Automation with n8n, Groq & Supabase",
-    "excerpt": "Building intelligent automation pipelines that chain LLM agents with real-time data processing and persistent storage.",
+    "title": "Autonomous LinkedIn ATS Pipeline with n8n, Gemini & Supabase",
+    "excerpt": "How I built an end-to-end n8n workflow that scrapes LinkedIn internships, tailors ATS-optimized resumes with Gemini, compiles them to PDF, and delivers a daily digest — fully autonomous.",
     "cover": "/images/cms/1wFj19qQG6zNr7gj3iTlH0Gdlu8.jpeg",
     "pinned": false,
     "sections": [
       {
-        "heading": "The Problem with Single-Agent Automation",
+        "heading": "Why Manual Applications Don't Scale",
         "paragraphs": [
-          "Traditional automation workflows treat each step as a dumb transformation — take input, apply rule, produce output. But real-world tasks often require judgment, context, and the ability to handle unexpected inputs gracefully.",
-          "Single LLM calls can handle individual decisions, but complex workflows need multiple specialized agents that collaborate, share context, and hand off tasks intelligently."
+          "Manually customizing resumes and writing cold emails for each internship posting doesn't scale beyond a few applications per week. Each role needs a tailored resume that passes ATS keyword filters and a personalized outreach email — doing this by hand for dozens of roles daily is unsustainable.",
+          "I wanted a pipeline that could handle the entire lifecycle autonomously: discover relevant postings, tailor my resume for each one, generate a cold email, and deliver everything in a single daily digest."
         ],
         "images": [
           "/images/cms/KZSosvptNF0efYHxEFeY4i66s0.jpeg"
         ]
       },
       {
-        "heading": "Architecture: n8n as the Orchestrator",
+        "heading": "Six-Stage Pipeline Architecture",
         "paragraphs": [
-          "n8n provides the workflow backbone — handling triggers, branching logic, error handling, and scheduling. Each node in the workflow can call a specialized Groq-powered agent with a focused system prompt and structured output schema.",
-          "Supabase serves as the persistent memory layer, storing agent outputs, conversation history, and processed results. This means agents can reference previous decisions and maintain state across workflow runs."
+          "n8n orchestrates the full workflow on a daily schedule. Stage 1 loads the user's resume from Google Docs and scrapes fresh LinkedIn postings via an Apify actor. Stage 2 parses, filters, and deduplicates against a Supabase Postgres database so no job is processed twice.",
+          "Stage 3 is the core: a Gemini-powered ATS optimizer rewrites the resume for each specific job — grounded strictly in real, verifiable experience, never inventing credentials. Stage 4 drafts a tailored cold outreach email via a second Gemini chain. Stage 5 logs everything to Supabase, and Stage 6 compiles the resume to PDF via LaTeX-on-HTTP, uploads to Google Drive, and sends the daily HTML digest via Gmail."
         ],
         "images": [
           "/images/cms/RFcUbpIGFydbU9WBSTc9HJRQI.jpeg"
         ]
       },
       {
-        "heading": "Agent Design Patterns",
+        "heading": "Keeping the LLM Honest",
         "paragraphs": [
-          "I settled on three agent archetypes: classifiers (categorize incoming data), extractors (pull structured information from unstructured text), and generators (produce content based on extracted context).",
-          "Each agent has a tightly scoped system prompt with explicit output schemas. This constraint actually improves reliability — agents with narrow responsibilities produce more consistent results than general-purpose prompts."
+          "The hardest constraint was ensuring Gemini never fabricates experience. The ATS optimizer agent is prompted to only rephrase, reorder, and emphasize facts already present in the source resume — never adding skills, roles, or achievements that don't exist.",
+          "This required iterative prompt engineering and manual auditing of outputs. The system prompt explicitly instructs the model that all content must trace back to the original resume, and the generated LaTeX is structured to make verification straightforward."
         ],
         "images": []
       },
       {
-        "heading": "Real-World Pipeline: LinkedIn ATS Processing",
+        "heading": "Error Handling and Deduplication",
         "paragraphs": [
-          "The concrete use case was a LinkedIn job application pipeline: a classifier agent categorizes incoming job posts by relevance, an extractor pulls key requirements, and a generator produces tailored application materials.",
-          "The pipeline processes incoming data via webhooks, with Supabase tracking application status and agent decisions. The entire flow runs autonomously, with human review only for high-confidence matches."
+          "Real-world automation means handling failures gracefully. The workflow includes a dedicated error-handling branch for Apify timeouts, Gemini output parsing failures, and LaTeX compilation edge cases.",
+          "Supabase deduplication uses a unique constraint on job_url — if a posting has already been processed, it's skipped entirely. This keeps costs predictable and prevents duplicate applications."
         ],
         "images": [
           "/images/cms/7i3y7S8hh5RjwFKy8VAstpXwRLM.jpeg",
@@ -110,10 +110,10 @@ export const blogs: BlogPost[] = [
         ]
       },
       {
-        "heading": "Performance and Cost Optimization",
+        "heading": "Results and What I'd Change",
         "paragraphs": [
-          "Groq's inference speed is critical for multi-agent pipelines — sequential agent calls that would take minutes on standard APIs complete in seconds. Token budgets per agent are capped to prevent runaway costs.",
-          "Caching agent decisions in Supabase eliminates redundant LLM calls for previously seen inputs, reducing both latency and cost by roughly 40% in production."
+          "The pipeline runs daily at 7 AM and processes dozens of postings per run. The full stack — n8n, Apify, Google Gemini, LaTeX-on-HTTP, Supabase, Google Drive, Gmail — runs entirely on free tiers, making it cost-effective for students.",
+          "If I were rebuilding, I'd add a scoring layer between scraping and resume generation so only high-relevance postings get the full treatment. I'd also explore self-hosted n8n via Docker for tighter control over scheduling and secrets management."
         ],
         "images": [
           "/images/cms/wOCTh6BhMTLrGPZ7C8doO3XdY.jpeg"

@@ -22,7 +22,7 @@ const projects = [
     category: "AI Automation",
     title: "LINKEDIN RESUME ATS PIPELINE",
     description:
-      "A multi-agent automation pipeline using n8n, Groq, and Supabase that classifies LinkedIn job posts, extracts requirements, and generates ATS-optimized resumes and cover letters in real time.",
+      "An autonomous n8n workflow that scrapes LinkedIn internships via Apify, tailors ATS-optimized resumes with Google Gemini, compiles them to PDF, and delivers a daily email digest.",
   },
   {
     slug: "knowledge-graph-builder",

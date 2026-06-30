@@ -87,10 +87,10 @@ const techStack = [
       "Relational database with type-safe ORM for persistent state in the ATS Pipeline and automation projects.",
   },
   {
-    name: "n8n / Groq API",
+    name: "n8n / Gemini API",
     logo: "/images/cms/KhZnIlAtOozB2Axd5yg9ALd7A.jpg",
     description:
-      "Workflow automation engine paired with ultra-fast LLM inference for multi-agent pipelines.",
+      "Workflow automation engine paired with Google Gemini for intelligent multi-stage pipelines.",
   },
 ];
 

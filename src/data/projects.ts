@@ -62,7 +62,7 @@ export const projects: Project[] = [
     "slug": "linkedin-resume-ats-pipeline",
     "category": "AI Automation",
     "title": "LinkedIn Resume ATS Pipeline",
-    "description": "A multi-agent automation pipeline using n8n, Groq, and Supabase that classifies LinkedIn job posts, extracts requirements, and generates ATS-optimized resumes and cover letters in real time.",
+    "description": "An autonomous n8n workflow that scrapes LinkedIn internships via Apify, tailors ATS-optimized resumes with Google Gemini, compiles them to PDF via LaTeX-on-HTTP, and delivers a daily email digest — all without manual intervention.",
     "cover": "/images/cms/qbjsnnvP9w7UaA2syp36oUe8OSo.jpg",
     "year": "2025",
     "industry": "AI / Recruitment",
@@ -75,7 +75,7 @@ export const projects: Project[] = [
       {
         "heading": "Problem",
         "paragraphs": [
-          "Applying to jobs on LinkedIn is tedious and inefficient. Each application demands a tailored resume and cover letter that matches the job description's keywords — what ATS systems actually scan for. Doing this manually for dozens of postings is unsustainable."
+          "Manually customizing resumes and writing cold outreach emails for each internship posting doesn't scale beyond a few applications per week. Each role needs a tailored resume that passes ATS keyword filters and a personalized email that references the specific job — doing this by hand for dozens of roles daily is unsustainable."
         ],
         "images": [
           "/images/cms/GXMr7UYyjAl3Onda9G2r7zW7iD0.jpg"
@@ -84,8 +84,8 @@ export const projects: Project[] = [
       {
         "heading": "Solution",
         "paragraphs": [
-          "The pipeline chains three specialized LLM agents via n8n: a classifier that scores incoming LinkedIn job posts by relevance, an extractor that pulls key requirements and ATS keywords, and a generator that produces tailored resumes and cover letters optimized for each posting.",
-          "Supabase stores job data, agent decisions, and generated documents persistently, while Groq's ultra-fast inference keeps the full pipeline under 10 seconds per application."
+          "A six-stage n8n pipeline that runs daily on a schedule: it scrapes fresh LinkedIn job postings via an Apify actor, filters and deduplicates against a Supabase Postgres database, then feeds each posting through a Gemini-powered ATS optimizer that rewrites the resume — grounded strictly in real, verifiable experience.",
+          "A second Gemini chain drafts a tailored cold outreach email for each role. The optimized resume is compiled to PDF via LaTeX-on-HTTP, uploaded to Google Drive, and a single daily HTML digest email summarizes every processed job with resume links and draft emails."
         ],
         "images": [
           "/images/cms/flsR6xqfDebWKrEfwDLKRuYU.jpg",
@@ -95,16 +95,16 @@ export const projects: Project[] = [
       {
         "heading": "Challenge",
         "paragraphs": [
-          "Ensuring generated resumes pass real ATS systems required iterative prompt engineering and validation against actual ATS parsers. The classifier also needed careful calibration to avoid false positives flooding the pipeline with irrelevant roles.",
-          "Rate limiting across the Groq API and LinkedIn data ingestion required a queueing strategy with exponential backoff, plus caching previously seen job posts in Supabase to eliminate redundant LLM calls."
+          "Ensuring the LLM never fabricates experience was critical — the Gemini agent is constrained to only rephrase and reorder facts from the source resume, never invent new ones. Prompt engineering and output validation were iterated until the generated resumes consistently passed manual audit.",
+          "Handling Apify actor timeouts, Gemini output parsing failures, and LaTeX compilation edge cases required a dedicated error-handling branch in the workflow. Supabase deduplication via a unique constraint on job_url prevents reprocessing, keeping costs predictable."
         ],
         "images": []
       },
       {
         "heading": "Summary",
         "paragraphs": [
-          "The LinkedIn Resume ATS Pipeline demonstrates how multi-agent automation can turn a manual, hours-long process into a fully autonomous workflow. By combining fast LLM inference via Groq with persistent state in Supabase, the system processes job postings end-to-end without human intervention.",
-          "This project showcases practical AI automation — from workflow orchestration with n8n to prompt engineering for structured document generation."
+          "The pipeline automates the full internship application lifecycle — from job discovery to ATS-optimized resume generation to cold email drafting — running autonomously on a daily schedule. It processes dozens of roles per day while ensuring every claim in the generated documents traces back to verified experience.",
+          "Tech stack: n8n for orchestration, Apify for LinkedIn scraping, Google Gemini for resume tailoring and email generation, LaTeX-on-HTTP for PDF compilation, Supabase for deduplication, Google Drive for storage, and Gmail for daily digest delivery."
         ],
         "images": [
           "/images/cms/Rj0Ez5VU0m6neoNfeFEWpHKlG4.jpg"

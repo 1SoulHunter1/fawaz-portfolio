@@ -15,13 +15,13 @@ const blogs = [
       "How I built Veritas Neural — a deepfake detection system combining face, voice, video, and text analysis using PyTorch and EfficientNet.",
   },
   {
-    slug: "multi-agent-automation-with-n8n-groq-and-supabase",
+    slug: "autonomous-linkedin-ats-pipeline-with-n8n-gemini-and-supabase",
     image: "/images/cms/1wFj19qQG6zNr7gj3iTlH0Gdlu8.jpeg",
     category: "Automation",
     date: "May 28, 2025",
-    title: "MULTI-AGENT AUTOMATION WITH N8N, GROQ & SUPABASE",
+    title: "AUTONOMOUS LINKEDIN ATS PIPELINE WITH N8N, GEMINI & SUPABASE",
     description:
-      "Building intelligent automation pipelines that chain LLM agents with real-time data processing and persistent storage.",
+      "How I built an end-to-end n8n workflow that scrapes LinkedIn internships, tailors ATS-optimized resumes with Gemini, and delivers a daily digest.",
   },
 ];
 
