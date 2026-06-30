@@ -113,18 +113,126 @@ export const projects: Project[] = [
     ]
   },
   {
+    "slug": "knowledge-graph-builder",
+    "category": "NLP",
+    "title": "Knowledge Graph Builder",
+    "description": "An NLP pipeline using spaCy dependency parsing and coreference resolution, with Barnes-Hut force-directed graph rendering, NER-based clustering, and multi-format ingestion via a Streamlit dashboard.",
+    "cover": "/images/cms/nTU7b0ZAdWdlqCI4mQ4tGTPpDs.jpeg",
+    "year": "2025",
+    "industry": "AI / Knowledge Management",
+    "client": "Personal Project",
+    "duration": "4 weeks",
+    "githubUrl": "https://github.com/1SoulHunter1/knowledge-graph-builder",
+    "liveUrl": null,
+    "featured": true,
+    "sections": [
+      {
+        "heading": "Problem",
+        "paragraphs": [
+          "Extracting structured knowledge from unstructured text documents is a fundamental challenge in NLP. Traditional approaches often miss implicit relationships between entities and struggle with coreference resolution across long documents.",
+          "There was a need for an interactive tool that could ingest multiple document formats, extract entities and relationships, and visualize them as an explorable knowledge graph."
+        ],
+        "images": [
+          "/images/cms/qWjMf5YLDsHPfWrxindJlbU8dZ0.jpg"
+        ]
+      },
+      {
+        "heading": "Solution",
+        "paragraphs": [
+          "The Knowledge Graph Builder implements a full NLP pipeline using spaCy for dependency parsing, named entity recognition, and coreference resolution. Extracted entities and relationships are rendered as an interactive force-directed graph using Barnes-Hut optimization for performance.",
+          "The Streamlit dashboard provides multi-format document ingestion (PDF, DOCX, TXT), NER-based clustering for organizing related entities, and interactive graph exploration with filtering and search capabilities."
+        ],
+        "images": [
+          "/images/cms/AQyIdhIsQfYxzXoj7uBtxQZiY.jpeg",
+          "/images/cms/WzuGQPTkqf3192clNgTajkHRqk.jpeg"
+        ]
+      },
+      {
+        "heading": "Challenge",
+        "paragraphs": [
+          "Scaling graph rendering to handle thousands of nodes and edges required implementing Barnes-Hut force-directed layout optimization. Ensuring accurate coreference resolution across diverse document types demanded careful model tuning and evaluation."
+        ],
+        "images": []
+      },
+      {
+        "heading": "Summary",
+        "paragraphs": [
+          "The Knowledge Graph Builder transforms unstructured text into structured, explorable knowledge graphs. By combining advanced NLP techniques with interactive visualization, the tool makes it easy to discover hidden relationships and patterns in large document collections.",
+          "This project demonstrates practical NLP engineering — from pipeline design and entity extraction to graph algorithms and interactive dashboards."
+        ],
+        "images": [
+          "/images/cms/V3dM8G5w3WsDaQWdlZHWXxDIrvw.jpeg"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "heart-disease-prediction",
+    "category": "Machine Learning",
+    "title": "Heart Disease Prediction",
+    "description": "Compared six ML classifiers on the UCI Cleveland Heart Disease dataset, achieving 91.80% accuracy and 96.10% ROC-AUC with KNN after feature engineering and StratifiedKFold cross-validation.",
+    "cover": "/images/cms/2nWXrWvPxxMHSpsOkNYf8KjzP7Q.jpeg",
+    "year": "2024",
+    "industry": "Healthcare / AI",
+    "client": "Academic Project",
+    "duration": "3 weeks",
+    "githubUrl": "https://github.com/1SoulHunter1/heart-disease-prediction",
+    "liveUrl": null,
+    "featured": true,
+    "sections": [
+      {
+        "heading": "Problem",
+        "paragraphs": [
+          "Heart disease remains one of the leading causes of death globally. Early prediction using patient clinical data can significantly improve outcomes, but selecting the right ML approach and properly evaluating model performance is critical for reliable predictions."
+        ],
+        "images": [
+          "/images/cms/DLbVxsYll4feLhrOA8Pq4MPaVhs.jpeg"
+        ]
+      },
+      {
+        "heading": "Solution",
+        "paragraphs": [
+          "This project systematically compared six machine learning classifiers — Logistic Regression, Decision Tree, Random Forest, SVM, KNN, and Naive Bayes — on the UCI Cleveland Heart Disease dataset. Feature engineering techniques were applied to optimize model inputs.",
+          "StratifiedKFold cross-validation ensured robust evaluation across class distributions. The KNN classifier achieved the best performance with 91.80% accuracy and 96.10% ROC-AUC, demonstrating strong predictive capability."
+        ],
+        "images": [
+          "/images/cms/7vdKfhDeY9XcYH1lKpvTLMT0gb8.jpeg",
+          "/images/cms/axOfqlt1OrF9ee8oXYdukDuM99U.jpeg"
+        ]
+      },
+      {
+        "heading": "Challenge",
+        "paragraphs": [
+          "The main challenge was ensuring fair model comparison through consistent preprocessing, hyperparameter tuning, and cross-validation strategies. Handling class imbalance and selecting meaningful evaluation metrics beyond accuracy required careful statistical analysis."
+        ],
+        "images": []
+      },
+      {
+        "heading": "Summary",
+        "paragraphs": [
+          "This project provides a rigorous comparison of classical ML classifiers for heart disease prediction, establishing KNN as the top performer on the UCI Cleveland dataset. The systematic evaluation methodology ensures reproducible and trustworthy results.",
+          "The work demonstrates strong foundations in ML experimentation — from data preprocessing and feature engineering to model selection and statistical evaluation."
+        ],
+        "images": [
+          "/images/cms/iS2DgXxnjtQqDJ5KVOdKGQLXgD8.jpeg",
+          "/images/cms/8sl9Ujll2IskiALuyKBBhJlknJ4.jpeg"
+        ]
+      }
+    ]
+  },
+  {
     "slug": "agentflow",
     "category": "AI / Productivity",
     "title": "AgentFlow",
     "description": "An AI-powered automation workspace that connects chat models, research agents, and integrations into a unified dashboard — a personal LangDock + Notion + Zapier built with Next.js 15, Prisma, PostgreSQL, and Groq.",
-    "cover": "/images/cms/nTU7b0ZAdWdlqCI4mQ4tGTPpDs.jpeg",
+    "cover": "/images/cms/346Dg9EFyDG62n4PMiwIhATISNU.jpeg",
     "year": "2025",
     "industry": "AI / Productivity",
     "client": "Personal Project",
     "duration": "6 weeks",
     "githubUrl": "https://github.com/1SoulHunter1/AgentFlow-AI_Automation_Platform",
     "liveUrl": null,
-    "featured": true,
+    "featured": false,
     "sections": [
       {
         "heading": "Problem",
@@ -133,7 +241,7 @@ export const projects: Project[] = [
           "There was a need for a single workspace where AI agents could collaborate — research, summarize, and push results directly into productivity tools without manual copy-pasting."
         ],
         "images": [
-          "/images/cms/qWjMf5YLDsHPfWrxindJlbU8dZ0.jpg"
+          "/images/cms/U0I500EmGOZ2lvygkGIvmr13JU.jpeg"
         ]
       },
       {
@@ -143,8 +251,8 @@ export const projects: Project[] = [
           "The platform integrates directly with the Notion API for seamless database sync, supports file uploads (.pdf, .docx, .csv, .txt) with automatic extraction and summarization, and persists conversations via Prisma ORM and PostgreSQL."
         ],
         "images": [
-          "/images/cms/AQyIdhIsQfYxzXoj7uBtxQZiY.jpeg",
-          "/images/cms/WzuGQPTkqf3192clNgTajkHRqk.jpeg"
+          "/images/cms/mBc2xUjTRVxlcztYHtgXYF11o.jpeg",
+          "/images/cms/HNVCqnaFAfiDAhkxkg4SjB5c3w.jpeg"
         ]
       },
       {
@@ -162,7 +270,8 @@ export const projects: Project[] = [
           "Tech stack: Next.js 15, TypeScript, TailwindCSS, shadcn/ui, Groq AI, Tavily Search, Notion API, Prisma ORM, PostgreSQL, deployed on Vercel."
         ],
         "images": [
-          "/images/cms/V3dM8G5w3WsDaQWdlZHWXxDIrvw.jpeg"
+          "/images/cms/rgGNXJHIju2RXfdZpTAWjj3h7yI.jpeg",
+          "/images/cms/cHLxOxAZNT9hNaHliAM0QcUBhI.jpeg"
         ]
       }
     ]
@@ -172,14 +281,14 @@ export const projects: Project[] = [
     "category": "Mobile App",
     "title": "FitTrack — Fitness Tracker App",
     "description": "A Flutter fitness tracking app with Material 3 UI, animated charts, dual database support (SQLite offline + Firebase cloud), and Provider state management — built during a CodeAlpha internship.",
-    "cover": "/images/cms/2nWXrWvPxxMHSpsOkNYf8KjzP7Q.jpeg",
+    "cover": "/images/cms/RzBOpbFyAywEXNkFbMTKVhq44.jpg",
     "year": "2025",
     "industry": "Health / Fitness",
     "client": "CodeAlpha Internship",
     "duration": "4 weeks",
     "githubUrl": "https://github.com/1SoulHunter1/CodeAlpha_Fitness_Tracker_App",
     "liveUrl": null,
-    "featured": true,
+    "featured": false,
     "sections": [
       {
         "heading": "Problem",

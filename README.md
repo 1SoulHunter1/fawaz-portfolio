@@ -14,6 +14,13 @@ Personal portfolio showcasing my work in **AI/ML engineering**, **multi-agent au
 |---------|-------------|-------|
 | **Veritas Neural** | 4-modality deepfake detection engine with sub-1.5s CPU inference | PyTorch, EfficientNet, FastAPI, Docker, React |
 | **LinkedIn Resume ATS Pipeline** | Autonomous workflow that scrapes jobs, tailors resumes, and delivers daily digests | n8n, Google Gemini, Apify, LaTeX-on-HTTP, Supabase |
+| **Knowledge Graph Builder** | NLP pipeline with force-directed graph rendering and NER-based clustering | spaCy, Streamlit, Barnes-Hut simulation |
+| **Heart Disease Prediction** | Compared 6 ML classifiers — 91.80% accuracy, 96.10% ROC-AUC with KNN | scikit-learn, StratifiedKFold CV |
+
+### More Projects
+
+| Project | Description | Stack |
+|---------|-------------|-------|
 | **AgentFlow** | AI automation workspace with multi-agent chat, web search, and Notion integration | Next.js 15, Groq AI, Tavily, Notion API, Prisma, PostgreSQL |
 | **FitTrack** | Flutter fitness tracker with animated charts and dual database support | Flutter 3.x, Provider, SQFlite, Cloud Firestore, fl_chart |
 

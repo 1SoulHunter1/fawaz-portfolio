@@ -25,20 +25,20 @@ const projects = [
       "An autonomous n8n workflow that scrapes LinkedIn internships via Apify, tailors ATS-optimized resumes with Google Gemini, compiles them to PDF, and delivers a daily email digest.",
   },
   {
-    slug: "agentflow",
+    slug: "knowledge-graph-builder",
     image: "/images/project-shopease.jpeg",
-    category: "AI / Productivity",
-    title: "AGENTFLOW",
+    category: "NLP",
+    title: "KNOWLEDGE GRAPH BUILDER",
     description:
-      "An AI-powered automation workspace with streaming chat, multi-agent research, Notion integration, and file processing — built with Next.js 15, Groq AI, Prisma, and PostgreSQL.",
+      "An NLP pipeline using spaCy dependency parsing and coreference resolution, with Barnes-Hut force-directed graph rendering, NER-based clustering, and multi-format ingestion via a Streamlit dashboard.",
   },
   {
-    slug: "fittrack-fitness-tracker",
+    slug: "heart-disease-prediction",
     image: "/images/project-black-prisms.jpeg",
-    category: "Mobile App",
-    title: "FITTRACK — FITNESS TRACKER",
+    category: "Machine Learning",
+    title: "HEART DISEASE PREDICTION",
     description:
-      "A Flutter fitness app with Material 3 UI, animated charts, dual database support (SQLite + Firebase), and Provider state management — built during a CodeAlpha internship.",
+      "Compared six ML classifiers on the UCI Cleveland Heart Disease dataset, achieving 91.80% accuracy and 96.10% ROC-AUC with KNN after feature engineering and StratifiedKFold cross-validation.",
   },
 ];
 
@@ -148,8 +148,8 @@ export function ProjectsSection() {
           </h2>
           <p className="mt-4 max-w-[700px] text-base font-light leading-6 text-white">
             These selected projects reflect my passion for solving real
-            problems — from deepfake detection and intelligent automation to
-            multi-agent AI systems and mobile app development.
+            problems — from deepfake detection to intelligent automation and
+            interactive data visualization.
           </p>
         </ScrollReveal>
 
