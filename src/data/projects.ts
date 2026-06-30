@@ -13,7 +13,7 @@ export const projects: Project[] = [
     "client": "Personal Project",
     "duration": "8 weeks",
     "githubUrl": "https://github.com/1SoulHunter1/veritas-neural",
-    "liveUrl": null,
+    "liveUrl": "https://veritas-neural.vercel.app",
     "featured": true,
     "sections": [
       {

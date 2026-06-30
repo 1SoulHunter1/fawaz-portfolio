@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform, useMotionValueEvent } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 
 const CARD_IMAGES = [
   "/images/cms/About_1.png",
@@ -27,17 +27,10 @@ export function AboutStickyScroll({
     offset: ["start start", "end end"],
   });
 
-  // 👇 ADD THIS TO TRACK THE PERCENTAGE
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    // Converts the 0-1 decimal into a clean 0-100 percentage
-    const percentage = Math.round(latest * 100);
-    console.log(`Scroll Progress: ${percentage}% (Decimal: ${latest.toFixed(3)})`);
-  });
-
   const stripY = useTransform(
     scrollYProgress,
-    [0, 0.05, 0.286, 0.310, 0.6, 0.650, 1],
-    [0, 0, -CARD_HEIGHT, -CARD_HEIGHT, -CARD_HEIGHT * 2, -CARD_HEIGHT * 2, -CARD_HEIGHT * 3],
+    [0, 0.15, 0.19, 0.63, 0.67, 0.79, 0.83, 1],
+    [0, 0, -CARD_HEIGHT, -CARD_HEIGHT, -CARD_HEIGHT * 2, -CARD_HEIGHT * 2, -CARD_HEIGHT * 3, -CARD_HEIGHT * 3],
   );
 
   return (
