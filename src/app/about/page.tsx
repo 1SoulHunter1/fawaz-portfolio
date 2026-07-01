@@ -75,18 +75,6 @@ const techStack = [
       "High-performance Python backend framework for ML-powered REST APIs.",
   },
   {
-    name: "Docker",
-    logo: "/images/cms/Nf63tXddU52SRtJJgRHqk7zzD2g.png",
-    description:
-      "Containerization for consistent deployments across dev, staging, and production.",
-  },
-  {
-    name: "PostgreSQL / Prisma",
-    logo: "/images/cms/RaZetiUCiiVee9pYfau5kIm0k.jpg",
-    description:
-      "Relational database with type-safe ORM for persistent state in the ATS Pipeline and automation projects.",
-  },
-  {
     name: "n8n / Gemini API",
     logo: "/images/cms/KhZnIlAtOozB2Axd5yg9ALd7A.jpg",
     description:
