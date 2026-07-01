@@ -90,7 +90,7 @@ function ProjectCard({
           />
           <div className="absolute inset-0 bg-black/40 transition-colors group-hover:bg-black/50" />
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 p-8 text-center">
-            <span className="text-sm font-light text-[#b5b5b5]">
+            <span className="rounded-full bg-[#d0ff71] px-[15px] py-[3px] text-sm font-light text-[#303030]">
               {project.category}
             </span>
             <h2 className="font-heading max-w-[756px] text-[32px] font-bold leading-tight text-white uppercase md:text-[60px] md:leading-[78px]">
