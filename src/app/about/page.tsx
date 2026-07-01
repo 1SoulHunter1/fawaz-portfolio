@@ -46,37 +46,37 @@ const certifications = [
 const techStack = [
   {
     name: "Python",
-    logo: "/images/cms/Nf63tXddU52SRtJJgRHqk7zzD2g.png",
+    logo: "/images/cms/python-logo.svg",
     description:
       "My primary language for AI/ML development, data pipelines, and backend logic.",
   },
   {
     name: "PyTorch",
-    logo: "/images/cms/RaZetiUCiiVee9pYfau5kIm0k.jpg",
+    logo: "/images/cms/pytorch-logo.svg",
     description:
       "Deep learning framework for building and training neural networks — used in Veritas Neural and KesarAI.",
   },
   {
     name: "HuggingFace Transformers",
-    logo: "/images/cms/KhZnIlAtOozB2Axd5yg9ALd7A.jpg",
+    logo: "/images/cms/huggingface-logo.svg",
     description:
       "Pre-trained models and pipelines for NLP, text classification, and LLM integration.",
   },
   {
     name: "React / Next.js",
-    logo: "/images/cms/FigaBMy3WrTNL79MFKifsXxXE.jpg",
+    logo: "/images/cms/nextjs-logo.svg",
     description:
       "Full-stack web framework for building interactive UIs and server-rendered applications.",
   },
   {
     name: "FastAPI",
-    logo: "/images/cms/1jsryiRhbB5SoLHzyceqqF9tpo.jpg",
+    logo: "/images/cms/fastapi-logo.svg",
     description:
       "High-performance Python backend framework for ML-powered REST APIs.",
   },
   {
     name: "n8n / Gemini API",
-    logo: "/images/cms/KhZnIlAtOozB2Axd5yg9ALd7A.jpg",
+    logo: "/images/cms/n8n-logo.svg",
     description:
       "Workflow automation engine paired with Google Gemini for intelligent multi-stage pipelines.",
   },
