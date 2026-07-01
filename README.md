@@ -5,6 +5,7 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_v4-06B6D4?logo=tailwindcss&logoColor=white)
 ![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?logo=framer&logoColor=white)
+![Google Gemini](https://img.shields.io/badge/Gemini_3_Flash-4285F4?logo=googlegemini&logoColor=white)
 
 Personal portfolio showcasing my work in **AI/ML engineering**, **multi-agent automation**, and **full-stack development**. Built with Next.js 16, React 19, Tailwind CSS v4, and Framer Motion.
 
@@ -33,6 +34,7 @@ Personal portfolio showcasing my work in **AI/ML engineering**, **multi-agent au
 | UI Components | shadcn/ui (Radix primitives) |
 | Animations | Framer Motion (motion v12) — 3D peel-off card stack, scroll reveals, stagger effects |
 | Smooth Scroll | Lenis |
+| AI Chat | Google Gemini 3 Flash (via AI SDK) |
 | Contact Form | Web3Forms |
 | Fonts | Inter (body), Antonio (headings) |
 | Deployment | Vercel |
@@ -43,6 +45,7 @@ Personal portfolio showcasing my work in **AI/ML engineering**, **multi-agent au
 - **Scroll-Linked Animations** — Parallax hero, sticky scroll sections, staggered reveals powered by Framer Motion
 - **Custom Cursor** — Context-aware mouse follower with magnetic hover effects
 - **Responsive** — Mobile-first design tested across 390px, 768px, and 1280px+ viewports
+- **AI Chat Assistant** — "Virtual Colleague" chatbot powered by Gemini 3 Flash with hover-expanding FAB (circle-to-pill animation), portfolio-scoped responses, and rate limiting
 - **Contact Form** — Connected to Web3Forms for instant email delivery
 
 ## Getting Started
@@ -60,22 +63,30 @@ npm run build
 
 ### Environment Variables
 
-Create a `.env.local` file:
+Copy the example file and fill in your keys:
+
+```bash
+cp .env.local.example .env.local
+```
 
 ```env
 NEXT_PUBLIC_WEB3FORMS_KEY=your_access_key_here
+GOOGLE_GENERATIVE_AI_API_KEY=your_gemini_api_key_here
 ```
 
-Get your free access key at [web3forms.com](https://web3forms.com).
+- **Web3Forms key:** Get one free at [web3forms.com](https://web3forms.com)
+- **Gemini API key:** Get one at [aistudio.google.com/apikey](https://aistudio.google.com/apikey)
 
 ## Project Structure
 
 ```
 src/
   app/                # Next.js routes (home, about, blogs, projects)
+    api/chat/         # Gemini 3 Flash chat API endpoint
   components/         # React components
     ui/               # shadcn/ui primitives
     animations/       # ScrollReveal, StaggerReveal wrappers
+    ChatWidget.tsx    # AI chat assistant with hover-expanding FAB
     icons.tsx         # SVG icons as React components
   data/               # Blog posts and project data
   hooks/              # Custom React hooks
