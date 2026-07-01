@@ -3,6 +3,7 @@ import { Inter, Antonio } from "next/font/google";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { MouseFollower } from "@/components/MouseFollower";
 import { NoiseOverlay } from "@/components/NoiseOverlay";
+import { ChatWidget } from "@/components/ChatWidget";
 import "./globals.css";
 
 const inter = Inter({
@@ -40,6 +41,7 @@ export default function RootLayout({
         <NoiseOverlay />
         <MouseFollower />
         <SmoothScroll>{children}</SmoothScroll>
+        <ChatWidget />
       </body>
     </html>
   );
