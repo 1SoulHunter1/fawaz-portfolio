@@ -6,41 +6,9 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "motion/react";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { ArrowRightIcon } from "@/components/icons";
+import { projects as allProjects } from "@/data/projects";
 
-const projects = [
-  {
-    slug: "veritas-neural",
-    image: "/images/project-summer-vibes.jpeg",
-    category: "AI / Deep Learning",
-    title: "VERITAS NEURAL",
-    description:
-      "A 4-modality deepfake detection engine using a 3-model ensemble achieving sub-1.5s inference latency on CPU-only hardware, with a Dockerized FastAPI backend and React frontend for fully local, privacy-preserving inference.",
-  },
-  {
-    slug: "linkedin-resume-ats-pipeline",
-    image: "/images/project-coral-spiral.jpg",
-    category: "AI Automation",
-    title: "LINKEDIN RESUME ATS PIPELINE",
-    description:
-      "An autonomous n8n workflow that scrapes LinkedIn internships via Apify, tailors ATS-optimized resumes with Google Gemini, compiles them to PDF, and delivers a daily email digest.",
-  },
-  {
-    slug: "knowledge-graph-builder",
-    image: "/images/project-shopease.jpeg",
-    category: "NLP",
-    title: "KNOWLEDGE GRAPH BUILDER",
-    description:
-      "An NLP pipeline using spaCy dependency parsing and coreference resolution, with Barnes-Hut force-directed graph rendering, NER-based clustering, and multi-format ingestion via a Streamlit dashboard.",
-  },
-  {
-    slug: "heart-disease-prediction",
-    image: "/images/project-black-prisms.jpeg",
-    category: "Machine Learning",
-    title: "HEART DISEASE PREDICTION",
-    description:
-      "Compared six ML classifiers on the UCI Cleveland Heart Disease dataset, achieving 91.80% accuracy and 96.10% ROC-AUC with KNN after feature engineering and StratifiedKFold cross-validation.",
-  },
-];
+const projects = allProjects.filter((p) => p.featured);
 
 const CARD_TOP = 80;
 const CARD_OFFSET = 32;
@@ -50,7 +18,7 @@ function ProjectCard({
   index,
   total,
 }: {
-  project: (typeof projects)[number];
+  project: (typeof projects)[0];
   index: number;
   total: number;
 }) {
@@ -115,8 +83,8 @@ function ProjectCard({
           data-cursor="arrow"
         >
           <Image
-            src={project.image}
-            alt="Featured Project Cover Image"
+            src={project.cover}
+            alt={project.title}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
