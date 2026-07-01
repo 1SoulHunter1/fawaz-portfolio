@@ -7,7 +7,7 @@ export const blogs: BlogPost[] = [
     "date": "Jun 15, 2025",
     "title": "Building a 4-Modality Deepfake Detection Engine",
     "excerpt": "How I built Veritas Neural — a deepfake detection system combining face, voice, video, and text analysis using PyTorch and EfficientNet.",
-    "cover": "/images/cms/xmKml0E7v2iBI4zbbj0yVccaQwg.jpeg",
+    "cover": "/images/cms/blog-deepfake-detection.jpg",
     "pinned": true,
     "sections": [
       {
@@ -67,7 +67,7 @@ export const blogs: BlogPost[] = [
     "date": "May 28, 2025",
     "title": "Autonomous LinkedIn ATS Pipeline with n8n, Gemini & Supabase",
     "excerpt": "How I built an end-to-end n8n workflow that scrapes LinkedIn internships, tailors ATS-optimized resumes with Gemini, compiles them to PDF, and delivers a daily digest — fully autonomous.",
-    "cover": "/images/cms/1wFj19qQG6zNr7gj3iTlH0Gdlu8.jpeg",
+    "cover": "/images/cms/blog-linkedin-automation.jpg",
     "pinned": false,
     "sections": [
       {
@@ -127,7 +127,7 @@ export const blogs: BlogPost[] = [
     "date": "May 10, 2025",
     "title": "Deploying FastAPI + Docker on CPU-Only Hardware",
     "excerpt": "Practical lessons from deploying ML-powered APIs on budget hardware without GPU access — model optimization, containerization, and monitoring.",
-    "cover": "/images/cms/mu6sFIgrbmHNxa3m94cG4VVROM.jpeg",
+    "cover": "/images/cms/blog-docker-fastapi.jpg",
     "pinned": false,
     "sections": [
       {
@@ -179,7 +179,7 @@ export const blogs: BlogPost[] = [
     "date": "Apr 22, 2025",
     "title": "What I Learned from Placing Top 5 at VibeXathon 1.0",
     "excerpt": "Reflections on competing in a national hackathon — from rapid prototyping under pressure to presenting technical work to non-technical judges.",
-    "cover": "/images/cms/RFcUbpIGFydbU9WBSTc9HJRQI.jpeg",
+    "cover": "/images/cms/blog-hackathon.jpg",
     "pinned": false,
     "sections": [
       {
@@ -231,7 +231,7 @@ export const blogs: BlogPost[] = [
     "date": "Mar 30, 2025",
     "title": "Edge AI with YOLOv8-Nano on Raspberry Pi 4",
     "excerpt": "Running real-time object detection on a $50 board — model export, NCNN inference, and the performance tradeoffs of edge deployment.",
-    "cover": "/images/cms/9HduiIXX5eSq1WREpvO4qCnKM.jpeg",
+    "cover": "/images/cms/blog-edge-ai.jpg",
     "pinned": false,
     "sections": [
       {
@@ -283,7 +283,7 @@ export const blogs: BlogPost[] = [
     "date": "Apr 5, 2025",
     "title": "How I Built a Real-Time Industrial Predictive Maintenance Dashboard",
     "excerpt": "From sensor data ingestion to anomaly detection and live visualization — the full stack behind AegisAI's predictive maintenance system.",
-    "cover": "/images/cms/7RrI1CE0NHr8L8o3ZXGWxQDFQc.jpeg",
+    "cover": "/images/cms/blog-predictive-maintenance.jpg",
     "pinned": false,
     "sections": [
       {

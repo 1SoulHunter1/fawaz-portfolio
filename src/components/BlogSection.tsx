@@ -7,7 +7,7 @@ import { ArrowRightIcon } from "@/components/icons";
 const blogs = [
   {
     slug: "building-a-4-modality-deepfake-detection-engine",
-    image: "/images/cms/xmKml0E7v2iBI4zbbj0yVccaQwg.jpeg",
+    image: "/images/cms/blog-deepfake-detection.jpg",
     category: "Deep Learning",
     date: "Jun 15, 2025",
     title: "BUILDING A 4-MODALITY DEEPFAKE DETECTION ENGINE",
@@ -16,7 +16,7 @@ const blogs = [
   },
   {
     slug: "autonomous-linkedin-ats-pipeline-with-n8n-gemini-and-supabase",
-    image: "/images/cms/1wFj19qQG6zNr7gj3iTlH0Gdlu8.jpeg",
+    image: "/images/cms/blog-linkedin-automation.jpg",
     category: "Automation",
     date: "May 28, 2025",
     title: "AUTONOMOUS LINKEDIN ATS PIPELINE WITH N8N, GEMINI & SUPABASE",
