@@ -40,9 +40,9 @@ export default async function ProjectDetailPage({
 
   const meta = [
     { label: "Year", value: project.year },
-    { label: "Industry", value: project.industry },
-    { label: "Client", value: project.client },
-    { label: "Project Duration", value: project.duration },
+    { label: "Domain", value: project.industry },
+    { label: "Context", value: project.client },
+    { label: "Timeline", value: project.duration },
   ].filter((m) => m.value);
 
   const more = projects.filter((p) => p.slug !== project.slug).slice(0, 6);
