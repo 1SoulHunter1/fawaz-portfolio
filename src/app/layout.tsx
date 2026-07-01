@@ -19,9 +19,9 @@ const antonio = Antonio({
 });
 
 export const metadata: Metadata = {
-  title: "Portavia",
+  title: "FawzFolio",
   description:
-    "Portavia is a clean portfolio template for showcasing creative work. Perfect for designers and creatives.",
+    "Portfolio of Sheik Mohammad Fawaz — AI/ML engineer building agentic AI architectures, autonomous automation pipelines, and cross-platform mobile apps with Flutter.",
   icons: {
     icon: "/seo/favicon.png",
   },
