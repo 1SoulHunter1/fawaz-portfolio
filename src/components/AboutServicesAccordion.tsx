@@ -9,7 +9,7 @@ const services: ServiceItem[] = [
   {
     number: "1",
     title: "AI & MACHINE LEARNING",
-    image: "/images/cms/wOCTh6BhMTLrGPZ7C8doO3XdY.jpeg",
+    image: "/images/cms/expertise-ai-ml.jpg",
     items: [
       "Deep learning model development with PyTorch",
       "Multimodal AI systems (vision, audio, text)",
@@ -20,7 +20,7 @@ const services: ServiceItem[] = [
   {
     number: "2",
     title: "GENERATIVE AI & AUTOMATION",
-    image: "/images/cms/RPxWdsXRtMBhMcTCb414zGg2QY.jpeg",
+    image: "/images/cms/expertise-genai.jpg",
     items: [
       "Multi-agent automation systems",
       "Prompt engineering for LLMs",
@@ -31,7 +31,7 @@ const services: ServiceItem[] = [
   {
     number: "3",
     title: "FULL-STACK DEVELOPMENT",
-    image: "/images/cms/Ov53jG8lAoAFuct0Li7vWgmOqQ.jpeg",
+    image: "/images/cms/expertise-fullstack.jpg",
     items: [
       "REST API development (FastAPI, Node.js)",
       "Frontend development with React and Next.js",
@@ -42,7 +42,7 @@ const services: ServiceItem[] = [
   {
     number: "4",
     title: "SOFTWARE ENGINEERING",
-    image: "/images/cms/9HduiIXX5eSq1WREpvO4qCnKM.jpeg",
+    image: "/images/cms/expertise-swe.jpg",
     items: [
       "Docker containerization",
       "Git/GitHub version control workflows",

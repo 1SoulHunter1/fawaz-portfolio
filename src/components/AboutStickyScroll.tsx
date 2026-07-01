@@ -29,7 +29,7 @@ export function AboutStickyScroll({
 
   const stripY = useTransform(
     scrollYProgress,
-    [0, 0.15, 0.19, 0.63, 0.67, 0.79, 0.83, 1],
+    [0, 0.15, 0.19, 0.53, 0.56, 0.79, 0.83, 1],
     [0, 0, -CARD_HEIGHT, -CARD_HEIGHT, -CARD_HEIGHT * 2, -CARD_HEIGHT * 2, -CARD_HEIGHT * 3, -CARD_HEIGHT * 3],
   );
 
